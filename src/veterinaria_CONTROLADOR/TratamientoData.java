@@ -5,10 +5,23 @@
  */
 package veterinaria_CONTROLADOR;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
 /**
  *
  * @author Barbara
  */
 public class TratamientoData {
+    
+    private Connection con = null;
+
+    public TratamientoData(Conexion conexion) {
+        try {
+            con = conexion.getConexion();
+        } catch (SQLException ex) {
+            System.out.println("Error en la conexion");
+        }
+    }
     
 }
