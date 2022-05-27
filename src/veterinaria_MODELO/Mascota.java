@@ -5,6 +5,7 @@
  */
 package veterinaria_MODELO;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -19,7 +20,7 @@ public class Mascota {
     private String especie;
     private String raza;
     private String color_pelaje;
-    private Date fecha_nac;
+    private LocalDate fecha_nac;
     private double peso_actual;
     // es el mismo peso de la tabla visita//
     private double peso_promedio;
@@ -27,7 +28,7 @@ public class Mascota {
     
     Cliente cliente;
 
-    public Mascota(int id_mascota, String alias, String sexo, String especie, String raza, String color_pelaje, Date fecha_nac, double peso_actual, double peso_promedio, boolean activo, Cliente cliente) {
+    public Mascota(int id_mascota, String alias, String sexo, String especie, String raza, String color_pelaje, LocalDate fecha_nac, double peso_actual, double peso_promedio, boolean activo, Cliente cliente) {
         this.id_mascota = -1;
         this.alias = alias;
         this.sexo = sexo;
@@ -41,7 +42,7 @@ public class Mascota {
         this.cliente = cliente;
     }
 
-    public Mascota(String alias, String sexo, String especie, String raza, String color_pelaje, Date fecha_nac, double peso_actual, double peso_promedio, boolean activo, Cliente cliente) {
+    public Mascota(String alias, String sexo, String especie, String raza, String color_pelaje, LocalDate fecha_nac, double peso_actual, double peso_promedio, boolean activo, Cliente cliente) {
         this.alias = alias;
         this.sexo = sexo;
         this.especie = especie;
@@ -106,11 +107,11 @@ public class Mascota {
         this.color_pelaje = color_pelaje;
     }
 
-    public Date getFecha_nac() {
+    public LocalDate getFecha_nac() {
         return fecha_nac;
     }
 
-    public void setFecha_nac(Date fecha_nac) {
+    public void setFecha_nac(LocalDate fecha_nac) {
         this.fecha_nac = fecha_nac;
     }
 
