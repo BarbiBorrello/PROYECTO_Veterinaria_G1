@@ -8,10 +8,12 @@ package veterinaria_CONTROLADOR;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import veterinaria_MODELO.Mascota;
 
 /**
@@ -44,18 +46,28 @@ String sql = " INSERT INTO mascota (alias , sexo, especie, raza, color_pelaje, f
              ps.setString(5, mascota.getColor_pelaje());
              ps.setDate (6, Date.valueOf(mascota.getFecha_nac()));
              ps.setDouble(7, mascota.getPeso_actual());
-             ps.setInt(8, mascota.getCliente());
+             ps.setObject(8, mascota.getCliente());
+             ps.setDouble(9, mascota.getPeso_promedio());
              
+             // if reducido
+             ps.setInt(4, mascota.isActivo() ? 1 : 0);
              
-              
+             ps.executeUpdate();
+             ResultSet rs = ps.getGeneratedKeys();
+
+            JOptionPane.showMessageDialog(null, " Mascota cargada exitosamente");
              
-       
-        
-        
-        
+            if (rs.next()) {
+                mascota.setId_mascota(rs.getInt(1));
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pude cargar mascota ");
+            }
+
+            ps.close();      
         
     }       catch (SQLException ex) {
-                Logger.getLogger(MascotaData.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Error de conexion al guardar mascota " + ex);
+
             }
 }
 }
