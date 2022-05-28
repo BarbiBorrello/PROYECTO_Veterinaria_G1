@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package veterinaria_MODELO;
 
-/**
- *
- * @author Barbara
- */
+
 public class Cliente {
     
     private int id_cliente;
@@ -23,8 +16,10 @@ public class Cliente {
     
     private String contactoA;
    // contacto alterntivo//
+    
+    private boolean activo;
 
-    public Cliente(int id_cliente, long dni, String apellido, String nombreD, String direccion, long telefono, String contactoA) {
+    public Cliente(int id_cliente, long dni, String apellido, String nombreD, String direccion, long telefono, String contactoA, boolean activo) {
         this.id_cliente = -1;
         this.dni = dni;
         this.apellido = apellido;
@@ -32,15 +27,17 @@ public class Cliente {
         this.direccion = direccion;
         this.telefono = telefono;
         this.contactoA = contactoA;
+        this.activo=activo;
     }
 
-    public Cliente(long dni, String apellido, String nombreD, String direccion, long telefono, String contactoA) {
+    public Cliente(long dni, String apellido, String nombreD, String direccion, long telefono, String contactoA, boolean activo) {
         this.dni = dni;
         this.apellido = apellido;
         this.nombreD = nombreD;
         this.direccion = direccion;
         this.telefono = telefono;
         this.contactoA = contactoA;
+        this.activo=activo;
     }
 
     public Cliente() {
@@ -53,6 +50,14 @@ public class Cliente {
 
     public void setId_cliente(int id_cliente) {
         this.id_cliente = id_cliente;
+    }
+
+    public boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
     public long getDni() {
