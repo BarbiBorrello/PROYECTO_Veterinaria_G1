@@ -31,7 +31,7 @@ public class Veterianaria_Test_Main_F {
             VisitaData vd = new VisitaData(conexion);
             
             
-            /* ----------- PRUEBAS EN AlumnoDATA ----------- /*
+            /* ----------- PRUEBAS EN ClienteDATA ----------- /*
             // Creacion de un cliente para pruebas
             //Cliente cliente1 = new Cliente(12345678, "El", "Chespirito", "Avenida siempre viva 123", 12345678, "Pedrito rulito",true);
             
