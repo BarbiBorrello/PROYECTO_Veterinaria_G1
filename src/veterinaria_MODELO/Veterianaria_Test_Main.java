@@ -41,7 +41,7 @@ public class Veterianaria_Test_Main {
 Cliente cliente1 = new Cliente(12345678, "El", "Chespirito", "Avenida siempre viva 123", 12345678, "Pedrito rulito",true);
 cd.agregarCliente(cliente1);
 
-Mascota mascota1 = new Mascota("Pedro", "macho", "perro", "golden", "dorado", LocalDate.of(2020,4, 29), 40, 50.5, true, cliente1);
+Mascota mascota1 = new Mascota("Pedro", "macho", "perro", "golden", "dorado", LocalDate.of(2020,4, 29), 40, 50.5, true, cd.buscarCliente(2));
 md.agregar_Mascota(mascota1);
 //
 //Mascota mascota12 = new Mascota("Pedro", "macho", "perro", "golden", "dorado", LocalDate.of(2020,4, 29), 40, 50.5, true, cliente1);
