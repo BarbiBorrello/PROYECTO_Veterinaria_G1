@@ -157,7 +157,7 @@ public class ClienteData {
         }
     }
     
-    
+    /*
     // listarCliente devuelve una lista de clientes, recibe un parametros de busqueda y un valor de parametro de busqueda
     // los parametros de busqueda posibles son "ID", "DNI", "Telefono", "Activo", "Apellido", "Nombre", "Direccion", "Contacto alternativo"
     public List<Cliente> listarCliente(String p_filtroNombre, String p_filtroValor) {
@@ -218,4 +218,5 @@ public class ClienteData {
 
         return clientes;
     }
+*/
 }
