@@ -193,9 +193,11 @@ public class ClienteData {
             
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet resultSet = ps.executeQuery();
-
+            
+            
+            // Llenado de la lista de resultados(clientes)
             while (resultSet.next()) {
-
+                // Creacion y llenado de clientes para ser insertados en la lista
                 cliente = new Cliente();
                 cliente.setId_cliente(resultSet.getInt("id_cliente"));
                 cliente.setDni(resultSet.getLong("dni"));
@@ -209,6 +211,7 @@ public class ClienteData {
                 clientes.add(cliente);
             }
             ps.close();
+            
         } catch (SQLException ex) {
             System.out.println("Error al obtener los clientes: " + ex.getMessage());
         }
