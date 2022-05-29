@@ -167,7 +167,7 @@ public class ClienteData {
         Cliente cliente = null;
         
         // Valores de referencia para buscar
-        List<String> pEntrada = List.of("ID", "DNI", "Telefono", "Activo", "Apellido", "Nombre", "Direccion", "Contacto alternativo");
+     List<String> pEntrada = List.of("ID", "DNI", "Telefono", "Activo", "Apellido", "Nombre", "Direccion", "Contacto alternativo");
         int indice = pEntrada.indexOf(p_filtroNombre);
         
         // Valores equivalentes de las columnas en la Base de Datos

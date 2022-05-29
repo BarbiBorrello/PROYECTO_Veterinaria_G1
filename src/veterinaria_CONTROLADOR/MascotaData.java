@@ -35,7 +35,7 @@ public class MascotaData {
 
     public void agregar_Mascota(Mascota mascota) {
 
-        String sql = "INSERT INTO mascota (alias , sexo, especie,raza , color_pelaje, fecha_nac, peso_actual, id_cliente, peso_promedio, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO mascota (alias , sexo, especie,raza , color_pelaje, fecha_nac, peso_actual, id_cliente, peso_promedio, activo) VALUES (? , ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -47,7 +47,7 @@ public class MascotaData {
             ps.setString(5, mascota.getColor_pelaje());
             ps.setDate(6, Date.valueOf(mascota.getFecha_nac()));
             ps.setDouble(7, mascota.getPeso_actual());
-            ps.setObject(8, mascota.getCliente());
+            ps.setObject(8, mascota.getCliente().getId_cliente());
             ps.setDouble(9, mascota.getPeso_promedio());
 
             // if reducido
