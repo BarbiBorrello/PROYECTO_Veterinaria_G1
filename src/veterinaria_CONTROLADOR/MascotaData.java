@@ -35,11 +35,7 @@ public class MascotaData {
 
     public void agregar_Mascota(Mascota mascota) {
 
-<<<<<<< HEAD
-        String sql = "INSERT INTO mascota (alias , sexo, especie,raza , color_pelaje, fecha_nac, peso_actual, id_cliente, peso_promedio, activo) VALUES (? , ?, ?, ?, ?, ?, ?, ?, ?, ?);";
-=======
         String sql = "INSERT INTO mascota (alias , sexo, especie, raza , color_pelaje, fecha_nac, peso_actual, id_cliente, peso_promedio, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
->>>>>>> 2e08bbe8d7190194f0d9c69e8106745ae2013e0b
 
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);

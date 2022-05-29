@@ -36,12 +36,6 @@ public class Veterianaria_Test_Main {
             TratamientoData td = new TratamientoData(conexion);
             VisitaData vd = new VisitaData(conexion);
 
-<<<<<<< HEAD
-//// PRUEBA creacion: CLIENTE-MASCOTA //
-////
-//Cliente cliente1 = new Cliente(12345678, "El", "Chespirito", "Avenida siempre viva 123", 12345678, "Pedrito rulito",true);
-//cd.agregarCliente(cliente1);
-=======
 // PRUEBA creacion: CLIENTE-MASCOTA //
 //
 Cliente cliente1 = new Cliente(12345678, "El", "Chespirito", "Avenida siempre viva 123", 12345678, "Pedrito rulito",true);
@@ -49,19 +43,12 @@ cd.agregarCliente(cliente1);
 
 Mascota mascota1 = new Mascota("Pedro", "macho", "perro", "golden", "dorado", LocalDate.of(2020,4, 29), 40, 50.5, true, cd.buscarCliente(2));
 md.agregar_Mascota(mascota1);
->>>>>>> 2e08bbe8d7190194f0d9c69e8106745ae2013e0b
 //
-//Mascota mascota1 = new Mascota("Pedro", "macho", "perro", "golden", "dorado", LocalDate.of(2020,4, 29), 40, 50.5, true, cliente1);
-//md.agregar_Mascota(mascota1);
-////
 //Mascota mascota12 = new Mascota("Pedro", "macho", "perro", "golden", "dorado", LocalDate.of(2020,4, 29), 40, 50.5, true, cliente1);
 //md.agregar_Mascota(mascota12);
 //
-Mascota mascota120 = new Mascota("Pedro", "macho", "perro", "golden", "dorado", LocalDate.of(2020,4, 29), 40, 50.5, true, cd.buscarCliente(2));
-md.agregar_Mascota(mascota120);
-
-       
-System.out.println(md.buscarMascotaNombre("Lola"));
+//Mascota mascota120 = new Mascota("Pedro", "macho", "perro", "golden", "dorado", LocalDate.of(2020,4, 29), 40, 50.5, true, cliente1);
+//md.agregar_Mascota(mascota120);
 
 
 
