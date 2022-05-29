@@ -179,7 +179,7 @@ public class ClienteData {
         try {
             // si los argumentos tanto de filtro como del valor del filtro no son "" es decir contienen algun valor distinto de vacio
             // y este valor se encuentra en la lista de indidices se forman las variantes de busqueda especificada para el filtro
-            if (!(p_filtroNombre.isBlank() || p_filtroValor.isBlank() || indice == -1)) {
+            if (!(p_filtroNombre =="" || p_filtroValor== "" || indice == -1)) {
                 
                 // Si el indice se encuentra entre 0 y 3 sera un valor del tipo INT, por lo que el valor de entrada no necesita modificacion
                 // si el valor del indice de 4 a 7 el valor es un STRING por lo que se debe encerrar entre ''
