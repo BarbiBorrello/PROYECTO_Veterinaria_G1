@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import veterinaria_MODELO.Cliente;
 
@@ -80,7 +82,6 @@ public class ClienteData {
             ps.setString(6, p_cliente.getContactoA());
             ps.setInt(7, p_cliente.getActivo() ? 1 : 0);
 
-            
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
 
@@ -155,5 +156,63 @@ public class ClienteData {
 
         }
     }
+    
+    
+    // listarCliente devuelve una lista de clientes, recibe un parametros de busqueda y un valor de parametro de busqueda
+    // los parametros de busqueda posibles son "ID", "DNI", "Telefono", "Activo", "Apellido", "Nombre", "Direccion", "Contacto alternativo"
+    public List<Cliente> listarCliente(String p_filtroNombre, String p_filtroValor) {
 
+        ArrayList<Cliente> clientes = new ArrayList<>();
+        // Iniciacion null de la variable cliente
+        Cliente cliente = null;
+        
+        // Valores de referencia para buscar
+        List<String> pEntrada = List.of("ID", "DNI", "Telefono", "Activo", "Apellido", "Nombre", "Direccion", "Contacto alternativo");
+        int indice = pEntrada.indexOf(p_filtroNombre);
+        
+        // Valores equivalentes de las columnas en la Base de Datos
+        List<String> pSalida = List.of("id_cliente", "dni", "telefono", "activo", "apellido", "nombre_duenio", "direccion", "contacto_alternativo");
+        
+        // busqueda por default todos los clientes
+        String sql = "SELECT * FROM cliente;";
+        
+        try {
+            // si los argumentos tanto de filtro como del valor del filtro no son "" es decir contienen algun valor distinto de vacio
+            // y este valor se encuentra en la lista de indidices se forman las variantes de busqueda especificada para el filtro
+            if (!(p_filtroNombre.isBlank() || p_filtroValor.isBlank() || indice == -1)) {
+                
+                // Si el indice se encuentra entre 0 y 3 sera un valor del tipo INT, por lo que el valor de entrada no necesita modificacion
+                // si el valor del indice de 4 a 7 el valor es un STRING por lo que se debe encerrar entre ''
+                if (indice<4){
+                    sql = "SELECT * FROM cliente WHERE " + pSalida.get(indice) +"="+ p_filtroValor + ";";
+                } else {
+                    sql = "SELECT * FROM cliente WHERE " + pSalida.get(indice) +"='"+ p_filtroValor + "';";
+                }
+                
+            }
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+
+                cliente = new Cliente();
+                cliente.setId_cliente(resultSet.getInt("id_cliente"));
+                cliente.setDni(resultSet.getLong("dni"));
+                cliente.setApellido(resultSet.getString("apellido"));
+                cliente.setNombreD(resultSet.getString("nombre_duenio"));
+                cliente.setDireccion(resultSet.getString("direccion"));
+                cliente.setTelefono(resultSet.getLong("telefono"));
+                cliente.setContactoA("contacto_alternativo");
+                cliente.setActivo(resultSet.getBoolean("activo"));
+
+                clientes.add(cliente);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener los clientes: " + ex.getMessage());
+        }
+
+        return clientes;
+    }
 }
