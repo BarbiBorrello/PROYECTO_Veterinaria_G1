@@ -55,6 +55,21 @@ public class Mascota {
         this.cliente = cliente;
     }
 
+    public Mascota(String alias, String sexo, String especie, String raza, String color_pelaje, LocalDate fecha_nac, double peso_actual, double peso_promedio, boolean activo) {
+        this.alias = alias;
+        this.sexo = sexo;
+        this.especie = especie;
+        this.raza = raza;
+        this.color_pelaje = color_pelaje;
+        this.fecha_nac = fecha_nac;
+        this.peso_actual = peso_actual;
+        this.peso_promedio = peso_promedio;
+        this.activo = activo;
+    }
+
+    
+    
+    
     public Mascota() {
         this.id_mascota = -1;
     }
