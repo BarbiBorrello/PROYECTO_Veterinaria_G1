@@ -43,12 +43,7 @@ cd.agregarCliente(cliente1);
 
 Mascota mascota1 = new Mascota("Pedro", "macho", "perro", "golden", "dorado", LocalDate.of(2020,4, 29), 40, 50.5, true, cd.buscarCliente(2));
 md.agregar_Mascota(mascota1);
-//
-//Mascota mascota12 = new Mascota("Pedro", "macho", "perro", "golden", "dorado", LocalDate.of(2020,4, 29), 40, 50.5, true, cliente1);
-//md.agregar_Mascota(mascota12);
-//
-//Mascota mascota120 = new Mascota("Pedro", "macho", "perro", "golden", "dorado", LocalDate.of(2020,4, 29), 40, 50.5, true, cliente1);
-//md.agregar_Mascota(mascota120);
+
 
 
 
