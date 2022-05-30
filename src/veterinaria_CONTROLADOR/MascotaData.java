@@ -105,12 +105,12 @@ public class MascotaData {
    
          
 
-                    JOptionPane.showMessageDialog(null, "Mascota encrontrada exitosamente");
+                    JOptionPane.showMessageDialog(null, "Mascota encrontrada exitosamente :"+" "+mascota.getAlias());
 
                 }
 
-            } else if (rs.wasNull()== true) {
-                JOptionPane.showMessageDialog(null, "Mascota fallecida");
+            } else {
+                JOptionPane.showMessageDialog(null, "Mascota inexistente");
             }
             ps.close();
 
@@ -170,17 +170,18 @@ public class MascotaData {
       public Mascota buscarMascotaNombre (String alias){
    
           Mascota mascota = null;
+;
           
           String sql = "SELECT * FROM mascota WHERE alias LIKE \"%?%\" AND activo = 1";
         
           
            try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(2,"alias");
+            ps.setString(1,"alias");
             
             ResultSet rs = ps.executeQuery();
             
-            if(rs.wasNull() == true){
+            if(rs.wasNull() == false){
                 
             mascota.getId_mascota();
             mascota.getSexo();
@@ -198,14 +199,14 @@ public class MascotaData {
             else {
             JOptionPane.showMessageDialog(null, "Verifique el nombre de la mascota");
             }
-            
+           
             ps.close();
           
      }  catch (SQLException ex) { 
            JOptionPane.showMessageDialog(null, " Error de conexion desde buscar mascota por su nombre " + ex);
         } 
             
-     return mascota;
+     return mascota ; 
       }
       
       
