@@ -156,8 +156,42 @@ public class ClienteData {
 
         }
     }
-    
-    /*
+
+    public List<Cliente> obtenerClientes() {
+
+        ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+
+        try {
+            String sql = "SELECT * FROM cliente;";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+            Cliente cliente;
+
+            while (rs.next()) {
+                // Creacion y llenado de clientes para ser insertados en la lista
+                cliente = new Cliente();
+                cliente.setId_cliente(rs.getInt("id_cliente"));
+                cliente.setDni(rs.getLong("dni"));
+                cliente.setApellido(rs.getString("apellido"));
+                cliente.setNombreD(rs.getString("nombre_duenio"));
+                cliente.setDireccion(rs.getString("direccion"));
+                cliente.setTelefono(rs.getLong("telefono"));
+                cliente.setContactoA("contacto_alternativo");
+                cliente.setActivo(rs.getBoolean("activo"));
+
+                clientes.add(cliente);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener los clientes: " + ex.getMessage());
+        }
+        return clientes;
+        }
+
+        /*
     // listarCliente devuelve una lista de clientes, recibe un parametros de busqueda y un valor de parametro de busqueda
     // los parametros de busqueda posibles son "ID", "DNI", "Telefono", "Activo", "Apellido", "Nombre", "Direccion", "Contacto alternativo"
     public List<Cliente> listarCliente(String p_filtroNombre, String p_filtroValor) {
@@ -218,5 +252,5 @@ public class ClienteData {
 
         return clientes;
     }
-*/
-}
+         */
+    }

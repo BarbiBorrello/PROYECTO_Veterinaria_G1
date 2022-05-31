@@ -29,6 +29,7 @@ public class MascotaData {
     private Connection con = null;
     Cliente c = new Cliente ();
     ClienteData cd ;
+    VisitaData vd;
 
     public MascotaData(Conexion conexion) {
         try {
@@ -78,7 +79,7 @@ public class MascotaData {
         }
     }
 
-    
+ // busca a todas al mascotas que estan "vivas" independientemente de sus visitas"   
     public Mascota buscarMascota(int p_id_mascota) {
 
         Mascota mascota = null;
@@ -122,6 +123,51 @@ public class MascotaData {
 
         return mascota;
     }
+
+    public Mascota buscarMascotaInactiva(int id_mascota) {
+
+        Mascota mascota = null;
+
+        String sql = "SELECT * FROM mascota WHERE activo =-1 AND id_mascota =?;";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, id_mascota);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.wasNull() == true) {
+
+                while (rs.next()) {
+
+                    mascota = new Mascota();
+
+                    mascota.setId_mascota(rs.getInt("id_mascota"));
+                    mascota.setAlias(rs.getString("alias"));
+                    mascota.setSexo(rs.getString("sexo"));
+                    mascota.setEspecie(rs.getString("especie"));
+                    mascota.setRaza(rs.getString("raza"));
+                    mascota.setColor_pelaje(rs.getString("color_pelaje"));
+                    mascota.setFecha_nac(rs.getDate("fecha_nac").toLocalDate());
+                    mascota.setPeso_actual(rs.getDouble("peso_actual"));
+                    mascota.setPeso_promedio(rs.getDouble("peso_promedio"));
+                    mascota.setActivo(rs.getBoolean("activo"));
+
+                    JOptionPane.showMessageDialog(null, "Mascota fallecida");
+
+                }
+
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error de conexion desde buscar mascota " + ex);
+        }
+
+        return mascota;
+    }
+    
+    
 
     public void modificarMascota(int p_id_mascota, Mascota p_mascota){
         
@@ -230,9 +276,9 @@ public class MascotaData {
         
         public void pesoActual(int p_id_mascota){
             
-           double peso_actual = 0;
+           double peso_actual;
            
-           peso_actual=peso_actual;
+           peso_actual=vd.buscarVisita(p_id_mascota).getPeso();
             
         }
         
