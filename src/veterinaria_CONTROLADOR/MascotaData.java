@@ -18,7 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import veterinaria_MODELO.Cliente;
-import veterinaria_MODELO.Mascota;
+import veterinaria_MODELO.Mascota; 
 
 /**
  *
@@ -27,6 +27,8 @@ import veterinaria_MODELO.Mascota;
 public class MascotaData {
 
     private Connection con = null;
+    Cliente cliente_mascota = new Cliente ();
+    ClienteData cd ;
 
     public MascotaData(Conexion conexion) {
         try {
@@ -186,6 +188,7 @@ public class MascotaData {
     
     public List<Mascota> obtenerMascotas(){
         
+        
          ArrayList<Mascota> mascotas = new ArrayList<Mascota>();
          
         try {
@@ -196,9 +199,11 @@ public class MascotaData {
             ResultSet rs = ps.executeQuery();
             
             Mascota mascota;
+//          cd = new ClienteData(con);
             while (rs.next()) {
                 
                 mascota = new Mascota();
+                
                 
                 mascota.setId_mascota(rs.getInt("id_mascota"));
                 mascota.setAlias(rs.getString("alias"));
@@ -208,7 +213,7 @@ public class MascotaData {
                 mascota.setColor_pelaje(rs.getString("color_pelaje"));
                 mascota.setFecha_nac(rs.getDate("fecha_nac").toLocalDate());
                 mascota.setPeso_actual(rs.getDouble("peso_actual"));
-//              mascota.setCliente(rs);
+                mascota.setCliente(cd.buscarCliente(rs.getInt("id_cliente")));
                 mascota.setPeso_promedio(rs.getDouble("peso_promedio"));
                 mascota.setActivo(rs.getBoolean("activo"));
      

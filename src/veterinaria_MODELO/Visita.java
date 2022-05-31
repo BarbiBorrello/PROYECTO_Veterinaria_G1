@@ -5,6 +5,7 @@
  */
 package veterinaria_MODELO;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -14,14 +15,15 @@ import java.util.Date;
 public class Visita {
     
     private int idvisita;
-    private Date fecha_visita;
+    private LocalDate fecha_visita;
     private double peso;
     private boolean activo;
+
     
     Mascota mascota;
     Tratamiento tratamiento;
 
-    public Visita(int idvisita, Date fecha_visita, double peso, boolean activo, Mascota mascota, Tratamiento tratamiento) {
+    public Visita(int idvisita, LocalDate fecha_visita, double peso, boolean activo, Mascota mascota, Tratamiento tratamiento) {
         this.idvisita = -1;
         this.fecha_visita = fecha_visita;
         this.peso = peso;
@@ -30,7 +32,7 @@ public class Visita {
         this.tratamiento = tratamiento;
     }
 
-    public Visita(Date fecha_visita, double peso, boolean activo, Mascota mascota, Tratamiento tratamiento) {
+    public Visita(LocalDate fecha_visita, double peso, boolean activo, Mascota mascota, Tratamiento tratamiento) {
         this.fecha_visita = fecha_visita;
         this.peso = peso;
         this.activo = activo;
@@ -50,11 +52,11 @@ public class Visita {
         this.idvisita = idvisita;
     }
 
-    public Date getFecha_visita() {
+    public LocalDate getFecha_visita() {
         return fecha_visita;
     }
 
-    public void setFecha_visita(Date fecha_visita) {
+    public void setFecha_visita(LocalDate fecha_visita) {
         this.fecha_visita = fecha_visita;
     }
 
