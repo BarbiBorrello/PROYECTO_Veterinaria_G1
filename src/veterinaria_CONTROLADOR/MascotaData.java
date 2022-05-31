@@ -39,7 +39,7 @@ public class MascotaData {
         }
     }
 
-    public void agregar_Mascota(Mascota p_mascota) {
+    public void agregarMascota(Mascota p_mascota) {
 
         String sql = "INSERT INTO mascota (alias , sexo, especie, raza , color_pelaje, fecha_nac, peso_actual, id_cliente, peso_promedio, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
@@ -80,7 +80,7 @@ public class MascotaData {
     }
 
  // busca a todas al mascotas que estan "vivas" independientemente de sus visitas"   
-    public Mascota buscarMascota(int p_id_mascota) {
+    public Mascota buscarMascotaActivas(int p_id_mascota) {
 
         Mascota mascota = null;
 
@@ -274,11 +274,11 @@ public class MascotaData {
         return mascotas;
     }
         
-        public void pesoActual(int p_id_mascota){
+        public double pesoActual(int p_id_mascota){
             
            double peso_actual;
            
-           peso_actual=vd.buscarVisita(p_id_mascota).getPeso();
+        return peso_actual=vd.buscarVisita(p_id_mascota).getPeso();
             
         }
         
