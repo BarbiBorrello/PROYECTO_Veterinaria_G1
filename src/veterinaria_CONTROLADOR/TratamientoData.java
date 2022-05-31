@@ -164,7 +164,28 @@ public class TratamientoData {
         }
 
     }
-     
+    
+    	   public void activarTratamiento(int p_id_tratamiento) {
+
+        String sql = "UPDATE tratamiento SET activo =1 WHERE id_tratamiento=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, p_id_tratamiento);
+
+            int rs = ps.executeUpdate();
+
+            if (rs > 0) {
+                JOptionPane.showMessageDialog(null, "Se activo el estado del tratamiento ");
+            } else {
+                JOptionPane.showMessageDialog(null, " El id del tratamiento no existe ");
+            }
+
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error de conexion desde activar Tratamiento " + ex);
+
+        }
+    }
         public List<Tratamiento> obtenerTratamientos(){
             
           ArrayList<Tratamiento> tratamientos = new ArrayList<Tratamiento>();  
