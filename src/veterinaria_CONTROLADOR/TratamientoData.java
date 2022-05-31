@@ -71,6 +71,8 @@ public class TratamientoData {
 
     }
 
+    // estadisticas de los tratamientos mas utilizados por especialidad //
+    
     public Tratamiento buscarTratamientoActivo(int p_id_tratamiento) {
 
         Tratamiento tratamiento = null;
@@ -106,6 +108,48 @@ public class TratamientoData {
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error de conexion desde buscar tratamiento " + ex);
+        }
+
+        return tratamiento;
+    }
+    
+    // estadistica de tratamientos de practica nula //
+    
+    public Tratamiento buscarTratamientoInactivo(int p_id_tratamiento) {
+
+        Tratamiento tratamiento = null;
+
+        String sql = "SELECT * FROM tratamiento WHERE activo =-1 AND id_tratamiento =? ";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, p_id_tratamiento);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.wasNull() == true) {
+
+                while (rs.next()) {
+
+                    tratamiento = new Tratamiento();
+
+                    tratamiento.setId_tratamiento(rs.getInt("id_tratamiento"));
+                    tratamiento.setDescripcion(rs.getString("descripcion"));
+                    tratamiento.setMedicamento(rs.getString("medicamento"));
+                    tratamiento.setPrecio(rs.getDouble("importe"));
+                    tratamiento.setActivo(rs.getBoolean("activo"));
+                    tratamiento.setTipo_tratamiento(rs.getString("tipo_tratamiento"));
+
+                    JOptionPane.showMessageDialog(null, "Tratamiento encrontrado exitosamente :" + " " + tratamiento.getTipo_tratamiento());
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Tratamiento inexistente");
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error de conexion desde buscar tratamiento inactivo " + ex);
         }
 
         return tratamiento;
