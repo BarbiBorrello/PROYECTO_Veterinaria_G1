@@ -7,6 +7,8 @@ package veterinaria_CONTROLADOR;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import veterinaria_MODELO.Tratamiento;
+import veterinaria_MODELO.Visita;
 
 /**
  *
@@ -15,6 +17,7 @@ import java.sql.SQLException;
 public class VisitaData {
 
     private Connection con = null;
+   private Conexion conexion;
 
     public VisitaData(Conexion conexion) {
         try {
@@ -23,5 +26,25 @@ public class VisitaData {
             System.out.println("Error en la conexion");
         }
     }
+    
+    public Visita buscarVisita(int p_id_visita) {
+
+        VisitaData vd = new VisitaData(conexion);
+        return vd.buscarVisita(p_id_visita);
+    }
+
+    public Tratamiento buscarTratmiento(int p_id_tratamiento) {
+
+        TratamientoData td = new TratamientoData(conexion);
+        return td.buscarTratamiento(p_id_tratamiento);
+
+    }
+
+    public void guardarVisita(Visita visita) {
+
+        String sql = "";
+
+
+     }
     
 }

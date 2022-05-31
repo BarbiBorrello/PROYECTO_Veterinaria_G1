@@ -36,30 +36,7 @@ public class Veterianaria_Test_Main {
             TratamientoData td = new TratamientoData(conexion);
             VisitaData vd = new VisitaData(conexion);
 
-// PRUEBA creacion: CLIENTE-MASCOTA //
-//
-//Cliente cliente1 = new Cliente(12345678, "El", "Chespirito", "Avenida siempre viva 123", 12345678, "Pedrito rulito",true);
-//cd.agregarCliente(cliente1);
-//
-//Mascota mascota1 = new Mascota("Pedro", "macho", "perro", "golden", "dorado", LocalDate.of(2020,4, 29), 40, 50.5, true, cd.buscarCliente(2));
-//md.agregar_Mascota(mascota1);
-
-
-md.buscarMascota(3);
-md.buscarMascota(4);
-md.buscarMascota(6);
-md.buscarMascota(20); // no sale el cartel
-
-md.buscarMascotaNombre("Lola");
-
-
-           
-
-
-
-
-
-//            System.out.println(md.buscarMascota(11));  
+ 
             
             
             

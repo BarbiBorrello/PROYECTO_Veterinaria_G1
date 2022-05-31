@@ -11,6 +11,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -33,25 +36,25 @@ public class MascotaData {
         }
     }
 
-    public void agregar_Mascota(Mascota mascota) {
+    public void agregar_Mascota(Mascota p_mascota) {
 
         String sql = "INSERT INTO mascota (alias , sexo, especie, raza , color_pelaje, fecha_nac, peso_actual, id_cliente, peso_promedio, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-            ps.setString(1, mascota.getAlias());
-            ps.setString(2, mascota.getSexo());
-            ps.setString(3, mascota.getEspecie());
-            ps.setString(4, mascota.getRaza());
-            ps.setString(5, mascota.getColor_pelaje());
-            ps.setDate(6, Date.valueOf(mascota.getFecha_nac()));
-            ps.setDouble(7, mascota.getPeso_actual());
-            ps.setObject(8, mascota.getCliente().getId_cliente());
-            ps.setDouble(9, mascota.getPeso_promedio());
+            ps.setString(1, p_mascota.getAlias());
+            ps.setString(2, p_mascota.getSexo());
+            ps.setString(3, p_mascota.getEspecie());
+            ps.setString(4, p_mascota.getRaza());
+            ps.setString(5, p_mascota.getColor_pelaje());
+            ps.setDate(6, Date.valueOf(p_mascota.getFecha_nac()));
+            ps.setDouble(7, p_mascota.getPeso_actual());
+            ps.setObject(8, p_mascota.getCliente().getId_cliente());
+            ps.setDouble(9, p_mascota.getPeso_promedio());
 
             // if reducido
-            ps.setInt(10, mascota.isActivo() ? 1 : 0);
+            ps.setInt(10, p_mascota.isActivo() ? 1 : 0);
 
             ps.executeUpdate();
             
@@ -60,7 +63,7 @@ public class MascotaData {
             JOptionPane.showMessageDialog(null, " Mascota cargada exitosamente");
 
             if (rs.next()) {
-                mascota.setId_mascota(rs.getInt(1));
+                p_mascota.setId_mascota(rs.getInt(1));
             } else {
                 JOptionPane.showMessageDialog(null, "No se pude cargar mascota ");
             }
@@ -72,9 +75,9 @@ public class MascotaData {
 
         }
     }
-         // busca mascotas vivas y fallecidas: FALTA PROBAR //
+
     
-    public Mascota buscarMascota(int id_mascota) {
+    public Mascota buscarMascota(int p_id_mascota) {
 
         Mascota mascota = null;
 
@@ -82,7 +85,7 @@ public class MascotaData {
 
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, id_mascota);
+            ps.setInt(1, p_id_mascota);
 
             ResultSet rs = ps.executeQuery();
 
@@ -102,11 +105,8 @@ public class MascotaData {
                     mascota.setPeso_actual(rs.getDouble("peso_actual"));
                     mascota.setPeso_promedio(rs.getDouble("peso_promedio"));
                     mascota.setActivo(rs.getBoolean("activo"));
-   
-         
 
-                    JOptionPane.showMessageDialog(null, "Mascota encrontrada exitosamente :"+" "+mascota.getAlias());
-
+                    JOptionPane.showMessageDialog(null, "Mascota encrontrada exitosamente :" + " " + mascota.getAlias());
                 }
 
             } else {
@@ -121,164 +121,119 @@ public class MascotaData {
         return mascota;
     }
 
-//    public Mascota buscarMascotaInactiva(int id_mascota) {
-//
-//        Mascota mascota = null;
-//
-//        String sql = "SELECT * FROM mascota WHERE activo =-1 AND id_mascota =?;";
-//
-//        try {
-//            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-//            ps.setInt(1, id_mascota);
-//
-//            ResultSet rs = ps.executeQuery();
-//
-//            if (rs.wasNull() == true) {
-//
-//                while (rs.next()) {
-//
-//                    mascota = new Mascota();
-//
-//                    mascota.setId_mascota(rs.getInt("id_mascota"));
-//                    mascota.setAlias(rs.getString("alias"));
-//                    mascota.setSexo(rs.getString("sexo"));
-//                    mascota.setEspecie(rs.getString("especie"));
-//                    mascota.setRaza(rs.getString("raza"));
-//                    mascota.setColor_pelaje(rs.getString("color_pelaje"));
-//                    mascota.setFecha_nac(rs.getDate("fecha_nac").toLocalDate());
-//                    mascota.setPeso_actual(rs.getDouble("peso_actual"));
-//                    mascota.setPeso_promedio(rs.getDouble("peso_promedio"));
-//                    mascota.setActivo(rs.getBoolean("activo"));
-//
-//                    JOptionPane.showMessageDialog(null, "Mascota fallecida");
-//
-//                }
-//
-//            }
-//            ps.close();
-//
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null, " Error de conexion desde buscar mascota " + ex);
-//        }
-//
-//        return mascota;
-//    }
-
-    
-// busca por el NOMBRE de la mascota, por si se escribio mal al momento del ingreso//
-    
-      public Mascota buscarMascotaNombre (String alias){
-   
-          Mascota mascota = null;
-;
-          
-          String sql = "SELECT * FROM mascota WHERE alias LIKE \"%?%\" AND activo = 1";
+    public void modificarMascota(int p_id_mascota, Mascota p_mascota){
         
-          
-           try {
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1,"alias");
-            
-            ResultSet rs = ps.executeQuery();
-            
-            if(rs.wasNull() == false){
-                
-            mascota.getId_mascota();
-            mascota.getSexo();
-            mascota.getEspecie();
-            mascota.getRaza();
-            mascota.getColor_pelaje();
-            mascota.getFecha_nac();
-            mascota.getPeso_actual();
-            mascota.getPeso_promedio();
-            mascota.setActivo(true);
+        // String de consulta a base de datos
+        
+        String sql ="UPDATE mascota SET alias = ?, sexo = ?, especie = ?, raza = ?, color_pelaje = ?, fecha_nac = ?, peso_actual = ?, id_cliente = ? , peso_promedio = ?, activo = ?";
+        
+        try {
 
-            
-            JOptionPane.showMessageDialog(null,"encrontrado exitosamente");    
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        
+            ps.setString(1, p_mascota.getAlias());
+            ps.setString(2, p_mascota.getSexo());
+            ps.setString(3, p_mascota.getEspecie());
+            ps.setString(4, p_mascota.getRaza());
+            ps.setString(5, p_mascota.getColor_pelaje());
+            ps.setDate(6, Date.valueOf(p_mascota.getFecha_nac()));
+            ps.setDouble(7, p_mascota.getPeso_actual());
+            ps.setObject(8, p_mascota.getCliente().getId_cliente());
+            ps.setDouble(9, p_mascota.getPeso_promedio());
+            ps.setInt(10, p_mascota.isActivo() ? 1 : 0);
+        
+            int rs = ps.executeUpdate();
+
+            if (rs > 0) {
+                JOptionPane.showMessageDialog(null, " Mascota se actualizado exitosamente ");
+            } else {
+                JOptionPane.showMessageDialog(null, " Mascota No se pudo actualizar ");
             }
-            else {
-            JOptionPane.showMessageDialog(null, "Verifique el nombre de la mascota");
-            }
-           
+
             ps.close();
-          
-     }  catch (SQLException ex) { 
-           JOptionPane.showMessageDialog(null, " Error de conexion desde buscar mascota por su nombre " + ex);
-        } 
-            
-     return mascota ; 
-      }
-      
-      
-   //    
-      
-    public Mascota buscarMascotaxCliente( int id_cliente) {
-
-        Mascota mascota = null;
-
-        String sql = "SELECT * FROM mascota WHERE id_cliente = ? AND `activo`=1;";
-
-        try {
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setObject(8, mascota.getCliente());
-
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.wasNull() == true) {
-
-                mascota.getId_mascota();
-                mascota.getSexo();
-                mascota.getEspecie();
-                mascota.getRaza();
-                mascota.getColor_pelaje();
-                mascota.getFecha_nac();
-                mascota.getPeso_actual();
-                mascota.getPeso_promedio();
-                mascota.setActivo(true);
-
-                JOptionPane.showMessageDialog(null, mascota.getAlias()+ "encrontrado exitosamente");
-            } else {
-                JOptionPane.showMessageDialog(null, "Verifique el duenio de la mascota");
-            }
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error de conexion desde buscar mascota por cliente " + ex);
+        
+        
+    }   catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error de conexion desde insertar cliente " + ex);
         }
- return mascota;
-    }
-    
-    
-    public Mascota buscarMascotaxSexo( String sexo) {
 
-        Mascota mascota = null;
-
-        String sql = "SELECT * FROM mascota WHERE sexo LIKE \"%?%\" AND `activo` =1 ";
-
-        try {
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(2, mascota.getSexo());
-
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.wasNull() == true) {
-
-                mascota.getId_mascota();
-                mascota.getEspecie();
-                mascota.getRaza();
-                mascota.getColor_pelaje();
-                mascota.getFecha_nac();
-                mascota.getPeso_actual();
-                mascota.getPeso_promedio();
-                mascota.setActivo(true);
-
-                JOptionPane.showMessageDialog(null, mascota.getAlias()+ "encrontrado exitosamente");
-            } else {
-                JOptionPane.showMessageDialog(null, "Verifique el duenio de la mascota");
-            }
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error de conexion desde buscar mascota por cliente " + ex);
-        }
- return mascota;
-    }
 }
+    
+    public void borrarMascota(int p_id_mascota) {
+        
+        // String de consulta a base de datos
+        String sql = "UPDATE mascota SET activo =0 WHERE id_mascota=?";
+        
+            try {
+
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, p_id_mascota);
+
+            int rs = ps.executeUpdate();
+
+            if (rs > 0) {
+                JOptionPane.showMessageDialog(null, "Mascota borrada exitosamente ");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo borrar, mascota inexistente ");
+            }
+
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error de conexion desde borrar mascota " + ex);
+
+        }
+    }
+    
+    public List<Mascota> obtenerMascotas(){
+        
+         ArrayList<Mascota> mascotas = new ArrayList<Mascota>();
+         
+        try {
+            String sql = "SELECT * FROM mascota;";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            Mascota mascota;
+            while (rs.next()) {
+                
+                mascota = new Mascota();
+                
+                mascota.setId_mascota(rs.getInt("id_mascota"));
+                mascota.setAlias(rs.getString("alias"));
+                mascota.setSexo(rs.getString("sexo"));
+                mascota.setEspecie(rs.getString("especie"));
+                mascota.setRaza(rs.getString("raza"));
+                mascota.setColor_pelaje(rs.getString("color_pelaje"));
+                mascota.setFecha_nac(rs.getDate("fecha_nac").toLocalDate());
+                mascota.setPeso_actual(rs.getDouble("peso_actual"));
+//              mascota.setCliente(rs);
+                mascota.setPeso_promedio(rs.getDouble("peso_promedio"));
+                mascota.setActivo(rs.getBoolean("activo"));
+     
+
+                mascotas.add(mascota);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener los alumnos: " + ex.getMessage());
+        }
+
+        return mascotas;
+    }
+        
+        public void pesoActual(int p_id_mascota){
+            
+           double peso_actual = 0;
+           
+           peso_actual=peso_actual;
+            
+        }
+        
+        public double pesoPromedio( int p_peso_actual){
+//            
+//            double promedio = 0;
+            return 0;
+        }
+    }
