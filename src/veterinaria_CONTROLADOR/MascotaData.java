@@ -39,7 +39,7 @@ public class MascotaData {
         }
     }
 
-    public void agregarMascota(Mascota p_mascota) {
+    public void agregar_Mascota(Mascota p_mascota) {
 
         String sql = "INSERT INTO mascota (alias , sexo, especie, raza , color_pelaje, fecha_nac, peso_actual, id_cliente, peso_promedio, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
@@ -80,7 +80,7 @@ public class MascotaData {
     }
 
  // busca a todas al mascotas que estan "vivas" independientemente de sus visitas"   
-    public Mascota buscarMascotaActivas(int p_id_mascota) {
+    public Mascota buscarMascotaActiva(int p_id_mascota) {
 
         Mascota mascota = null;
 
@@ -123,50 +123,6 @@ public class MascotaData {
 
         return mascota;
     }
-
-    public Mascota buscarMascotaInactiva(int id_mascota) {
-
-        Mascota mascota = null;
-
-        String sql = "SELECT * FROM mascota WHERE activo =-1 AND id_mascota =?;";
-
-        try {
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, id_mascota);
-
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.wasNull() == true) {
-
-                while (rs.next()) {
-
-                    mascota = new Mascota();
-
-                    mascota.setId_mascota(rs.getInt("id_mascota"));
-                    mascota.setAlias(rs.getString("alias"));
-                    mascota.setSexo(rs.getString("sexo"));
-                    mascota.setEspecie(rs.getString("especie"));
-                    mascota.setRaza(rs.getString("raza"));
-                    mascota.setColor_pelaje(rs.getString("color_pelaje"));
-                    mascota.setFecha_nac(rs.getDate("fecha_nac").toLocalDate());
-                    mascota.setPeso_actual(rs.getDouble("peso_actual"));
-                    mascota.setPeso_promedio(rs.getDouble("peso_promedio"));
-                    mascota.setActivo(rs.getBoolean("activo"));
-
-                    JOptionPane.showMessageDialog(null, "Mascota fallecida");
-
-                }
-
-            }
-            ps.close();
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error de conexion desde buscar mascota " + ex);
-        }
-
-        return mascota;
-    }
-    
     
 
     public void modificarMascota(int p_id_mascota, Mascota p_mascota){
@@ -232,7 +188,7 @@ public class MascotaData {
         }
     }
     
-       public void activarMascota(int p_id_mascota) {
+        public void activarMascota(int p_id_mascota) {
 
         String sql = "UPDATE cliente SET activo =1 WHERE id_cliente=?";
         try {
@@ -253,7 +209,7 @@ public class MascotaData {
 
         }
     }
-    
+
     public List<Mascota> obtenerMascotas(){
         
         
@@ -296,11 +252,11 @@ public class MascotaData {
         return mascotas;
     }
         
-        public double pesoActual(int p_id_mascota){
+        public void pesoActual(int p_id_mascota){
             
            double peso_actual;
            
-        return peso_actual=vd.buscarVisita(p_id_mascota).getPeso();
+//           peso_actual=vd.buscarVisita(p_id_mascota).getPeso();
             
         }
         

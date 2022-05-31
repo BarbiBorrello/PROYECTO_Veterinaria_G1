@@ -71,7 +71,7 @@ public class TratamientoData {
 
     }
 
-    public Tratamiento buscarTratamiento(int p_id_tratamiento) {
+    public Tratamiento buscarTratamientoActivo(int p_id_tratamiento) {
 
         Tratamiento tratamiento = null;
 

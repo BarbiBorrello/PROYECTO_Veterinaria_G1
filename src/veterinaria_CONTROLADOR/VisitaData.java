@@ -7,6 +7,7 @@ package veterinaria_CONTROLADOR;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import veterinaria_MODELO.Mascota;
 import veterinaria_MODELO.Tratamiento;
 import veterinaria_MODELO.Visita;
 
@@ -17,7 +18,9 @@ import veterinaria_MODELO.Visita;
 public class VisitaData {
 
     private Connection con = null;
-   private Conexion conexion;
+    private Conexion conexion;
+    MascotaData md;
+    TratamientoData td;
 
     public VisitaData(Conexion conexion) {
         try {
@@ -27,16 +30,16 @@ public class VisitaData {
         }
     }
     
-    public Visita buscarVisita(int p_id_visita) {
+    public Mascota buscarMascotaActiva(int p_id_visita) {
 
-        VisitaData vd = new VisitaData(conexion);
-        return vd.buscarVisita(p_id_visita);
+        MascotaData md = new MascotaData(conexion);
+        return md.buscarMascotaActiva(p_id_visita);
     }
 
-    public Tratamiento buscarTratmiento(int p_id_tratamiento) {
+    public Tratamiento buscarTratamiento(int p_id_tratamiento) {
 
         TratamientoData td = new TratamientoData(conexion);
-        return td.buscarTratamiento(p_id_tratamiento);
+        return td.buscarTratamientoActivo(p_id_tratamiento);
 
     }
 
