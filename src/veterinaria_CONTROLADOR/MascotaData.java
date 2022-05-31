@@ -232,6 +232,28 @@ public class MascotaData {
         }
     }
     
+       public void activarMascota(int p_id_mascota) {
+
+        String sql = "UPDATE cliente SET activo =1 WHERE id_cliente=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, p_id_mascota);
+
+            int rs = ps.executeUpdate();
+
+            if (rs > 0) {
+                JOptionPane.showMessageDialog(null, "Se activo el estado de la mascota ");
+            } else {
+                JOptionPane.showMessageDialog(null, " El id de la mascota no existe ");
+            }
+
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error de conexion desde activar Mascota " + ex);
+
+        }
+    }
+    
     public List<Mascota> obtenerMascotas(){
         
         

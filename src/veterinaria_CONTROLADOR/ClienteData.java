@@ -131,7 +131,7 @@ public class ClienteData {
 
         }
     }
-
+// borrado logico tambien funciona para desactivar al cliente //
     public void borrarCliente(int p_id_cliente) {
 
         // String de consulta a base de datos
@@ -153,6 +153,29 @@ public class ClienteData {
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error de conexion desde insertar cliente " + ex);
+
+        }
+    }
+    
+    
+     public void activarCliente(int p_id_cliente) {
+
+        String sql = "UPDATE cliente SET activo =1 WHERE id_cliente=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, p_id_cliente);
+
+            int rs = ps.executeUpdate();
+
+            if (rs > 0) {
+                JOptionPane.showMessageDialog(null, "Se activo el estado del cliente ");
+            } else {
+                JOptionPane.showMessageDialog(null, " El id del cliente no existe ");
+            }
+
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error de conexion desde activar Cliente " + ex);
 
         }
     }
