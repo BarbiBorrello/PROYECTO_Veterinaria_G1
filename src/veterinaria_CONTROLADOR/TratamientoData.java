@@ -25,6 +25,8 @@ import veterinaria_MODELO.Visita;
 public class TratamientoData {
     
     private Connection con = null;
+    Tratamiento t = new Tratamiento ();
+    TratamientoData td ;
 
     public TratamientoData(Conexion conexion) {
         try {
@@ -185,7 +187,7 @@ public class TratamientoData {
                 tratamiento.setMedicamento(rs.getString("medicamento"));
                 tratamiento.setPrecio(rs.getDouble("importe"));
                 tratamiento.setActivo(rs.getBoolean("activo"));
-//              tratamiento.setVisita(rs);
+                tratamiento.setId_tratamiento(rs.getInt("id_tratamiento"));
                 tratamiento.setTipo_tratamiento(rs.getString("tipo_tratamiento"));
                 
                 tratamientos.add(tratamiento);

@@ -27,7 +27,7 @@ import veterinaria_MODELO.Mascota;
 public class MascotaData {
 
     private Connection con = null;
-    Cliente cliente_mascota = new Cliente ();
+    Cliente c = new Cliente ();
     ClienteData cd ;
 
     public MascotaData(Conexion conexion) {
