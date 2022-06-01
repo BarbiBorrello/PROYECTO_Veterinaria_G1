@@ -190,7 +190,7 @@ public class MascotaData {
     
         public void activarMascota(int p_id_mascota) {
 
-        String sql = "UPDATE cliente SET activo =1 WHERE id_cliente=?";
+        String sql = "UPDATE mascota SET activo =1 WHERE id_mascota=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, p_id_mascota);
