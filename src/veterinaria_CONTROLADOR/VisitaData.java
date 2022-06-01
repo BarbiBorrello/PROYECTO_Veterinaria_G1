@@ -68,8 +68,7 @@ public class VisitaData {
             ps.executeUpdate();
 
             ResultSet rs = ps.getGeneratedKeys();
-            
-            
+
             JOptionPane.showMessageDialog(null, " Visita cargada exitosamente");
 
             if (rs.next()) {
@@ -80,19 +79,15 @@ public class VisitaData {
 
             ps.close();
 
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error de conexion al guardar la visita " + ex);
         }
 
     }
-    
-    
-    
+
     public void modificarVisita(int p_id_visita, Visita p_visita) {
 
         // String de consulta a base de datos id_visita	id_tratamiento	fecha_visita	id_mascota	peso	activo	
-
         String sql = "UPDATE visita SET id_tratamiento=?, fecha_visita=?, id_mascota=?, peso=?, activo=? WHERE id_visita=?;";
 
         try {
@@ -119,8 +114,8 @@ public class VisitaData {
 
         }
     }
-    
-     public Visita buscarVisita(int p_id_visita) {
+
+    public Visita buscarVisita(int p_id_visita) {
 
         // Iniciacion null de la variable visita
         Visita visita = null;
@@ -163,5 +158,74 @@ public class VisitaData {
         }
 
         return visita;
+    }
+
+    public void borrarMascota(int p_id_visita) {
+
+        // String de consulta a base de datos
+        String sql = "UPDATE visita SET activo =0 WHERE id_visita=?";
+
+        try {
+
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, p_id_visita);
+
+            int rs = ps.executeUpdate();
+
+            if (rs > 0) {
+                JOptionPane.showMessageDialog(null, "Visita borrada exitosamente ");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo borrar, visita inexistente ");
+            }
+
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error de conexion desde borrar visita " + ex);
+        }
+    }
+
+    public void activarVisita(int p_id_visita) {
+
+        String sql = "UPDATE visita SET activo =1 WHERE id_visita=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, p_id_visita);
+
+            int rs = ps.executeUpdate();
+
+            if (rs > 0) {
+                JOptionPane.showMessageDialog(null, "Se activo el estado de la visita ");
+            } else {
+                JOptionPane.showMessageDialog(null, " El id de la visita no existe ");
+            }
+
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error de conexion desde activar visita " + ex);
+
+        }
+    }
+    
+    
+        public void desactivarVisita(int p_id_visita) {
+
+        String sql = "UPDATE visita SET activo =- WHERE id_visita=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, p_id_visita);
+
+            int rs = ps.executeUpdate();
+
+            if (rs > 0) {
+                JOptionPane.showMessageDialog(null, "Se desactivo el estado de la visita ");
+            } else {
+                JOptionPane.showMessageDialog(null, " El id de la visita no existe ");
+            }
+
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error de conexion desde desactivar visita " + ex);
+
+        }
     }
 }
