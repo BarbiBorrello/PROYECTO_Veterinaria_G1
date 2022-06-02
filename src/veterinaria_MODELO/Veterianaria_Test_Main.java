@@ -67,7 +67,8 @@ public class Veterianaria_Test_Main {
 // puede no tener contacto alterntivo, debe especificar que no tiene, no puede quedar vacio//
 //--------------------------------------------------------------------------------------------------------------
             
-            
+//Mascota mascota1 = new Mascota("Pedro", "macho", "perro", "golden", "dorado", LocalDate.of(2020,4, 29), 40, 50.5, true, cd.buscarCliente(2));
+//md.agregar_Mascota(mascota1);           
             
             
             
