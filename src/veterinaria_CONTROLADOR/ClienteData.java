@@ -45,7 +45,7 @@ public class ClienteData {
                 cliente.setApellido(rs.getString("apellido"));
                 cliente.setNombreD(rs.getString("nombre_duenio"));
                 cliente.setDireccion(rs.getString("direccion"));
-                cliente.setTelefono(rs.getLong("telefono"));
+                cliente.setTelefono(rs.getString("telefono"));
                 cliente.setContactoA("contacto_alternativo");
                 cliente.setActivo(rs.getBoolean("activo"));
 
@@ -80,7 +80,7 @@ public class ClienteData {
             ps.setString(2, p_cliente.getApellido());
             ps.setString(3, p_cliente.getNombreD());
             ps.setString(4, p_cliente.getDireccion());
-            ps.setLong(5, p_cliente.getTelefono());
+            ps.setString(5, p_cliente.getTelefono());
             ps.setString(6, p_cliente.getContactoA());
             ps.setInt(7, p_cliente.getActivo() ? 1 : 0);
 
@@ -116,7 +116,7 @@ public class ClienteData {
             ps.setString(2, p_cliente.getApellido());
             ps.setString(3, p_cliente.getNombreD());
             ps.setString(4, p_cliente.getDireccion());
-            ps.setLong(5, p_cliente.getTelefono());
+            ps.setString(5, p_cliente.getTelefono());
             ps.setString(6, p_cliente.getContactoA());
             ps.setInt(7, p_cliente.getActivo() ? 1 : 0);
             ps.setInt(8, p_id_cliente);
@@ -204,7 +204,7 @@ public class ClienteData {
                 cliente.setApellido(rs.getString("apellido"));
                 cliente.setNombreD(rs.getString("nombre_duenio"));
                 cliente.setDireccion(rs.getString("direccion"));
-                cliente.setTelefono(rs.getLong("telefono"));
+                cliente.setTelefono(rs.getString("telefono"));
                 cliente.setContactoA("contacto_alternativo");
                 cliente.setActivo(rs.getBoolean("activo"));
 
@@ -302,7 +302,7 @@ public class ClienteData {
                 cliente.setApellido(rs.getString("apellido"));
                 cliente.setNombreD(rs.getString("nombre_duenio"));
                 cliente.setDireccion(rs.getString("direccion"));
-                cliente.setTelefono(rs.getLong("telefono"));
+                cliente.setTelefono(rs.getString("telefono"));
                 cliente.setContactoA("contacto_alternativo");
                 cliente.setActivo(rs.getBoolean("activo"));
 

@@ -12,14 +12,14 @@ public class Cliente {
     // nombre del dueñio //
     
     private String direccion;
-    private long telefono;
+    private String telefono;
     
     private String contactoA;
    // contacto alterntivo//
     
     private boolean activo;
 
-    public Cliente(int id_cliente, long dni, String apellido, String nombreD, String direccion, long telefono, String contactoA, boolean activo) {
+    public Cliente(int id_cliente, long dni, String apellido, String nombreD, String direccion, String telefono, String contactoA, boolean activo) {
         this.id_cliente = -1;
         this.dni = dni;
         this.apellido = apellido;
@@ -30,7 +30,7 @@ public class Cliente {
         this.activo=activo;
     }
 
-    public Cliente(long dni, String apellido, String nombreD, String direccion, long telefono, String contactoA, boolean activo) {
+    public Cliente(long dni, String apellido, String nombreD, String direccion, String telefono, String contactoA, boolean activo) {
         this.dni = dni;
         this.apellido = apellido;
         this.nombreD = nombreD;
@@ -92,11 +92,11 @@ public class Cliente {
         this.direccion = direccion;
     }
 
-    public long getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(long telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
@@ -110,7 +110,9 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" + "id_cliente=" + id_cliente + ", dni=" + dni + ", apellido=" + apellido + ", nombreD=" + nombreD + ", direccion=" + direccion + ", telefono=" + telefono + ", contactoA=" + contactoA + '}';
-    }    
+        return "Cliente{" + "id_cliente=" + id_cliente + ", dni=" + dni + ", apellido=" + apellido + ", nombreD=" + nombreD + ", direccion=" + direccion + ", telefono=" + telefono + ", contactoA=" + contactoA + ", activo=" + activo + '}';
+    }
+
+   
     
 }
