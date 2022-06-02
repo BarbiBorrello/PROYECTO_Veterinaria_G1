@@ -283,4 +283,48 @@ public class ClienteData {
         return clientes;
     }
          */
+    
+        public Cliente buscarClientexDNI(long p_dni) {
+
+        // Iniciacion null de la variable cliente
+        Cliente cliente = null;
+
+        // String de consulta a base de datos
+        String sql = "SELECT * FROM cliente WHERE activo = 1 AND dni =?;";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, (int) p_dni);
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+
+                /* Instanciado de cliente encontrado en la BD con todos sus parametros */
+                cliente = new Cliente();
+                cliente.setId_cliente(rs.getInt("id_cliente"));
+                cliente.setDni(rs.getLong("dni"));
+                cliente.setApellido(rs.getString("apellido"));
+                cliente.setNombreD(rs.getString("nombre_duenio"));
+                cliente.setDireccion(rs.getString("direccion"));
+                cliente.setTelefono(rs.getLong("telefono"));
+                cliente.setContactoA("contacto_alternativo");
+                cliente.setActivo(rs.getBoolean("activo"));
+
+                // Mensaje de cliente encontrado
+                JOptionPane.showMessageDialog(null, " Se encontro dni:" + cliente.toString());
+
+            } else {
+                // Mensaje de cliente no encontrado
+                JOptionPane.showMessageDialog(null, " dni inexistente");
+
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            // Mensaje de error de acceso a la base de datos
+            JOptionPane.showMessageDialog(null, " Error de conexion desde buscar alumno " + ex);
+
+        }
+
+        return cliente;
+    }
     }
