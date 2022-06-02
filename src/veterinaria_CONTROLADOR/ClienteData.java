@@ -67,6 +67,11 @@ public class ClienteData {
         return cliente;
     }
 
+    
+// El id_cliente es el índice del cliente a buscar para que modifique el resto de los datos, 
+//    que obtiene del cliente que le pasas por parámetro//
+    
+    
     public void agregarCliente(Cliente p_cliente) {
 
         // String de consulta a base de datos
