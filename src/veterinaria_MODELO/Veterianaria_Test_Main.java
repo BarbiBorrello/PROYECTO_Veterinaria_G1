@@ -39,25 +39,25 @@ public class Veterianaria_Test_Main {
 // Prueba:  CLIENTE DATA //------------------------------------------------------------------- 
 // METODO: AGREGAR CLIENTE //-----------------------------------------------------------------
 
-// Cliente cliente1 = new Cliente(23456789, "Francella", "Guillermo", "Avenida Siempre viva 123", 12345678, "Pedrito rulito", true);
+// Cliente cliente1 = new Cliente(23456789, "Francella", "Guillermo", "Avenida Siempre viva 123", "12345678", "Pedrito rulito", true);
 // cd.agregarCliente(cliente1);
 
-//Cliente cliente2 = new Cliente ( 13690269, "Martinez", "Hector Antonio", "Juan Gilberto Funes 178 (Cerro de Oro)",266450330, "Liliana", true);
+//Cliente cliente2 = new Cliente ( 13690269, "Martinez", "Hector Antonio", "Juan Gilberto Funes 178 (Cerro de Oro)","266450330", "Liliana", true);
 //cd.agregarCliente(cliente2);
 //
-//Cliente cliente3 = new Cliente(12592708, "Arias", "Lidia", "Cipres 12", 473330, "no tiene", true);
+//Cliente cliente3 = new Cliente(12592708, "Arias", "Lidia", "Cipres 12", "473330", "no tiene", true);
 //cd.agregarCliente(cliente3);
 //
-//Cliente cliente4 = new Cliente (9530567, "Fiorentino","Gilda", "Los Cesares 20 ", 1145903478, "Hector", true);
+//Cliente cliente4 = new Cliente (9530567, "Fiorentino","Gilda", "Los Cesares 20 ", "1145903478", "Hector", true);
 //cd.agregarCliente(cliente4);
 
 //Cliente cliente5 = new Cliente (25678234, "Borrello", "Barbara", "Sarmiento 4206", 456789, "", true);
 //cd.agregarCliente(cliente5);
 
-//Cliente cliente6 = new Cliente (5530976,"Borrello", "Hector", "Avenida Los Incas 425", 266470842, "Pancho", true);
+//Cliente cliente6 = new Cliente (5530976,"Borrello", "Hector", "Avenida Los Incas 425", "266470842", "Pancho", true);
 //cd.agregarCliente(cliente6);
 
-//Cliente cliente7 = new Cliente ( 23567456,"Saez","Juan Jose", "Juan de Azurduy 2920",423678, "Michi",true);
+//Cliente cliente7 = new Cliente ( 23567456,"Saez","Juan Jose", "Juan de Azurduy 2920","423678", "Michi",true);
 //cd.agregarCliente(cliente7);
 
 
