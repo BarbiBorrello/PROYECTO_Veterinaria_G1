@@ -36,7 +36,7 @@ public class Veterianaria_Test_Main {
             TratamientoData td = new TratamientoData(conexion);
             VisitaData vd = new VisitaData(conexion);
 
-            // Prueba:  CLIENTE DATA //------------------------------------------------------------------- 
+// Prueba:  CLIENTE DATA //------------------------------------------------------------------- 
 // METODO: AGREGAR CLIENTE //-----------------------------------------------------------------
 
 // Cliente cliente1 = new Cliente(23456789, "Francella", "Guillermo", "Avenida Siempre viva 123", 12345678, "Pedrito rulito", true);
