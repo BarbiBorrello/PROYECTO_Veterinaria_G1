@@ -54,7 +54,7 @@ public class ClienteData {
 
             } else {
                 // Mensaje de cliente no encontrado
-                JOptionPane.showMessageDialog(null, " Id de Alumno inexistente");
+                JOptionPane.showMessageDialog(null, " Id de Cliente inexistente");
 
             }
             ps.close();

@@ -66,10 +66,39 @@ public class Veterianaria_Test_Main {
 // no debe permitir duplicados por DNI //
 // puede no tener contacto alterntivo, debe especificar que no tiene, no puede quedar vacio//
 //--------------------------------------------------------------------------------------------------------------
-            
+
+
+// Prueba:  MASCOTA DATA //------------------------------------------------------------------- 
+// METODO: AGREGAR MASCOTA //-----------------------------------------------------------------
+
 //Mascota mascota1 = new Mascota("Pedro", "macho", "perro", "golden", "dorado", LocalDate.of(2020,4, 29), 40, 50.5, true, cd.buscarCliente(2));
-//md.agregar_Mascota(mascota1);           
-            
+//md.agregar_Mascota(mascota1); 
+//
+//Mascota mascota2 = new Mascota("Lola", "hembra", "perro", "shitsu", "blanco", LocalDate.of(2015,6, 23), 7, 7.5, true, cd.buscarCliente(5));
+//md.agregar_Mascota(mascota2); 
+// 
+//Mascota mascota3 = new Mascota("Tincho", "macho", "gato", "angora", "negro y marron", LocalDate.of(2012,3, 12), 7, 7.5, true, cd.buscarCliente(5));
+//md.agregar_Mascota(mascota3);
+
+//
+//Mascota mascota4 = new Mascota("Pablo", "macho", "gato", "siames", "negro", LocalDate.of(2016,3, 12), 5,4.5, true, cd.buscarCliente(1));
+//md.agregar_Mascota(mascota4);
+//
+//Mascota mascota5 = new Mascota("JuanJo", "hembra", "perro", "bul dog frances", "gris attigrado", LocalDate.of(2021,3, 12), 15.6, 16.5, true, cd.buscarCliente(2));
+//md.agregar_Mascota(mascota5);
+//
+//Mascota mascota6 = new Mascota("Sasha", "macho", "perro", "pitbull", "negro y marron", LocalDate.of(2010,3, 12), 35, 38.5, true, cd.buscarCliente(3));
+//md.agregar_Mascota(mascota6);
+//
+//Mascota mascota7 = new Mascota("Mabel", "hembra", "gato", "persa", "blanco y gris", LocalDate.of(2022,3, 12), 7, 6.5, true, cd.buscarCliente(6));
+//md.agregar_Mascota(mascota7);
+//
+//Mascota mascota8 = new Mascota("Fran", "macho", "gato", "tricolor", "tricolor/ BNG", LocalDate.of(2017,3, 12), 7, 7.5, true, cd.buscarCliente(7));
+//md.agregar_Mascota(mascota8);
+
+//Mascota mascota9 = new Mascota("Barbi", "hembra", "gato", "tricolor", "tricolor/ BNG", LocalDate.of(2017,3, 12), 7, 7.5, true, cd.buscarCliente(34));
+//md.agregar_Mascota(mascota9);
+//// NO SE PUEDA CARGAR CLIENTE INEXISTENTE//
             
             
         } catch (ClassNotFoundException ex) {
