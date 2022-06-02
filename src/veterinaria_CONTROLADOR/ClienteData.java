@@ -67,11 +67,8 @@ public class ClienteData {
         return cliente;
     }
 
-    
 // El id_cliente es el índice del cliente a buscar para que modifique el resto de los datos, 
 //    que obtiene del cliente que le pasas por parámetro//
-    
-    
     public void agregarCliente(Cliente p_cliente) {
 
         // String de consulta a base de datos
@@ -93,9 +90,9 @@ public class ClienteData {
             if (rs.next()) {
 
                 p_cliente.setId_cliente(rs.getInt(1));
-                
-                JOptionPane.showMessageDialog(null, " Numero de cliente = " + p_cliente.getId_cliente() +" "+ p_cliente.getApellido()+","+p_cliente.getNombreD()+":"+" cargado exitosamente") ;
-                
+
+                JOptionPane.showMessageDialog(null, " Numero de cliente = " + p_cliente.getId_cliente() + " " + p_cliente.getApellido() + "," + p_cliente.getNombreD() + ":" + " cargado exitosamente");
+
             } else {
                 JOptionPane.showMessageDialog(null, "No genero el id del cliente");
             }
@@ -139,6 +136,7 @@ public class ClienteData {
         }
     }
 // borrado logico tambien funciona para desactivar al cliente //
+
     public void borrarCliente(int p_id_cliente) {
 
         // String de consulta a base de datos
@@ -163,9 +161,8 @@ public class ClienteData {
 
         }
     }
-    
-    
-     public void activarCliente(int p_id_cliente) {
+
+    public void activarCliente(int p_id_cliente) {
 
         String sql = "UPDATE cliente SET activo =1 WHERE id_cliente=?";
         try {
@@ -219,9 +216,9 @@ public class ClienteData {
             System.out.println("Error al obtener los clientes: " + ex.getMessage());
         }
         return clientes;
-        }
+    }
 
-        /*
+    /*
     // listarCliente devuelve una lista de clientes, recibe un parametros de busqueda y un valor de parametro de busqueda
     // los parametros de busqueda posibles son "ID", "DNI", "Telefono", "Activo", "Apellido", "Nombre", "Direccion", "Contacto alternativo"
     public List<Cliente> listarCliente(String p_filtroNombre, String p_filtroValor) {
@@ -282,9 +279,8 @@ public class ClienteData {
 
         return clientes;
     }
-         */
-    
-        public Cliente buscarClientexDNI(long p_dni) {
+     */
+    public Cliente buscarClientexDNI(long p_dni) {
 
         // Iniciacion null de la variable cliente
         Cliente cliente = null;
@@ -311,7 +307,7 @@ public class ClienteData {
                 cliente.setActivo(rs.getBoolean("activo"));
 
                 // Mensaje de cliente encontrado
-                JOptionPane.showMessageDialog(null, " Se encontro dni:" + cliente.toString());
+                JOptionPane.showMessageDialog(null, cliente.getApellido() + " " + cliente.getNombreD());
 
             } else {
                 // Mensaje de cliente no encontrado
@@ -321,10 +317,10 @@ public class ClienteData {
             ps.close();
         } catch (SQLException ex) {
             // Mensaje de error de acceso a la base de datos
-            JOptionPane.showMessageDialog(null, " Error de conexion desde buscar alumno " + ex);
+            JOptionPane.showMessageDialog(null, " Error de conexion desde buscar cliente por dni " + ex);
 
         }
 
         return cliente;
     }
-    }
+}
