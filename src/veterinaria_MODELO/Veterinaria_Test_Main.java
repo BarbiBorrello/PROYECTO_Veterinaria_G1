@@ -5,6 +5,7 @@
  */
 package veterinaria_MODELO;
 
+import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Date;
@@ -22,6 +23,7 @@ import veterinaria_CONTROLADOR.VisitaData;
  */
 public class Veterinaria_Test_Main {
 
+      public Connection con = null;
     /**
      * @param args the command line arguments
      */
