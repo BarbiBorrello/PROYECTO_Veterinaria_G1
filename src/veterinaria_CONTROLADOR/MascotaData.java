@@ -41,7 +41,7 @@ public class MascotaData {
 
     public void agregar_Mascota(Mascota p_mascota) {
 
-        String sql = "INSERT INTO mascota (alias , sexo, especie, raza , color_pelaje, fecha_nac, peso_actual, id_mascota, peso_promedio, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO mascota (alias , sexo, especie, raza , color_pelaje, fecha_nac, peso_actual, id_cliente, peso_promedio, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -53,9 +53,10 @@ public class MascotaData {
             ps.setString(5, p_mascota.getColor_pelaje());
             ps.setDate(6, Date.valueOf(p_mascota.getFecha_nac()));
             ps.setDouble(7, p_mascota.getPeso_actual());
-            ps.setObject(8, p_mascota.getCliente().getId_cliente());
+            ps.setInt(8, p_mascota.getCliente().getId_cliente());
+      
             ps.setDouble(9, p_mascota.getPeso_promedio());
-
+       
             // if reducido
             ps.setInt(10, p_mascota.isActivo() ? 1 : 0);
 
@@ -256,7 +257,7 @@ public class MascotaData {
             
            double peso_actual;
            
-//           peso_actual=vd.buscarVisita(p_id_mascota).getPeso();
+           peso_actual=vd.buscarVisita(p_id_mascota).getPeso();
             
         }
         
