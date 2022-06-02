@@ -127,8 +127,23 @@ public class Veterianaria_Test_Main {
 // Prueba: VISITA DATA //------------------------------------------------------------------- 
 // METODO: AGREGAR VISITA //-----------------------------------------------------------------
 
-Visita visita1 = new Visita(LocalDate.of(2020,4, 29),28.7,true,md.buscarMascotaActiva(5),td.buscarTratamientoActivo(1));
-vd.agregarVisita(visita1);
+//Visita visita1 = new Visita(LocalDate.of(2020,4, 29),5.7,true,md.buscarMascotaActiva(5),td.buscarTratamientoActivo(1));
+//vd.agregarVisita(visita1);
+//
+//Visita visita2 = new Visita(LocalDate.of(2022,8, 13),29.8,true,md.buscarMascotaActiva(5),td.buscarTratamientoActivo(5));
+//vd.agregarVisita(visita2);
+//
+//Visita visita3 = new Visita(LocalDate.of(2020,4, 30),32.8,true,md.buscarMascotaActiva(6),td.buscarTratamientoActivo(1));
+//vd.agregarVisita(visita3);
+//
+//Visita visita4 = new Visita(LocalDate.of(2019,9, 12),15.7,true,md.buscarMascotaActiva(3),td.buscarTratamientoActivo(3));
+//vd.agregarVisita(visita4);
+//
+//Visita visita5 = new Visita(LocalDate.of(2012,9, 01),3.7,true,md.buscarMascotaActiva(1),td.buscarTratamientoActivo(6));
+////vd.agregarVisita(visita5);
+//
+//Visita visita6 = new Visita(LocalDate.of(2012,9, 01),3.7,true,md.buscarMascotaActiva(1),td.buscarTratamientoActivo(2));
+//vd.agregarVisita(visita6);
             
             
         } catch (ClassNotFoundException ex) {

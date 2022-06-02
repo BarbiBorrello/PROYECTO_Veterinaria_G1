@@ -59,11 +59,13 @@ public class VisitaData {
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-            ps.setInt(1, td.buscarTratamientoActivo(0).getId_tratamiento());
+            ps.setInt(1, p_visita.getTratamiento().getId_tratamiento());
             ps.setDate(2, Date.valueOf(p_visita.getFecha_visita()));
-            ps.setInt(3, md.buscarMascotaActiva(0).getId_mascota());
+            ps.setInt(3, p_visita.getMascota().getId_mascota());
             ps.setDouble(4, p_visita.getPeso());
-            ps.setInt(5, p_visita.isActivo() ? 1 : 0);
+            int activo = p_visita.isActivo() ? 1 : 0;
+            ps.setInt(5, activo);
+            //algo//
 
             ps.executeUpdate();
 
