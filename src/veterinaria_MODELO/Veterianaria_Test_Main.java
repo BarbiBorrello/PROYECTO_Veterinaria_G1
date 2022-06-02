@@ -99,6 +99,15 @@ public class Veterianaria_Test_Main {
 //Mascota mascota9 = new Mascota("Barbi", "hembra", "gato", "tricolor", "tricolor/ BNG", LocalDate.of(2017,3, 12), 7, 7.5, true, cd.buscarCliente(34));
 //md.agregar_Mascota(mascota9);
 //// NO SE PUEDA CARGAR CLIENTE INEXISTENTE//
+
+// Prueba: TRATAMIENTO DATA //------------------------------------------------------------------- 
+// METODO: AGREGAR TRATAMIENTO //-----------------------------------------------------------------
+
+//Tratamiento tratamiento1 = new Tratamiento ("Vacunacion"," se aplica una dosis","antirrabica",1900,true);
+//td.agregar_Tratamiento(tratamiento1);
+//
+//Tratamiento tratamiento2 = new Tratamiento ("Vacunacion","se aplica una dosis","quintuple",1800,true);
+//td.agregar_Tratamiento(tratamiento2);
             
             
         } catch (ClassNotFoundException ex) {

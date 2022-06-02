@@ -18,25 +18,25 @@ public class Tratamiento {
     private double precio;
     private boolean activo;
     
-    Visita visita;
+ 
 
-    public Tratamiento(int id_tratamiento, String tipo_tratamiento, String descripcion, String medicamento, double precio, boolean activo, Visita visita) {
+    public Tratamiento(int id_tratamiento, String tipo_tratamiento, String descripcion, String medicamento, double precio, boolean activo) {
         this.id_tratamiento = -1;
         this.tipo_tratamiento = tipo_tratamiento;
         this.descripcion = descripcion;
         this.medicamento = medicamento;
         this.precio = precio;
         this.activo = activo;
-        this.visita = visita;
+        
     }
 
-    public Tratamiento(String tipo_tratamiento, String descripcion, String medicamento, double precio, boolean activo, Visita visita) {
+    public Tratamiento(String tipo_tratamiento, String descripcion, String medicamento, double precio, boolean activo) {
         this.tipo_tratamiento = tipo_tratamiento;
         this.descripcion = descripcion;
         this.medicamento = medicamento;
         this.precio = precio;
         this.activo = activo;
-        this.visita = visita;
+        
     }
 
     public Tratamiento() {
@@ -91,19 +91,14 @@ public class Tratamiento {
         this.activo = activo;
     }
 
-    public Visita getVisita() {
-        return visita;
-    }
-
-    public void setVisita(Visita visita) {
-        this.visita = visita;
-    }
-
     @Override
     public String toString() {
-        return "Tratamiento{" + "id_tratamiento=" + id_tratamiento + ", tipo_tratamiento=" + tipo_tratamiento + ", descripcion=" + descripcion + ", medicamento=" + medicamento + ", precio=" + precio + ", activo=" + activo + ", visita=" + visita + '}';
+        return "Tratamiento{" + "id_tratamiento=" + id_tratamiento + ", tipo_tratamiento=" + tipo_tratamiento + ", descripcion=" + descripcion + ", medicamento=" + medicamento + ", precio=" + precio + ", activo=" + activo + '}';
     }
-    
-    
-    
+
 }
+
+    
+    
+    
+

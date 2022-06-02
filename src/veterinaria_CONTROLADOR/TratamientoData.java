@@ -36,10 +36,12 @@ public class TratamientoData {
         }
     }
     
+
+
     
     public void agregar_Tratamiento(Tratamiento p_tratamiento){
         
-       String sql = "INSERT INTO tratamiento( descripcion , medicamento ,  importe ,  activo ,  id_visita , tipo_tratamiento ) VALUES (? , ? , ? , ? , ? , ? )"; 
+       String sql = "INSERT INTO tratamiento( descripcion , medicamento , importe ,activo , tipo_tratamiento ) VALUES (? , ? , ? , ? , ? )"; 
         
                try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS); 
@@ -48,8 +50,7 @@ public class TratamientoData {
             ps.setString(2, p_tratamiento.getMedicamento());
             ps.setDouble(3, p_tratamiento.getPrecio());
             ps.setInt(4, p_tratamiento.isActivo() ? 1 : 0);
-            ps.setObject(5, p_tratamiento.getVisita().getIdvisita());
-            ps.setString(6, p_tratamiento.getTipo_tratamiento());
+            ps.setString(5, p_tratamiento.getTipo_tratamiento());
 
             ps.executeUpdate();
 
