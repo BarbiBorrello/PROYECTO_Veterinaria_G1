@@ -14,7 +14,7 @@ import veterinaria_CONTROLADOR.MascotaData;
 import veterinaria_CONTROLADOR.TratamientoData;
 import veterinaria_CONTROLADOR.VisitaData;
 
-public class Veterianaria_Test_Main_F {
+public class Veterinaria_Test_Main_F {
 
     /**
      * @param args the command line arguments
@@ -78,7 +78,7 @@ public class Veterianaria_Test_Main_F {
             
 
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Veterianaria_Test_Main_F.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Veterinaria_Test_Main_F.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

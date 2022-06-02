@@ -20,7 +20,7 @@ import veterinaria_CONTROLADOR.VisitaData;
  *
  * @author Barbara
  */
-public class Veterianaria_Test_Main {
+public class Veterinaria_Test_Main {
 
     /**
      * @param args the command line arguments
@@ -147,7 +147,7 @@ public class Veterianaria_Test_Main {
             
             
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Veterianaria_Test_Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Veterinaria_Test_Main.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
