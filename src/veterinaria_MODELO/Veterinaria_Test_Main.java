@@ -40,7 +40,7 @@ public class Veterinaria_Test_Main {
 
 // Prueba:  CLIENTE DATA //------------------------------------------------------------------- 
 // METODO: AGREGAR CLIENTE //-----------------------------------------------------------------
-
+//
 // Cliente cliente1 = new Cliente(23456789, "Francella", "Guillermo", "Avenida Siempre viva 123", "12345678", "Pedrito rulito", true);
 // cd.agregarCliente(cliente1);
 
@@ -69,7 +69,7 @@ public class Veterinaria_Test_Main {
 // puede no tener contacto alterntivo, debe especificar que no tiene, no puede quedar vacio//
 //--------------------------------------------------------------------------------------------------------------
 
-
+//---------------------------------------------------------------------------------------------------------------
 // Prueba:  MASCOTA DATA //------------------------------------------------------------------- 
 // METODO: AGREGAR MASCOTA //-----------------------------------------------------------------
 
