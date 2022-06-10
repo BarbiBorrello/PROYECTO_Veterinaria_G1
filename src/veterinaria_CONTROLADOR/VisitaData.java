@@ -42,7 +42,7 @@ public class VisitaData {
     public Mascota buscarMascotaActiva(int p_id_visita) {
 
         MascotaData md = new MascotaData(conexion);
-        return md.buscarMascotaActiva(p_id_visita);
+        return md.buscarMascota(p_id_visita);
     }
 
     public Tratamiento buscarTratamiento(int p_id_tratamiento) {

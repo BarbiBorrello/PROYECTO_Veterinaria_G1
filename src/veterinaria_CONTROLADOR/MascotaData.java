@@ -80,8 +80,8 @@ public class MascotaData {
         }
     }
 
- // busca a todas al mascotas que estan "vivas" independientemente de sus visitas"   
-    public Mascota buscarMascotaActiva(int p_id_mascota) {
+  
+    public Mascota buscarMascota(int p_id_mascota) {
 
         Mascota mascota = null;
 
@@ -110,7 +110,7 @@ public class MascotaData {
                     mascota.setPeso_promedio(rs.getDouble("peso_promedio"));
                     mascota.setActivo(rs.getBoolean("activo"));
 
-                    JOptionPane.showMessageDialog(null, "Mascota encrontrada exitosamente :" + " " + mascota.getAlias());
+                    JOptionPane.showMessageDialog(null, " Mascota :" +  mascota.getAlias());
                 }
 
             } else {

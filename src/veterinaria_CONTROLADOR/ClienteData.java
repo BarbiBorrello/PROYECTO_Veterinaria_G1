@@ -229,7 +229,7 @@ public void agregarCliente(Cliente p_cliente) {
     }
 // se utiliza para la vista CONSULTAS//
 
-    public List<Cliente> consultaClientes() {
+    public List<Cliente> obtenerClientes() {
 
         ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 
@@ -265,7 +265,7 @@ public void agregarCliente(Cliente p_cliente) {
     }
 // se utiliza la para vista CONSULTAS DE CLIENTES//
 
-    public List<Cliente> consultaClientexAPELLIDOyNOMBRE(String p_apellido, String p_nombre_duenio) {
+    public List<Cliente> obtenerClientexAPELLIDOyNOMBRE(String p_apellido, String p_nombre_duenio) {
 
         ArrayList<Cliente> clientesApNom = new ArrayList<Cliente>();
 
@@ -307,7 +307,7 @@ public void agregarCliente(Cliente p_cliente) {
     }
 // para vista CONSULTA//
 
-    public List<Cliente> listasClientes_ACTIVOS(boolean p_activo) {
+    public List<Cliente> obtenerClientes_ACTIVOS(boolean p_activo) {
 
         ArrayList<Cliente> clientesActivos = new ArrayList<Cliente>();
 
