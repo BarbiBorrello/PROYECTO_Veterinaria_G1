@@ -72,7 +72,7 @@ public class TratamientoData {
 
     }
 
-    // estadisticas de los tratamientos mas utilizados por especialidad //
+//     estadisticas de los tratamientos mas utilizados por especialidad //
     
     public Tratamiento buscarTratamientoActivo(int p_id_tratamiento) {
 
@@ -90,7 +90,7 @@ public class TratamientoData {
 
                 while (rs.next()) {
 
-                    tratamiento = new Tratamiento();
+                    
 
                     tratamiento.setId_tratamiento(rs.getInt("id_tratamiento"));
                     tratamiento.setDescripcion(rs.getString("descripcion"));
@@ -112,7 +112,7 @@ public class TratamientoData {
         }
 
         return tratamiento;
-    }
+    } 
     
     // estadistica de tratamientos de practica nula //
     
@@ -268,4 +268,8 @@ public class TratamientoData {
         }
      return tratamientos;
 }
+        
+        
+    
+    
 }
