@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package veterinaria_CONTROLADOR;
 
 import java.sql.Connection;
@@ -18,17 +13,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import veterinaria_MODELO.Cliente;
-import veterinaria_MODELO.Mascota; 
+import veterinaria_MODELO.Mascota;
+import java.time.Period;
 
-/**
- *
- * @author Barbara
- */
 public class MascotaData {
 
     private Connection con = null;
-    Cliente c = new Cliente ();
-    ClienteData cd ;
+    Cliente c = new Cliente();
+    ClienteData cd;
     VisitaData vd;
 
     public MascotaData(Conexion conexion) {
@@ -39,7 +31,7 @@ public class MascotaData {
         }
     }
 
-   public void agregar_Mascota(Mascota p_mascota) {
+    public void agregar_Mascota(Mascota p_mascota) {
 
         String sql = "INSERT INTO mascota (alias , sexo, especie, raza , color_pelaje, fecha_nac, peso_actual, id_cliente, peso_promedio, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
@@ -119,6 +111,52 @@ public class MascotaData {
 
         return mascota;
     }
+
+   // buscar mascotas por cliente // 
+    
+    public List<Mascota> buscarMascotas_x_Cliente(Cliente p_cliente) {
+
+        ArrayList<Mascota> mascotas = new ArrayList<Mascota>();
+        Mascota mascota = null;
+
+        String sql = "SELECT * FROM mascota WHERE id_cliente= ? AND activo=1;";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, p_cliente.getId_cliente());
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.isBeforeFirst()) {
+
+                while (rs.next()) {
+
+                    mascota = new Mascota();
+                    mascota.setId_mascota(rs.getInt("id_mascota"));
+                    mascota.setAlias(rs.getString("alias"));
+                    mascota.setSexo(rs.getString("sexo"));
+                    mascota.setEspecie(rs.getString("especie"));
+                    mascota.setRaza(rs.getString("raza"));
+                    mascota.setColor_pelaje(rs.getString("color_pelaje"));
+                    mascota.setFecha_nac(rs.getDate("fecha_nac").toLocalDate());
+                    mascota.setPeso_actual(rs.getDouble("peso_actual"));
+                    mascota.setPeso_promedio(rs.getDouble("peso_promedio"));
+                    mascota.setActivo(rs.getBoolean("activo"));
+                    mascotas.add(mascota);
+
+                    JOptionPane.showMessageDialog(null, "Mascota encrontrada exitosamente :" + " " + mascota.getAlias());
+                }
+            }else {
+                    JOptionPane.showMessageDialog(null, "Mascota inexistente");
+                }
+                ps.close();
+
+            }catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error de conexion desde buscar mascota " + ex);
+        }
+
+            return mascotas;
+        }
 
 // buscar mascota por nombre //
     public List<Mascota> buscarMascotaxALIAS(String p_alias) {
@@ -400,4 +438,17 @@ public class MascotaData {
 
         return especies;
     }
+    
+    // Calcula Edad en años y meses  si es menor a 1 año en meses y en años si mayor//
+    public String calcularEdad(LocalDate fecha_nac) {
+        int edad = 0;
+        LocalDate fecha_actual = LocalDate.now();
+        edad = Period.between(fecha_nac, fecha_actual).getYears();
+        if (edad > 1) {
+            return edad + " años";
+        } else {
+            return edad + " meses";
+        }
+
     }
+}

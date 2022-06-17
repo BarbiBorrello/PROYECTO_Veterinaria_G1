@@ -23,10 +23,10 @@ import veterinaria_MODELO.Visita;
  * @author Barbara
  */
 public class TratamientoData {
-    
+
     private Connection con = null;
-    Tratamiento t = new Tratamiento ();
-    TratamientoData td ;
+    Tratamiento t = new Tratamiento();
+    TratamientoData td;
 
     public TratamientoData(Conexion conexion) {
         try {
@@ -35,7 +35,8 @@ public class TratamientoData {
             System.out.println("Error en la conexion");
         }
     }
-  public void agregar_Tratamiento(Tratamiento p_tratamiento) {
+
+    public void agregar_Tratamiento(Tratamiento p_tratamiento) {
 
         String sql = "INSERT INTO tratamiento( descripcion , medicamento ,  importe ,  activo , tipo_tratamiento ) VALUES ( ? , ? , ? , ? , ? )";
 
@@ -80,9 +81,8 @@ public class TratamientoData {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, p_id_tratamiento);
 
-            
             ResultSet rs = ps.executeQuery();
-            
+
             if (rs.next()) {
 
                 tratamiento = new Tratamiento();
@@ -97,7 +97,7 @@ public class TratamientoData {
                 JOptionPane.showMessageDialog(null, "Tratamiento encrontrado exitosamente :" + " " + tratamiento.getTipo_tratamiento());
 
             } else {
-                
+
                 JOptionPane.showMessageDialog(null, "Tratamiento activo inexistente");
 
             }
@@ -122,9 +122,8 @@ public class TratamientoData {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, p_id_tratamiento);
 
-            
             ResultSet rs = ps.executeQuery();
-            
+
             if (rs.next()) {
 
                 tratamiento = new Tratamiento();
@@ -139,7 +138,7 @@ public class TratamientoData {
                 JOptionPane.showMessageDialog(null, "Tratamiento encrontrado exitosamente :" + " " + tratamiento.getTipo_tratamiento());
 
             } else {
-                
+
                 JOptionPane.showMessageDialog(null, "Tratamiento inactivo inexistente");
 
             }
@@ -171,7 +170,7 @@ public class TratamientoData {
             int rs = ps.executeUpdate();
 
             if (rs > 0) {
-                JOptionPane.showMessageDialog(null, " Tratamiento con ID: "+p_id_tratamiento+" actualizado exitosamente ");
+                JOptionPane.showMessageDialog(null, " Tratamiento con ID: " + p_id_tratamiento + " actualizado exitosamente ");
             } else {
                 JOptionPane.showMessageDialog(null, " El tratamiento no existe, no se actualizo");
             }
@@ -218,7 +217,7 @@ public class TratamientoData {
             int rs = ps.executeUpdate();
 
             if (rs > 0) {
-                JOptionPane.showMessageDialog(null, "Se activo el estado del tratamiento con ID:"+p_id_tratamiento);
+                JOptionPane.showMessageDialog(null, "Se activo el estado del tratamiento con ID:" + p_id_tratamiento);
             } else {
                 JOptionPane.showMessageDialog(null, " El id del tratamiento no existe ");
             }
@@ -264,6 +263,5 @@ public class TratamientoData {
             System.out.println("Error al obtener los tratamientos: " + ex.getMessage());
         }
         return tratamientos;
-    }  
-    
+    }
 }

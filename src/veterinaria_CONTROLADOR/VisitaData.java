@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package veterinaria_CONTROLADOR;
+// algo
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -19,6 +20,11 @@ import veterinaria_MODELO.Cliente;
 import veterinaria_MODELO.Mascota;
 import veterinaria_MODELO.Tratamiento;
 import veterinaria_MODELO.Visita;
+import java.sql.Time;
+import java.time.Instant;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -27,17 +33,22 @@ import veterinaria_MODELO.Visita;
 public class VisitaData {
 
     private Connection con = null;
-    private Conexion conexion;
+    Conexion conexion;
     MascotaData md;
     TratamientoData td;
 
     public VisitaData(Conexion conexion) {
+        this.conexion = conexion;
+        // se inicializa las datas para que puedan conectarse con BD //
+        md = new MascotaData(conexion);
+        td = new TratamientoData(conexion);
         try {
             con = conexion.getConexion();
         } catch (SQLException ex) {
             System.out.println("Error en la conexion");
         }
     }
+
     public Mascota buscarMascotaActiva(int p_id_visita) {
         //conexion= new Conexion();
         MascotaData md = new MascotaData(conexion);
@@ -226,5 +237,47 @@ public class VisitaData {
 
         }
     }
+    
+    
+    public List<Visita> buscarVisitaxFecha(Mascota p_mascota) {
 
+        ArrayList<Visita> visitas = new ArrayList<Visita>();
+        Visita visita = null;
+
+        String sql = "SELECT * FROM  visita  WHERE  id_mascota  = ? ORDER BY fecha_visita  DESC;";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, p_mascota.getId_mascota());
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.isBeforeFirst()) {
+
+                while (rs.next()) {
+
+                    visita = new Visita();
+                    
+                    visita.setIdvisita(rs.getInt("id_visita"));
+                    visita.setFecha_visita(rs.getDate("fecha_visita").toLocalDate());
+                    visita.setPeso(rs.getDouble("peso"));
+                    visita.setActivo(rs.getBoolean("activo"));
+                    visita.setMascota(md.buscarMascota(rs.getInt("id_mascota")));
+                    visita.setTratamiento(td.buscarTratamientoActivo(rs.getInt("id_tratamiento")));
+                    
+                    visitas.add(visita);
+
+                    
+                }
+            }else {
+                    JOptionPane.showMessageDialog(null, "No se registran visitas ");
+                }
+                ps.close();
+
+            }catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error de conexion desde buscar mascota " + ex);
+        }
+
+            return visitas;
+        }
 }

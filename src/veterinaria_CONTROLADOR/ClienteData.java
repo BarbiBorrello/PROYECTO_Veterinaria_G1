@@ -21,7 +21,8 @@ public class ClienteData {
             System.out.println("Error en la conexion");
         }
     }
-public void agregarCliente(Cliente p_cliente) {
+
+    public void agregarCliente(Cliente p_cliente) {
 
         // String de consulta a base de datos
         String sql = "INSERT INTO cliente (dni, apellido, nombre_duenio, direccion, telefono, contacto_alternativo, activo)  VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -108,7 +109,9 @@ public void agregarCliente(Cliente p_cliente) {
 
         // String de consulta a base de datos
         String sql = "SELECT * FROM cliente WHERE activo = 1 AND dni =?;";
-
+ 
+        
+        
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, (int) p_dni);
@@ -128,12 +131,12 @@ public void agregarCliente(Cliente p_cliente) {
                 cliente.setActivo(rs.getBoolean("activo"));
 
                 // Mensaje de cliente encontrado
-                JOptionPane.showMessageDialog(null, cliente.getApellido() + " " + cliente.getNombreD());
+                JOptionPane.showMessageDialog(null,"Cliente existente :"+" "+cliente.getApellido() + " " + cliente.getNombreD());
 
             } else {
                 // Mensaje de cliente no encontrado
-                JOptionPane.showMessageDialog(null, " dni inexistente");
-                //agregar desde la vista opcion agregar_cliente
+                JOptionPane.showMessageDialog(null, " Cliente inexistente");
+
             }
             ps.close();
         } catch (SQLException ex) {
@@ -343,4 +346,45 @@ public void agregarCliente(Cliente p_cliente) {
         return clientesActivos;
     }
     
-}
+    
+//   public List<Mascota> buscarMascotasdeCliente(Long p_dni){
+//       
+//       ArrayList<Mascota> mascotaSdeCliente = new ArrayList<Mascota>();
+//       
+//               try {            String sql = "SELECT * FROM cliente c, mascota m WHERE m.id_cliente=c.id_cliente AND c.dni=?;";
+//
+//            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+//            ps.setLong(1,p_dni);
+//
+//            ResultSet rs = ps.executeQuery();
+//            Cliente cliente;
+//
+//            while (rs.next()) {
+//                // Creacion y llenado de clientes para ser insertados en la lista
+//                cliente = new Cliente();
+//                cliente.setId_cliente(rs.getInt("id_cliente"));
+//                cliente.setDni(rs.getLong("dni"));
+//                cliente.setApellido(rs.getString("apellido"));
+//                cliente.setNombreD(rs.getString("nombre_duenio"));
+//                cliente.setDireccion(rs.getString("direccion"));
+//                cliente.setTelefono(rs.getString("telefono"));
+//                cliente.setContactoA("contacto_alternativo");
+//                cliente.setActivo(rs.getBoolean("activo"));
+//                Mascota Cliente = null;
+//
+//                mascotaSdeCliente.add(Cliente);
+//            }
+//            ps.close();
+//
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, "Error al buscar clientes activos" + ex);
+//            
+//        }    
+//       
+//        
+//     return mascotaSdeCliente;   
+    }
+
+
+    
+

@@ -18,7 +18,7 @@ public class Tratamiento {
     private double precio;
     private boolean activo;
     
- 
+
 
     public Tratamiento(int id_tratamiento, String tipo_tratamiento, String descripcion, String medicamento, double precio, boolean activo) {
         this.id_tratamiento = -1;
@@ -36,7 +36,7 @@ public class Tratamiento {
         this.medicamento = medicamento;
         this.precio = precio;
         this.activo = activo;
-        
+      
     }
 
     public Tratamiento() {
@@ -93,12 +93,8 @@ public class Tratamiento {
 
     @Override
     public String toString() {
-        return "Tratamiento{" + "id_tratamiento=" + id_tratamiento + ", tipo_tratamiento=" + tipo_tratamiento + ", descripcion=" + descripcion + ", medicamento=" + medicamento + ", precio=" + precio + ", activo=" + activo + '}';
+        return tipo_tratamiento ;
     }
-
+ 
+    
 }
-
-    
-    
-    
-
