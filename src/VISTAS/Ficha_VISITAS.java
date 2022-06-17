@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package VISTAS2;
+package VISTAS;
 
 import veterinaria_MODELO.Cliente;
 import veterinaria_MODELO.Mascota;
 import veterinaria_MODELO.Tratamiento;
 import veterinaria_MODELO.Visita;
-import static VISTAS2.Menu_PRINCIPAL_VETERINARIA.escritorio;
+import static VISTAS.Menu_PRINCIPAL_VETERINARIA.escritorio;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.text.SimpleDateFormat;

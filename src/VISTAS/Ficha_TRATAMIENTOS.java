@@ -3,22 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package VISTAS2;
-
-import java.awt.Graphics;
-import java.awt.Image;
-import javax.swing.ImageIcon;
+package VISTAS;
 
 /**
  *
  * @author Barbara
  */
-public class Consultas_TRATAMIENTOS extends javax.swing.JInternalFrame {
+public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Ficha_CLIENTE2
      */
-    public Consultas_TRATAMIENTOS() {
+    public Ficha_TRATAMIENTOS() {
         initComponents();
     }
 
@@ -58,16 +54,7 @@ public class Consultas_TRATAMIENTOS extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jlAPELLIDO3 = new javax.swing.JLabel();
         jltexto_Contacto_Alternativo1 = new javax.swing.JLabel();
-        jFondo_CLIENTE = new javax.swing.JLabel(){
-            String str="/IMAGENES/fondo_TRATAMIENTO.png";
-            ImageIcon icon = new ImageIcon(getClass().getResource(str));
-            Image image = icon.getImage();
-
-            public void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                g.drawImage(image, 0, 0,getWidth(),getHeight(), this);
-            }
-        };
+        jFondo_CLIENTE = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -191,8 +178,9 @@ public class Consultas_TRATAMIENTOS extends javax.swing.JInternalFrame {
         jltexto_Contacto_Alternativo1.setOpaque(true);
         jPanel1.add(jltexto_Contacto_Alternativo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 70, 20));
 
+        jFondo_CLIENTE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/Consultas_TRATAMIENTOS.png"))); // NOI18N
         jFondo_CLIENTE.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        jPanel1.add(jFondo_CLIENTE, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 630, 460));
+        jPanel1.add(jFondo_CLIENTE, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 470));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

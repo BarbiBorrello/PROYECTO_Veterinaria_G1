@@ -1,4 +1,4 @@
-package VISTAS2;
+package VISTAS;
 
 import veterinaria_MODELO.Cliente;
 import veterinaria_MODELO.Mascota;

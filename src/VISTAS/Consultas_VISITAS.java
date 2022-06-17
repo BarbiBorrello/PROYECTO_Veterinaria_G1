@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package VISTAS2;
+package VISTAS;
 
 /**
  *
  * @author Barbara
  */
-public class Consultas_CLIENTES extends javax.swing.JInternalFrame {
+public class Consultas_VISITAS extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Ficha_CLIENTE2
      */
-    public Consultas_CLIENTES() {
+    public Consultas_VISITAS() {
         initComponents();
     }
 
@@ -33,13 +33,10 @@ public class Consultas_CLIENTES extends javax.swing.JInternalFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jlDNI = new javax.swing.JLabel();
-        jltexto_dni = new javax.swing.JLabel();
         jlN_DE_CLIENTE = new javax.swing.JLabel();
         jltexto_n_cliente = new javax.swing.JLabel();
         jlNOMBRE = new javax.swing.JLabel();
         jltexto_Nombre = new javax.swing.JLabel();
-        jlCONTACTO_ALTERNATIVO = new javax.swing.JLabel();
-        jltexto_Contacto_Alternativo = new javax.swing.JLabel();
         jlAPELLIDO2 = new javax.swing.JLabel();
         jltexto_Apellido2 = new javax.swing.JLabel();
         jlDIRECCION1 = new javax.swing.JLabel();
@@ -58,6 +55,7 @@ public class Consultas_CLIENTES extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jFondo_CLIENTE = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -80,59 +78,44 @@ public class Consultas_CLIENTES extends javax.swing.JInternalFrame {
         jlDNI.setBackground(new java.awt.Color(255, 255, 255));
         jlDNI.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jlDNI.setForeground(new java.awt.Color(255, 255, 255));
-        jlDNI.setText("DNI :");
-        jPanel1.add(jlDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, -1, -1));
-
-        jltexto_dni.setBackground(new java.awt.Color(255, 255, 255));
-        jltexto_dni.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jltexto_dni.setOpaque(true);
-        jPanel1.add(jltexto_dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 100, 20));
+        jlDNI.setText("Fecha :");
+        jPanel1.add(jlDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, -1, -1));
 
         jlN_DE_CLIENTE.setBackground(new java.awt.Color(255, 255, 255));
         jlN_DE_CLIENTE.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jlN_DE_CLIENTE.setForeground(new java.awt.Color(255, 255, 255));
-        jlN_DE_CLIENTE.setText("N°  de Cliente:");
+        jlN_DE_CLIENTE.setText("Visita N° :");
         jPanel1.add(jlN_DE_CLIENTE, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
         jltexto_n_cliente.setBackground(new java.awt.Color(255, 255, 255));
         jltexto_n_cliente.setForeground(new java.awt.Color(255, 255, 255));
         jltexto_n_cliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jltexto_n_cliente.setOpaque(true);
-        jPanel1.add(jltexto_n_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 70, 20));
+        jPanel1.add(jltexto_n_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 70, 20));
 
         jlNOMBRE.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlNOMBRE.setForeground(new java.awt.Color(255, 255, 255));
-        jlNOMBRE.setText("Nombre: ");
-        jPanel1.add(jlNOMBRE, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 70, 20));
+        jlNOMBRE.setText("Tratamiento :");
+        jPanel1.add(jlNOMBRE, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 140, 20));
 
         jltexto_Nombre.setBackground(new java.awt.Color(255, 255, 255));
         jltexto_Nombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jltexto_Nombre.setOpaque(true);
-        jPanel1.add(jltexto_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 210, 20));
-
-        jlCONTACTO_ALTERNATIVO.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jlCONTACTO_ALTERNATIVO.setForeground(new java.awt.Color(255, 255, 255));
-        jlCONTACTO_ALTERNATIVO.setText("Contacto Alternativo: ");
-        jPanel1.add(jlCONTACTO_ALTERNATIVO, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 160, 20));
-
-        jltexto_Contacto_Alternativo.setBackground(new java.awt.Color(255, 255, 255));
-        jltexto_Contacto_Alternativo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jltexto_Contacto_Alternativo.setOpaque(true);
-        jPanel1.add(jltexto_Contacto_Alternativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 310, 20));
+        jPanel1.add(jltexto_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 190, 20));
 
         jlAPELLIDO2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlAPELLIDO2.setForeground(new java.awt.Color(255, 255, 255));
-        jlAPELLIDO2.setText("Apellido: ");
-        jPanel1.add(jlAPELLIDO2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 70, 20));
+        jlAPELLIDO2.setText("Paciente N° :");
+        jPanel1.add(jlAPELLIDO2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 90, 20));
 
         jltexto_Apellido2.setBackground(new java.awt.Color(255, 255, 255));
         jltexto_Apellido2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jltexto_Apellido2.setOpaque(true);
-        jPanel1.add(jltexto_Apellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 210, 20));
+        jPanel1.add(jltexto_Apellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 190, 20));
 
         jlDIRECCION1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlDIRECCION1.setForeground(new java.awt.Color(255, 255, 255));
-        jlDIRECCION1.setText("Direccion:");
+        jlDIRECCION1.setText("Dueño:");
         jPanel1.add(jlDIRECCION1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 70, 20));
 
         jltexto_Direccion1.setBackground(new java.awt.Color(255, 255, 255));
@@ -142,25 +125,25 @@ public class Consultas_CLIENTES extends javax.swing.JInternalFrame {
 
         jlTELEFONO1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlTELEFONO1.setForeground(new java.awt.Color(255, 255, 255));
-        jlTELEFONO1.setText("Telefono:");
+        jlTELEFONO1.setText("Peso");
         jPanel1.add(jlTELEFONO1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 70, 20));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 590, 20));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 590, 10));
 
         jltexto_Telefono1.setBackground(new java.awt.Color(255, 255, 255));
         jltexto_Telefono1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jltexto_Telefono1.setOpaque(true);
-        jPanel1.add(jltexto_Telefono1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, 210, 20));
+        jPanel1.add(jltexto_Telefono1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, 60, 20));
 
         jrbACTIVO.setBackground(new java.awt.Color(255, 255, 255));
         jrbACTIVO.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jrbACTIVO.setText("Activo");
+        jrbACTIVO.setText("Activa");
         jrbACTIVO.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(jrbACTIVO, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 70, 20));
+        jPanel1.add(jrbACTIVO, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 70, 20));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 0, 204));
-        jLabel1.setText("MASCOTAS A SU CARGO :");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, -1, -1));
+        jLabel1.setText("ULTIMAS VISITAS");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, -1, -1));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -175,7 +158,7 @@ public class Consultas_CLIENTES extends javax.swing.JInternalFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, 350, 70));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 560, 90));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/close.png"))); // NOI18N
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -202,7 +185,10 @@ public class Consultas_CLIENTES extends javax.swing.JInternalFrame {
         jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 60, 50));
 
-        jFondo_CLIENTE.setIcon(new javax.swing.ImageIcon("D:\\PROYECTO FINAL\\IMAGENES\\Consultas_CLIENTES.png")); // NOI18N
+        jDateChooser1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 120, -1));
+
+        jFondo_CLIENTE.setIcon(new javax.swing.ImageIcon("D:\\PROYECTO FINAL\\IMAGENES\\Consultas_VISITAS.png")); // NOI18N
         jFondo_CLIENTE.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jPanel1.add(jFondo_CLIENTE, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 630, 460));
 
@@ -224,6 +210,7 @@ public class Consultas_CLIENTES extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jFondo_CLIENTE;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -242,18 +229,15 @@ public class Consultas_CLIENTES extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JLabel jlAPELLIDO2;
-    private javax.swing.JLabel jlCONTACTO_ALTERNATIVO;
     private javax.swing.JLabel jlDIRECCION1;
     private javax.swing.JLabel jlDNI;
     private javax.swing.JLabel jlNOMBRE;
     private javax.swing.JLabel jlN_DE_CLIENTE;
     private javax.swing.JLabel jlTELEFONO1;
     private javax.swing.JLabel jltexto_Apellido2;
-    private javax.swing.JLabel jltexto_Contacto_Alternativo;
     private javax.swing.JLabel jltexto_Direccion1;
     private javax.swing.JLabel jltexto_Nombre;
     private javax.swing.JLabel jltexto_Telefono1;
-    private javax.swing.JLabel jltexto_dni;
     private javax.swing.JLabel jltexto_n_cliente;
     private javax.swing.JRadioButton jrbACTIVO;
     // End of variables declaration//GEN-END:variables
