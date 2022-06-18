@@ -52,8 +52,6 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         jlAPELLIDO2 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -81,6 +79,8 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         jtPesoPromedio = new javax.swing.JTextField();
         jtEdad = new javax.swing.JTextField();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTableVisitas = new javax.swing.JTable();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -125,18 +125,6 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(51, 0, 204));
         jLabel1.setText("Ultima visita :");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, -1, -1));
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable2);
-
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 610, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/close.png"))); // NOI18N
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -257,6 +245,33 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         jPanel1.add(jtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, 80, -1));
         jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, -1, -1));
 
+        jTableVisitas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Visita N°  ", "Tratamiento", "Fecha ", "Peso", "Descripcion ", "Precios"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Double.class, java.lang.String.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(jTableVisitas);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 630, 40));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -327,7 +342,7 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jLabel6MouseClicked
     
-    private void carggarUltimaVisita(Mascota mascota){
+    private void cargarUltimaVisita(Mascota mascota){
         Menu_PRINCIPAL_VETERINARIA.vd.buscarVisitaxFecha(mascota);
     }
     private void cargarFormularioConMascota(Mascota mascota) {
@@ -478,13 +493,13 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTableVisitas;
     private javax.swing.JLabel jlALIAS;
     private javax.swing.JLabel jlALIAS1;
     private javax.swing.JLabel jlAPELLIDO2;
