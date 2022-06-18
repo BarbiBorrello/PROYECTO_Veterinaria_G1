@@ -190,7 +190,7 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/clear.png"))); // NOI18N
         jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 60, 50));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 60, 50));
         jPanel1.add(jtexto_Apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 210, -1));
         jPanel1.add(jtexto_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 210, -1));
         jPanel1.add(jtexto_Direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 210, -1));
@@ -224,28 +224,24 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
            
 //  opcion de cargar un nuevo cliente //
             if (c == null) {
-                // si el dni no existe //   
-
+                
                 String[] options = {"Si", "No"};
 
                 int x = JOptionPane.showOptionDialog(null, "¿Desea agregar un nuevo cliente?",
                         "Selecciona una opcion",
                         JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-
-                //si //
-                if (x == 0) {
-
-                    escritorio.removeAll();
-                    Menu_PRINCIPAL_VETERINARIA.mostrarFichaCliente();
-
-// lleva el usuario a la ficha del cliente para que lo agregue a la base de datos //
-// si elige "NO"  se limpia para nueva carga de visita //
-                } else {
-                    jTDNI.setText("");
-                }
-
-            } 
-
+           
+                
+          
+    
+            } else{
+                // rellenar cliente
+                
+                
+                
+                
+                
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Por favor coloque un DNI");
             jTDNI.requestFocus();
@@ -258,6 +254,14 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jLSalirMouseClicked
 
+    public void rellenarCamposCLiente (){
+        
+        
+        
+        
+        
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLBuscarCliente_C;
