@@ -215,7 +215,8 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
                 if (!jTDNI.getText().isEmpty()) {
             // con el DNI del cliente busco al cliente //
             Cliente c = Menu_PRINCIPAL_VETERINARIA.cd.buscarClientexDNI(Long.parseLong(jTDNI.getText()));
-
+            
+           
 //  opcion de cargar un nuevo cliente //
             if (c == null) {
                 // si el dni no existe //   
