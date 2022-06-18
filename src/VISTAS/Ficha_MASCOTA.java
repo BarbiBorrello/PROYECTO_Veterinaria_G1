@@ -37,16 +37,10 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jlALIAS = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jltexto_alias = new javax.swing.JLabel();
         jlNOMBRE = new javax.swing.JLabel();
-        jltexto_Nombre = new javax.swing.JLabel();
         jlCONTACTO_ALTERNATIVO = new javax.swing.JLabel();
-        jltexto_Contacto_Alternativo = new javax.swing.JLabel();
         jlAPELLIDO2 = new javax.swing.JLabel();
-        jltexto_Apellido2 = new javax.swing.JLabel();
-        jltexto_Direccion1 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
-        jltexto_Telefono1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -57,20 +51,25 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jlN_DE_CLIENTE1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jltexto_n_paciente1 = new javax.swing.JLabel();
-        jltexto_Apellido3 = new javax.swing.JLabel();
         jlCONTACTO_ALTERNATIVO1 = new javax.swing.JLabel();
-        jltexto_Apellido4 = new javax.swing.JLabel();
         jlALIAS1 = new javax.swing.JLabel();
-        jltexto_alias1 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         jlAPELLIDO3 = new javax.swing.JLabel();
         jlAPELLIDO4 = new javax.swing.JLabel();
         jlAPELLIDO5 = new javax.swing.JLabel();
         jlAPELLIDO6 = new javax.swing.JLabel();
-        jltexto_Telefono2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
+        jtNPaciente = new javax.swing.JTextField();
+        jtAlias = new javax.swing.JTextField();
+        jtDNIDuenio = new javax.swing.JTextField();
+        jtEspecie = new javax.swing.JTextField();
+        jtRaza = new javax.swing.JTextField();
+        jtSexo = new javax.swing.JTextField();
+        jtPelaje = new javax.swing.JTextField();
+        jtPesoActual = new javax.swing.JTextField();
+        jtPesoPromedio = new javax.swing.JTextField();
+        jtEdad = new javax.swing.JTextField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -95,52 +94,21 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         jPanel1.add(jlALIAS, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, -1, -1));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 112, 580, 10));
 
-        jltexto_alias.setBackground(new java.awt.Color(255, 255, 255));
-        jltexto_alias.setForeground(new java.awt.Color(255, 255, 255));
-        jltexto_alias.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jltexto_alias.setOpaque(true);
-        jPanel1.add(jltexto_alias, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 150, 20));
-
         jlNOMBRE.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jlNOMBRE.setForeground(new java.awt.Color(255, 255, 255));
         jlNOMBRE.setText("Raza:");
         jPanel1.add(jlNOMBRE, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 70, 20));
-
-        jltexto_Nombre.setBackground(new java.awt.Color(255, 255, 255));
-        jltexto_Nombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jltexto_Nombre.setOpaque(true);
-        jPanel1.add(jltexto_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 100, 20));
 
         jlCONTACTO_ALTERNATIVO.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jlCONTACTO_ALTERNATIVO.setForeground(new java.awt.Color(255, 255, 255));
         jlCONTACTO_ALTERNATIVO.setText("F. Nac:");
         jPanel1.add(jlCONTACTO_ALTERNATIVO, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 90, 20));
 
-        jltexto_Contacto_Alternativo.setBackground(new java.awt.Color(255, 255, 255));
-        jltexto_Contacto_Alternativo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jltexto_Contacto_Alternativo.setOpaque(true);
-        jPanel1.add(jltexto_Contacto_Alternativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 30, 20));
-
         jlAPELLIDO2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jlAPELLIDO2.setForeground(new java.awt.Color(255, 255, 255));
         jlAPELLIDO2.setText("Edad :");
         jPanel1.add(jlAPELLIDO2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 90, 20));
-
-        jltexto_Apellido2.setBackground(new java.awt.Color(255, 255, 255));
-        jltexto_Apellido2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jltexto_Apellido2.setOpaque(true);
-        jPanel1.add(jltexto_Apellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 70, 20));
-
-        jltexto_Direccion1.setBackground(new java.awt.Color(255, 255, 255));
-        jltexto_Direccion1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jltexto_Direccion1.setOpaque(true);
-        jPanel1.add(jltexto_Direccion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 60, 20));
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 590, 10));
-
-        jltexto_Telefono1.setBackground(new java.awt.Color(255, 255, 255));
-        jltexto_Telefono1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jltexto_Telefono1.setOpaque(true);
-        jPanel1.add(jltexto_Telefono1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, 30, 20));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 0, 204));
@@ -149,9 +117,6 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
@@ -160,7 +125,7 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 590, 40));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 610, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/close.png"))); // NOI18N
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -192,38 +157,16 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 60, 50));
 
-        jltexto_n_paciente1.setBackground(new java.awt.Color(255, 255, 255));
-        jltexto_n_paciente1.setForeground(new java.awt.Color(255, 255, 255));
-        jltexto_n_paciente1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jltexto_n_paciente1.setOpaque(true);
-        jPanel1.add(jltexto_n_paciente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 70, 20));
-
-        jltexto_Apellido3.setBackground(new java.awt.Color(255, 255, 255));
-        jltexto_Apellido3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jltexto_Apellido3.setOpaque(true);
-        jPanel1.add(jltexto_Apellido3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 100, 20));
-
         jlCONTACTO_ALTERNATIVO1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jlCONTACTO_ALTERNATIVO1.setForeground(new java.awt.Color(255, 255, 255));
         jlCONTACTO_ALTERNATIVO1.setText("Sexo:");
         jPanel1.add(jlCONTACTO_ALTERNATIVO1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 50, 20));
-
-        jltexto_Apellido4.setBackground(new java.awt.Color(255, 255, 255));
-        jltexto_Apellido4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jltexto_Apellido4.setOpaque(true);
-        jPanel1.add(jltexto_Apellido4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 60, 20));
 
         jlALIAS1.setBackground(new java.awt.Color(255, 255, 255));
         jlALIAS1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlALIAS1.setForeground(new java.awt.Color(255, 255, 255));
         jlALIAS1.setText("ALIAS:");
         jPanel1.add(jlALIAS1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, -1, -1));
-
-        jltexto_alias1.setBackground(new java.awt.Color(255, 255, 255));
-        jltexto_alias1.setForeground(new java.awt.Color(255, 255, 255));
-        jltexto_alias1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jltexto_alias1.setOpaque(true);
-        jPanel1.add(jltexto_alias1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 100, 20));
         jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 630, 20));
 
         jlAPELLIDO3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -246,11 +189,6 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         jlAPELLIDO6.setText("Peso Prom  :");
         jPanel1.add(jlAPELLIDO6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 90, 20));
 
-        jltexto_Telefono2.setBackground(new java.awt.Color(255, 255, 255));
-        jltexto_Telefono2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jltexto_Telefono2.setOpaque(true);
-        jPanel1.add(jltexto_Telefono2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, 30, 20));
-
         jLabel8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, 220, 110));
 
@@ -258,6 +196,16 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         jRadioButton1.setText("Fallecido");
         jRadioButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 80, 20));
+        jPanel1.add(jtNPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 70, -1));
+        jPanel1.add(jtAlias, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 90, -1));
+        jPanel1.add(jtDNIDuenio, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, 80, -1));
+        jPanel1.add(jtEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 90, -1));
+        jPanel1.add(jtRaza, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 90, -1));
+        jPanel1.add(jtSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 90, -1));
+        jPanel1.add(jtPelaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 80, -1));
+        jPanel1.add(jtPesoActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 80, -1));
+        jPanel1.add(jtPesoPromedio, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, 80, -1));
+        jPanel1.add(jtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, 80, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -269,7 +217,7 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
         );
 
         pack();
@@ -322,16 +270,15 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlCONTACTO_ALTERNATIVO1;
     private javax.swing.JLabel jlNOMBRE;
     private javax.swing.JLabel jlN_DE_CLIENTE1;
-    private javax.swing.JLabel jltexto_Apellido2;
-    private javax.swing.JLabel jltexto_Apellido3;
-    private javax.swing.JLabel jltexto_Apellido4;
-    private javax.swing.JLabel jltexto_Contacto_Alternativo;
-    private javax.swing.JLabel jltexto_Direccion1;
-    private javax.swing.JLabel jltexto_Nombre;
-    private javax.swing.JLabel jltexto_Telefono1;
-    private javax.swing.JLabel jltexto_Telefono2;
-    private javax.swing.JLabel jltexto_alias;
-    private javax.swing.JLabel jltexto_alias1;
-    private javax.swing.JLabel jltexto_n_paciente1;
+    private javax.swing.JTextField jtAlias;
+    private javax.swing.JTextField jtDNIDuenio;
+    private javax.swing.JTextField jtEdad;
+    private javax.swing.JTextField jtEspecie;
+    private javax.swing.JTextField jtNPaciente;
+    private javax.swing.JTextField jtPelaje;
+    private javax.swing.JTextField jtPesoActual;
+    private javax.swing.JTextField jtPesoPromedio;
+    private javax.swing.JTextField jtRaza;
+    private javax.swing.JTextField jtSexo;
     // End of variables declaration//GEN-END:variables
 }
