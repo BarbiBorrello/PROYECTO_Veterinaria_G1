@@ -5,11 +5,17 @@
  */
 package VISTAS;
 
+import java.awt.Graphics;
+import java.awt.Image;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import veterinaria_MODELO.Mascota;
 import veterinaria_MODELO.Tratamiento;
+import veterinaria_MODELO.Visita;
 
 /**
  *
@@ -22,6 +28,8 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
      */
     public Ficha_TRATAMIENTOS() {
         initComponents();
+        jLabel4.setVisible(false);
+        jLabel5.setVisible(false);
     }
 
     /**
@@ -35,7 +43,16 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel(){
+            String str="/IMAGENES/fondo_TRATAMIENTO.png";
+            ImageIcon icon = new ImageIcon(getClass().getResource(str));
+            Image image = icon.getImage();
+
+            public void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(image, 0, 0,getWidth(),getHeight(), this);
+            }
+        };
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jlDNI = new javax.swing.JLabel();
@@ -44,7 +61,6 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         jlAPELLIDO2 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jrbACTIVO = new javax.swing.JRadioButton();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
@@ -62,6 +78,7 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         jtTratamientoMedicacion = new javax.swing.JTextField();
         jtTratamientoPrecio = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        jlLISTAR_Visita = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -109,27 +126,28 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         jrbACTIVO.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(jrbACTIVO, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 70, 20));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 0, 204));
-        jLabel1.setText("Listado de Tratamientos");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, -1, -1));
-
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Tratamiento", "Descripcion", "Medicamento", "Precio", "Activo"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Boolean.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 540, 70));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 560, 110));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/close.png"))); // NOI18N
+        jLabel2.setToolTipText("Salir de tratamiento");
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -139,18 +157,27 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 60, 50));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/add.png"))); // NOI18N
+        jLabel3.setToolTipText("Agregar un tratamiento con los campos en el formulario");
         jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 60, 50));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/delete.png"))); // NOI18N
+        jLabel4.setToolTipText("Borrar el tratamiento que se encontro por busqueda  y se cargo al formulario");
         jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 60, 50));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/edit.png"))); // NOI18N
+        jLabel5.setToolTipText("Permite actualizar el tratamiento que se busco previamente y se cargo al formulario");
         jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 60, 50));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/search.png"))); // NOI18N
+        jLabel6.setToolTipText("Buscar un tratamiento, por ID o por una Lista");
         jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -161,6 +188,7 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 610, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/clear.png"))); // NOI18N
+        jLabel7.setToolTipText("Limpia todos los campos del formulario");
         jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -173,6 +201,8 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         jlAPELLIDO3.setForeground(new java.awt.Color(255, 255, 255));
         jlAPELLIDO3.setText("Descripcion :");
         jPanel1.add(jlAPELLIDO3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 130, 20));
+
+        jtTratamientoN.setEnabled(false);
         jPanel1.add(jtTratamientoN, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 80, -1));
         jPanel1.add(jtTratamientoTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 250, -1));
 
@@ -187,6 +217,20 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel8.setText("$");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 10, 20));
+
+        jlLISTAR_Visita.setBackground(new java.awt.Color(51, 51, 255));
+        jlLISTAR_Visita.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jlLISTAR_Visita.setForeground(new java.awt.Color(255, 255, 255));
+        jlLISTAR_Visita.setText(" LISTAR TRATAMIENTOS");
+        jlLISTAR_Visita.setToolTipText("Presione aqui para recargar los tratamientos existentes");
+        jlLISTAR_Visita.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jlLISTAR_Visita.setOpaque(true);
+        jlLISTAR_Visita.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlLISTAR_VisitaMouseClicked(evt);
+            }
+        });
+        jPanel1.add(jlLISTAR_Visita, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, 240, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -250,6 +294,15 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jLabel6MouseClicked
 
+    private void jlLISTAR_VisitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlLISTAR_VisitaMouseClicked
+
+
+    }//GEN-LAST:event_jlLISTAR_VisitaMouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel4MouseClicked
+
     private Tratamiento crearUnTratamientoDesdeForm() {
         Tratamiento tratamiento = new Tratamiento();
         tratamiento.setTipo_tratamiento(jtTratamientoTipo.getText());
@@ -271,10 +324,11 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         } else {
             jrbACTIVO.setSelected(false);
         }
+        jLabel4.setVisible(true);
+        jLabel5.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -297,6 +351,7 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlAPELLIDO3;
     private javax.swing.JLabel jlCONTACTO_ALTERNATIVO;
     private javax.swing.JLabel jlDNI;
+    private javax.swing.JLabel jlLISTAR_Visita;
     private javax.swing.JLabel jlN_DE_CLIENTE;
     private javax.swing.JRadioButton jrbACTIVO;
     private javax.swing.JTextField jtTratamientoMedicacion;
