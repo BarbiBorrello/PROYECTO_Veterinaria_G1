@@ -535,7 +535,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="380" width="630" height="40"/>
+              <AbsoluteConstraints x="0" y="380" width="630" height="50"/>
             </Constraint>
           </Constraints>
 
@@ -553,6 +553,7 @@
                     <Column editable="false" title="Precios" type="java.lang.Double"/>
                   </Table>
                 </Property>
+                <Property name="rowHeight" type="int" value="20"/>
               </Properties>
             </Component>
           </SubComponents>

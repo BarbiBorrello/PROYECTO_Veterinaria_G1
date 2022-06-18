@@ -13,6 +13,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import veterinaria_MODELO.Visita;
 
 public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
 
@@ -268,9 +270,10 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableVisitas.setRowHeight(20);
         jScrollPane3.setViewportView(jTableVisitas);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 630, 40));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 630, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -314,6 +317,7 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
 
                     if (mascota != null) {
                         cargarFormularioConMascota(mascota);
+                        cargarUltimaVisita(mascota);
                         jLabel4.setVisible(true);
                         jLabel5.setVisible(true);
                     }
@@ -331,6 +335,7 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
                 Mascota mascota = Menu_PRINCIPAL_VETERINARIA.md.buscarMascota(Integer.parseInt(id_mascota));
                 if (mascota != null) {
                     cargarFormularioConMascota(mascota);
+                    cargarUltimaVisita(mascota);
                     jLabel4.setVisible(true);
                     jLabel5.setVisible(true);
                 } else {
@@ -341,10 +346,25 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_jLabel6MouseClicked
-    
-    private void cargarUltimaVisita(Mascota mascota){
-        Menu_PRINCIPAL_VETERINARIA.vd.buscarVisitaxFecha(mascota);
+
+    private void cargarUltimaVisita(Mascota mascota) {
+        List<Visita> listarVisitas = Menu_PRINCIPAL_VETERINARIA.vd.buscarVisitaxFecha(mascota);
+        DefaultTableModel model = (DefaultTableModel) jTableVisitas.getModel();
+        model.setRowCount(0); // BORRA TODAS LAS LINEAS Y VUELVE A 0//
+        if (listarVisitas != null) {
+            Visita visita = listarVisitas.get(0);
+            model.addRow(new Object[]{
+                visita.getIdvisita(),
+                visita.getTratamiento(),
+                visita.getFecha_visita(),
+                visita.getPeso(),
+                visita.getTratamiento().getTipo_tratamiento(),
+                visita.getTratamiento().getPrecio()
+            });
+        }
+
     }
+
     private void cargarFormularioConMascota(Mascota mascota) {
         limpiarFormulario();
         jtNPaciente.setText(Integer.toString(mascota.getId_mascota()));
@@ -368,8 +388,15 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         if (validarFormulario()) {
             Mascota mascota = crearUnaMascotaDesdeElForm();
-            Menu_PRINCIPAL_VETERINARIA.md.agregar_Mascota(mascota);
-            jtNPaciente.setText(Integer.toString(mascota.getId_mascota()));
+            Mascota checkeo = Menu_PRINCIPAL_VETERINARIA.md.buscarMascota(Integer.parseInt(jtNPaciente.getText()));
+            
+            if (((mascota.getCliente().getDni() == checkeo.getCliente().getDni()) && (mascota.getAlias() == checkeo.getAlias()) && (mascota.getEspecie() == checkeo.getEspecie()))) {
+                Menu_PRINCIPAL_VETERINARIA.md.agregar_Mascota(mascota);
+                jtNPaciente.setText(Integer.toString(mascota.getId_mascota()));
+            } else {
+                JOptionPane.showMessageDialog(this, "La mascota que intenta Agregar, tiene igual nombre, especie y dueño, revise los Datos");
+            }
+
         }
 
     }//GEN-LAST:event_jLabel3MouseClicked
