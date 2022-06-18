@@ -4,12 +4,20 @@ import veterinaria_MODELO.Cliente;
 import veterinaria_MODELO.Mascota;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
 
     public Ficha_MASCOTA() {
         initComponents();
+        
     }
 
     /**
@@ -146,6 +154,11 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/search.png"))); // NOI18N
         jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 60, 50));
 
         jlN_DE_CLIENTE1.setBackground(new java.awt.Color(255, 255, 255));
@@ -156,6 +169,16 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/clear.png"))); // NOI18N
         jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
+        jLabel7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jLabel7KeyTyped(evt);
+            }
+        });
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 60, 50));
 
         jlCONTACTO_ALTERNATIVO1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -225,21 +248,114 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jLabel7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel7KeyTyped
+        limpiarFormulario();
+    }//GEN-LAST:event_jLabel7KeyTyped
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        /* show the option dialog that ask  search method by alias or id_mascota */
+        
+        int result = JOptionPane.showOptionDialog(this, "¿Qué desea buscar?", "Buscar", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"Por alias", "Por número de identificación"}, "Por alias");
+        if (result == 0) {
+            /* search by alias */
+            String alias = JOptionPane.showInputDialog(this, "Ingrese el alias de la mascota");
+            if (alias != null) {
+                List<Mascota> mascotas = Menu_PRINCIPAL_VETERINARIA.md.buscarMascotaxALIAS(alias);
+                if (mascotas != null) {
+                                        /* show JPanel with a combobox */
+                    JPanel panel = new JPanel();
+                    JComboBox<Mascota> comboBox = new JComboBox<>();
+                    for (Mascota mascota : mascotas) {
+                        comboBox.addItem(mascota);
+                    }
+                    panel.add(comboBox);
+                    JOptionPane.showMessageDialog(this, panel, "Seleccione una mascota", JOptionPane.QUESTION_MESSAGE);
+                    Mascota mascota = (Mascota) comboBox.getSelectedItem();
+                    
+                    if (mascota != null) {
+                        jtNPaciente.setText(Integer.toString(mascota.getId_mascota()));
+                        jtAlias.setText(mascota.getAlias());
+                        jtDNIDuenio.setText(Long.toString(mascota.getCliente().getDni()));
+                        jtEspecie.setText(mascota.getEspecie());
+                        jtRaza.setText(mascota.getRaza());
+                        jtSexo.setText(mascota.getSexo());
+                        jtPelaje.setText(mascota.getColor_pelaje());
+                        jtPesoActual.setText(String.valueOf(mascota.getPeso_actual()));
+                        jtPesoPromedio.setText(String.valueOf(mascota.getPeso_promedio()));
+                        jtEdad.setText(Menu_PRINCIPAL_VETERINARIA.md.calcularEdad(mascota.getFecha_nac()));
+                        jDateChooser1.setDate(Date.from(mascota.getFecha_nac().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+                        jRadioButton1.setSelected(!mascota.isActivo());
+                    }
+                     
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "No se encontraron mascotas");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "No se ingresó el alias");
+            }
+        } else if (result == 1) {
+            /* search by id_mascota */
+            String id_mascota = JOptionPane.showInputDialog(this, "Ingrese el número de identificación de la mascota");
+            if (id_mascota != null) {
+                Mascota mascota = Menu_PRINCIPAL_VETERINARIA.md.buscarMascota(Integer.parseInt(id_mascota));
+                if (mascota != null) {
+                    jtNPaciente.setText(Integer.toString(mascota.getId_mascota()));
+                    System.out.println("1");
+                    jtAlias.setText(mascota.getAlias());
+                    System.out.println("2");
+                    jtDNIDuenio.setText(Long.toString(mascota.getCliente().getDni()));
+                    jtEspecie.setText(mascota.getEspecie());
+                    jtRaza.setText(mascota.getRaza());
+                    jtSexo.setText(mascota.getSexo());
+                    jtPelaje.setText(mascota.getColor_pelaje());
+                    jtPesoActual.setText(String.valueOf(mascota.getPeso_actual()));
+                    jtPesoPromedio.setText(String.valueOf(mascota.getPeso_promedio()));
+                    jtEdad.setText(Menu_PRINCIPAL_VETERINARIA.md.calcularEdad(mascota.getFecha_nac()));
+                    jDateChooser1.setDate(Date.from(mascota.getFecha_nac().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+                    jRadioButton1.setSelected(!mascota.isActivo());
+                } else {
+                    JOptionPane.showMessageDialog(this, "No se encontró la mascota");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "No se ingresó el número de identificación");
+            }
+        }
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        limpiarFormulario();
+    }//GEN-LAST:event_jLabel7MouseClicked
+
     private Mascota crearUnaMascotaDesdeElForm() {
         Mascota mascota = new Mascota();
         //String alias, String sexo, String especie, String raza, String color_pelaje, LocalDate fecha_nac, double peso_actual, double peso_promedio, boolean activo, Cliente cliente
-        mascota.setAlias(jltexto_alias1.getText());
-        mascota.setSexo(jltexto_Apellido4.getText());
-        mascota.setEspecie(jltexto_Apellido3.getText());
-        mascota.setRaza(jltexto_Nombre.getText());
-        mascota.setColor_pelaje(jltexto_Apellido2.getText());
-        //mascota.setFecha_nac(jltexto_Direccion1.getText());
-        mascota.setPeso_actual(Double.parseDouble(jltexto_Contacto_Alternativo.getText()));
-        mascota.setPeso_promedio(Double.parseDouble(jltexto_Telefono2.getText()));        
-        mascota.setActivo(true);        
-        //mascota.setCliente((Cliente) new Cliente());
-        
+        mascota.setAlias(jtAlias.getText());
+        mascota.setSexo(jtSexo.getText());
+        mascota.setEspecie(jtEspecie.getText());
+        mascota.setRaza(jtRaza.getText());
+        mascota.setColor_pelaje(jtPelaje.getText());
+        mascota.setFecha_nac(jDateChooser1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        mascota.setPeso_actual(Double.parseDouble(jtPesoActual.getText()));
+        mascota.setPeso_promedio(Double.parseDouble(jtPesoPromedio.getText()));
+        mascota.setActivo(jRadioButton1.isSelected());
+        mascota.setCliente(Menu_PRINCIPAL_VETERINARIA.cd.buscarClientexDNI(Long.parseLong(jtDNIDuenio.getText())));
         return mascota;
+    }
+
+    private void limpiarFormulario() {
+        jtNPaciente.setText("");
+        jtAlias.setText("");
+        jtDNIDuenio.setText("");
+        jtEspecie.setText("");
+        jtRaza.setText("");
+        jtSexo.setText("");
+        jtPelaje.setText("");
+        jtPesoActual.setText("");
+        jtPesoPromedio.setText("");
+        jtEdad.setText("");
+        jDateChooser1.setDate(null);
+        jRadioButton1.setSelected(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

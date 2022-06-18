@@ -29,6 +29,7 @@ public class MascotaData {
         } catch (SQLException ex) {
             System.out.println("Error en la conexion");
         }
+        cd = new ClienteData(conexion);
     }
 
     public void agregar_Mascota(Mascota p_mascota) {
@@ -97,6 +98,7 @@ public class MascotaData {
                 mascota.setPeso_actual(rs.getDouble("peso_actual"));
                 mascota.setPeso_promedio(rs.getDouble("peso_promedio"));
                 mascota.setActivo(rs.getBoolean("activo"));
+                mascota.setCliente(cd.buscarCliente(rs.getInt("id_cliente")));
 
                 JOptionPane.showMessageDialog(null, "Mascota encrontrada exitosamente :" + " " + mascota.getAlias());
 
@@ -112,8 +114,7 @@ public class MascotaData {
         return mascota;
     }
 
-   // buscar mascotas por cliente // 
-    
+    // buscar mascotas por cliente // 
     public List<Mascota> buscarMascotas_x_Cliente(Cliente p_cliente) {
 
         ArrayList<Mascota> mascotas = new ArrayList<Mascota>();
@@ -142,21 +143,22 @@ public class MascotaData {
                     mascota.setPeso_actual(rs.getDouble("peso_actual"));
                     mascota.setPeso_promedio(rs.getDouble("peso_promedio"));
                     mascota.setActivo(rs.getBoolean("activo"));
+                    mascota.setCliente(p_cliente);
                     mascotas.add(mascota);
 
                     JOptionPane.showMessageDialog(null, "Mascota encrontrada exitosamente :" + " " + mascota.getAlias());
                 }
-            }else {
-                    JOptionPane.showMessageDialog(null, "Mascota inexistente");
-                }
-                ps.close();
+            } else {
+                JOptionPane.showMessageDialog(null, "Mascota inexistente");
+            }
+            ps.close();
 
-            }catch (SQLException ex) {
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error de conexion desde buscar mascota " + ex);
         }
 
-            return mascotas;
-        }
+        return mascotas;
+    }
 
 // buscar mascota por nombre //
     public List<Mascota> buscarMascotaxALIAS(String p_alias) {
@@ -173,7 +175,7 @@ public class MascotaData {
 
             ResultSet rs = ps.executeQuery();
 
-            if (rs.isBeforeFirst() ) {
+            if (rs.isBeforeFirst()) {
 
                 while (rs.next()) {
 
@@ -189,6 +191,7 @@ public class MascotaData {
                     mascota.setPeso_actual(rs.getDouble("peso_actual"));
                     mascota.setPeso_promedio(rs.getDouble("peso_promedio"));
                     mascota.setActivo(rs.getBoolean("activo"));
+                    mascota.setCliente(cd.buscarCliente(rs.getInt("id_cliente")));
                     mascotas.add(mascota);
                     JOptionPane.showMessageDialog(null, "Mascota encontrada exitosamente  " + " Paciente N° : " + mascota.getId_mascota());
                 }
@@ -312,7 +315,7 @@ public class MascotaData {
                 mascota.setColor_pelaje(rs.getString("color_pelaje"));
                 mascota.setFecha_nac(rs.getDate("fecha_nac").toLocalDate());
                 mascota.setPeso_actual(rs.getDouble("peso_actual"));
-//              mascota.setCliente(rs.getObject(cd.getClass().
+                mascota.setCliente(cd.buscarCliente(rs.getInt("id_cliente")));
                 mascota.setPeso_promedio(rs.getDouble("peso_promedio"));
                 mascota.setActivo(rs.getBoolean("activo"));
 
@@ -438,7 +441,7 @@ public class MascotaData {
 
         return especies;
     }
-    
+
     // Calcula Edad en años y meses  si es menor a 1 año en meses y en años si mayor//
     public String calcularEdad(LocalDate fecha_nac) {
         int edad = 0;

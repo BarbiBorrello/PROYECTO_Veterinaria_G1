@@ -13,14 +13,9 @@ import veterinaria_CONTROLADOR.Validaciones_CAMPOS;
 import veterinaria_CONTROLADOR.VisitaData;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -47,14 +42,14 @@ public class Menu_PRINCIPAL_VETERINARIA extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Menu_PRINCIPAL_VETERINARIA.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.cd = new ClienteData(conexion);
-        this.md = new MascotaData(conexion);
-        this.td = new TratamientoData(conexion);
-        this.vd = new VisitaData(conexion);
+
          
         initComponents();
         setLocationRelativeTo(null);
-        
+                this.cd = new ClienteData(conexion);
+        this.md = new MascotaData(conexion);
+        this.td = new TratamientoData(conexion);
+        this.vd = new VisitaData(conexion);
     }
 
     /**
