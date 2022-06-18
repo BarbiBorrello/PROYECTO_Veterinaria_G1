@@ -5,6 +5,12 @@
  */
 package VISTAS;
 
+import java.util.List;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import veterinaria_MODELO.Tratamiento;
+
 /**
  *
  * @author Barbara
@@ -101,7 +107,7 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         jrbACTIVO.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jrbACTIVO.setText("Activo");
         jrbACTIVO.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(jrbACTIVO, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 70, 20));
+        jPanel1.add(jrbACTIVO, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 70, 20));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 0, 204));
@@ -146,6 +152,11 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/search.png"))); // NOI18N
         jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 60, 50));
         jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 610, -1));
 
@@ -163,7 +174,7 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         jlAPELLIDO3.setText("Descripcion :");
         jPanel1.add(jlAPELLIDO3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 130, 20));
         jPanel1.add(jtTratamientoN, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 80, -1));
-        jPanel1.add(jtTratamientoTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 120, -1));
+        jPanel1.add(jtTratamientoTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 250, -1));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -187,7 +198,9 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -198,9 +211,67 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        // TODO add your handling code here:
+        jtTratamientoN.setText("");
+        jtTratamientoTipo.setText("");
+        jTextArea1.setText("");
+        jtTratamientoMedicacion.setText("");
+        jtTratamientoPrecio.setText("");
     }//GEN-LAST:event_jLabel7MouseClicked
 
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        // mostrar opcion de buscar por id o seleccionar de una lista
+        int result = JOptionPane.showOptionDialog(this, "¿Desea buscar por ID de tratamiento o seleccionar de una lista?", "Seleccione el metodo de busqueda", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"ID", "Lista"}, "");
+        if (result == JOptionPane.YES_OPTION) {
+            // buscar por id
+            int id = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID del tratamiento"));
+            Tratamiento tratamiento = Menu_PRINCIPAL_VETERINARIA.td.buscarTratamientoActivo(id);
+            if (tratamiento == null) {
+                tratamiento = Menu_PRINCIPAL_VETERINARIA.td.buscarTratamientoInactivo(id);
+            } else if (tratamiento == null) {
+                JOptionPane.showMessageDialog(this, "No se encontro el tratamiento");
+            } else {
+                rellenarFormulario(tratamiento);
+            }
+
+        } else if (result == JOptionPane.NO_OPTION) {
+            List<Tratamiento> tratamientoList = Menu_PRINCIPAL_VETERINARIA.td.obtenerTratamientos();
+            // mostrar lista de tratamientos en un JPanel usando un combobox
+            JPanel panel = new JPanel();
+            JComboBox<Tratamiento> comboBox = new JComboBox<>();
+            for (Tratamiento tratamiento : tratamientoList) {
+                comboBox.addItem(tratamiento);
+            }
+            panel.add(comboBox);
+            int result2 = JOptionPane.showOptionDialog(this, panel, "Seleccione el tratamiento", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, "");
+            if (result2 == JOptionPane.OK_OPTION) {
+                Tratamiento tratamiento = (Tratamiento) comboBox.getSelectedItem();
+                rellenarFormulario(tratamiento);
+            }
+        }
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private Tratamiento crearUnTratamientoDesdeForm() {
+        Tratamiento tratamiento = new Tratamiento();
+        tratamiento.setTipo_tratamiento(jtTratamientoTipo.getText());
+        tratamiento.setDescripcion(jTextArea1.getText());
+        tratamiento.setMedicamento(jtTratamientoMedicacion.getText());
+        tratamiento.setPrecio(Double.parseDouble(jtTratamientoPrecio.getText()));
+        tratamiento.setActivo(jrbACTIVO.isSelected());
+        return tratamiento;
+    }
+
+    private void rellenarFormulario(Tratamiento tratamiento) {
+        jtTratamientoN.setText(Integer.toString(tratamiento.getId_tratamiento()));
+        jtTratamientoTipo.setText(tratamiento.getTipo_tratamiento());
+        jTextArea1.setText(tratamiento.getDescripcion());
+        jtTratamientoMedicacion.setText(tratamiento.getMedicamento());
+        jtTratamientoPrecio.setText(String.valueOf(tratamiento.getPrecio()));
+        if (tratamiento.isActivo()) {
+            jrbACTIVO.setSelected(true);
+        } else {
+            jrbACTIVO.setSelected(false);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

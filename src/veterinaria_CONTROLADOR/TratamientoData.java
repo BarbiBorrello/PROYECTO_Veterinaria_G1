@@ -251,9 +251,7 @@ public class TratamientoData {
                 tratamiento.setMedicamento(rs.getString("medicamento"));
                 tratamiento.setPrecio(rs.getDouble("importe"));
                 tratamiento.setActivo(rs.getBoolean("activo"));
-                tratamiento.setId_tratamiento(rs.getInt("id_tratamiento"));
                 tratamiento.setTipo_tratamiento(rs.getString("tipo_tratamiento"));
-
                 tratamientos.add(tratamiento);
 
             }
