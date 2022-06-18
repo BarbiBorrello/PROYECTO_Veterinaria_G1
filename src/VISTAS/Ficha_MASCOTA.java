@@ -70,6 +70,7 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         jtPesoActual = new javax.swing.JTextField();
         jtPesoPromedio = new javax.swing.JTextField();
         jtEdad = new javax.swing.JTextField();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -206,6 +207,7 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         jPanel1.add(jtPesoActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 80, -1));
         jPanel1.add(jtPesoPromedio, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, 80, -1));
         jPanel1.add(jtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, 80, -1));
+        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -241,6 +243,7 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
