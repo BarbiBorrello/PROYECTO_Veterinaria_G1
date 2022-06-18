@@ -246,7 +246,7 @@ public class MascotaData {
     public void borrarMascota(int p_id_mascota) {
 
         // String de consulta a base de datos
-        String sql = "UPDATE mascota SET activo =0 WHERE id_mascota=?";
+        String sql = "UPDATE mascota SET activo = 0 WHERE id_mascota = ?;";
 
         try {
 
