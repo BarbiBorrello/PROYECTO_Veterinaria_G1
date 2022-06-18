@@ -30,6 +30,8 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         initComponents();
         jLabel4.setVisible(false);
         jLabel5.setVisible(false);
+        llenarListaTratamientos();
+        jTableTratamientos.setAutoCreateRowSorter(true);
     }
 
     /**
@@ -62,7 +64,7 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jrbACTIVO = new javax.swing.JRadioButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTableTratamientos = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -78,7 +80,7 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         jtTratamientoMedicacion = new javax.swing.JTextField();
         jtTratamientoPrecio = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jlLISTAR_Visita = new javax.swing.JLabel();
+        jlLISTAR_Tratamientos = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -124,9 +126,10 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         jrbACTIVO.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jrbACTIVO.setText("Activo");
         jrbACTIVO.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jrbACTIVO.setEnabled(false);
         jPanel1.add(jrbACTIVO, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 70, 20));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTableTratamientos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null}
             },
@@ -142,7 +145,7 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(jTableTratamientos);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 560, 110));
 
@@ -159,6 +162,11 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/add.png"))); // NOI18N
         jLabel3.setToolTipText("Agregar un tratamiento con los campos en el formulario");
         jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 60, 50));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/delete.png"))); // NOI18N
@@ -174,6 +182,11 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/edit.png"))); // NOI18N
         jLabel5.setToolTipText("Permite actualizar el tratamiento que se busco previamente y se cargo al formulario");
         jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 60, 50));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/search.png"))); // NOI18N
@@ -218,19 +231,19 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         jLabel8.setText("$");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 10, 20));
 
-        jlLISTAR_Visita.setBackground(new java.awt.Color(51, 51, 255));
-        jlLISTAR_Visita.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jlLISTAR_Visita.setForeground(new java.awt.Color(255, 255, 255));
-        jlLISTAR_Visita.setText(" LISTAR TRATAMIENTOS");
-        jlLISTAR_Visita.setToolTipText("Presione aqui para recargar los tratamientos existentes");
-        jlLISTAR_Visita.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        jlLISTAR_Visita.setOpaque(true);
-        jlLISTAR_Visita.addMouseListener(new java.awt.event.MouseAdapter() {
+        jlLISTAR_Tratamientos.setBackground(new java.awt.Color(51, 51, 255));
+        jlLISTAR_Tratamientos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jlLISTAR_Tratamientos.setForeground(new java.awt.Color(255, 255, 255));
+        jlLISTAR_Tratamientos.setText(" LISTAR TRATAMIENTOS");
+        jlLISTAR_Tratamientos.setToolTipText("Presione aqui para recargar los tratamientos existentes");
+        jlLISTAR_Tratamientos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jlLISTAR_Tratamientos.setOpaque(true);
+        jlLISTAR_Tratamientos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlLISTAR_VisitaMouseClicked(evt);
+                jlLISTAR_TratamientosMouseClicked(evt);
             }
         });
-        jPanel1.add(jlLISTAR_Visita, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, 240, -1));
+        jPanel1.add(jlLISTAR_Tratamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, 240, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -255,12 +268,19 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        limpiarFormulario();
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void limpiarFormulario() {
         jtTratamientoN.setText("");
         jtTratamientoTipo.setText("");
         jTextArea1.setText("");
         jtTratamientoMedicacion.setText("");
         jtTratamientoPrecio.setText("");
-    }//GEN-LAST:event_jLabel7MouseClicked
+        jrbACTIVO.setEnabled(false);
+        jLabel4.setVisible(false);
+        jLabel5.setVisible(false);
+    }
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         // mostrar opcion de buscar por id o seleccionar de una lista
@@ -271,7 +291,8 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
             Tratamiento tratamiento = Menu_PRINCIPAL_VETERINARIA.td.buscarTratamientoActivo(id);
             if (tratamiento == null) {
                 tratamiento = Menu_PRINCIPAL_VETERINARIA.td.buscarTratamientoInactivo(id);
-            } else if (tratamiento == null) {
+            }
+            if (tratamiento == null) {
                 JOptionPane.showMessageDialog(this, "No se encontro el tratamiento");
             } else {
                 rellenarFormulario(tratamiento);
@@ -294,14 +315,95 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jLabel6MouseClicked
 
-    private void jlLISTAR_VisitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlLISTAR_VisitaMouseClicked
+    private void jlLISTAR_TratamientosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlLISTAR_TratamientosMouseClicked
+        llenarListaTratamientos();
+    }//GEN-LAST:event_jlLISTAR_TratamientosMouseClicked
 
+    public void llenarListaTratamientos() {
+        // cargar la lista de tratamientos en un JTable2
+        List<Tratamiento> tratamientoList = Menu_PRINCIPAL_VETERINARIA.td.obtenerTratamientos();
+        DefaultTableModel model = (DefaultTableModel) jTableTratamientos.getModel();
+        model.setRowCount(0); // BORRA TODAS LAS LINEAS Y VUELVE A 0//
 
-    }//GEN-LAST:event_jlLISTAR_VisitaMouseClicked
-
+        for (Tratamiento t1 : tratamientoList) {
+            model.addRow(new Object[]{t1.getId_tratamiento(), t1.getTipo_tratamiento(), t1.getDescripcion(), t1.getMedicamento(), t1.getPrecio(), t1.isActivo()});
+        }
+    }
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        // TODO add your handling code here:
+        // check if jTratamientoN is not empty, then ask if user wants to delete tratamiento
+        if (!jtTratamientoN.getText().isEmpty()) {
+            int result = JOptionPane.showOptionDialog(this, "¿Desea eliminar el tratamiento?", "Eliminar tratamiento ID: " + jtTratamientoN.getText(), JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"Si", "No"}, "");
+            if (result == JOptionPane.YES_OPTION) {
+                // delete tratamiento
+                Menu_PRINCIPAL_VETERINARIA.td.borrarTratamiento(Integer.parseInt(jtTratamientoN.getText()));
+                JOptionPane.showMessageDialog(this, "Tratamiento eliminado");
+
+            } else if (result == JOptionPane.NO_OPTION) {
+                JOptionPane.showMessageDialog(this, "Tratamiento no eliminado");
+            }
+        }
     }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        // validar el formulario, entonces actualizar el tratamiento
+        // preguntar si se desea actualizar el tratamiento con un joptionpane
+        int result = JOptionPane.showOptionDialog(this, "¿Desea actualizar el tratamiento?", "Actualizar tratamiento ID: " + jtTratamientoN.getText(), JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"Si", "No"}, "");
+        if (result == JOptionPane.YES_OPTION) {
+            if (validarFormulario()) {
+                Tratamiento tratamiento = crearUnTratamientoDesdeForm();
+                Menu_PRINCIPAL_VETERINARIA.td.modificarTratamiento(Integer.parseInt(jtTratamientoN.getText()), tratamiento);
+                JOptionPane.showMessageDialog(this, "Tratamiento actualizado");
+                limpiarFormulario();
+            } else {
+                JOptionPane.showMessageDialog(this, "No se pudo actualizar el tratamiento");
+            }
+        } else if (result == JOptionPane.NO_OPTION) {
+            JOptionPane.showMessageDialog(this, "Tratamiento no actualizado");
+        }
+
+
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // validar el formulario, entonces guardar el tratamiento
+        // preguntar si se desea guardar el tratamiento con un joptionpane
+        int result = JOptionPane.showOptionDialog(this, "¿Desea guardar el tratamiento?", "Guardar tratamiento", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"Si", "No"}, "");
+        if (result == JOptionPane.YES_OPTION) {
+            if (validarFormulario()) {
+                Tratamiento tratamiento = crearUnTratamientoDesdeForm();
+                Menu_PRINCIPAL_VETERINARIA.td.agregar_Tratamiento(tratamiento);
+                JOptionPane.showMessageDialog(this, "Tratamiento guardado");
+            } else {
+                JOptionPane.showMessageDialog(this, "No se pudo guardar el tratamiento");
+            }
+        } else if (result == JOptionPane.NO_OPTION) {
+            JOptionPane.showMessageDialog(this, "Tratamiento no guardado");
+        }
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private boolean validarFormularioParaModificar() {
+        if (jtTratamientoN.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El ID del tratamiento no puede estar vacio");
+            return false;
+        } else {
+            return validarFormulario();
+        }
+    }
+
+    private boolean validarFormulario() {
+        if (jTextArea1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "La descripcion del tratamiento no puede estar vacia");
+            jTextArea1.requestFocus();
+            return false;
+        }
+        if (jtTratamientoPrecio.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El precio del tratamiento no puede estar vacio");
+            jtTratamientoPrecio.requestFocus();
+            return false;
+        }
+
+        return true;
+    }
 
     private Tratamiento crearUnTratamientoDesdeForm() {
         Tratamiento tratamiento = new Tratamiento();
@@ -314,19 +416,40 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
     }
 
     private void rellenarFormulario(Tratamiento tratamiento) {
-        jtTratamientoN.setText(Integer.toString(tratamiento.getId_tratamiento()));
-        jtTratamientoTipo.setText(tratamiento.getTipo_tratamiento());
-        jTextArea1.setText(tratamiento.getDescripcion());
-        jtTratamientoMedicacion.setText(tratamiento.getMedicamento());
-        jtTratamientoPrecio.setText(String.valueOf(tratamiento.getPrecio()));
         if (tratamiento.isActivo()) {
+            jtTratamientoN.setText(Integer.toString(tratamiento.getId_tratamiento()));
+            jtTratamientoTipo.setText(tratamiento.getTipo_tratamiento());
+            jTextArea1.setText(tratamiento.getDescripcion());
+            jtTratamientoMedicacion.setText(tratamiento.getMedicamento());
+            jtTratamientoPrecio.setText(String.valueOf(tratamiento.getPrecio()));
             jrbACTIVO.setSelected(true);
+            jLabel4.setVisible(true);
+            jLabel5.setVisible(true);
         } else {
-            jrbACTIVO.setSelected(false);
+            // preguntar si desea activar el tratamiento
+            int result = JOptionPane.showOptionDialog(this, "¿El tratamiento esta inactivo desea activar el tratamiento?", "Tratamiento inactivo ID: " + tratamiento.getId_tratamiento(), JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"Si", "No"}, "");
+            if (result == JOptionPane.YES_OPTION) {
+                // activar tratamiento
+                jrbACTIVO.setSelected(true);
+                Menu_PRINCIPAL_VETERINARIA.td.activarTratamiento(tratamiento.getId_tratamiento());
+                JOptionPane.showMessageDialog(this, "Tratamiento activado");
+                jLabel4.setVisible(true);
+                jLabel5.setVisible(true);
+            } else if (result == JOptionPane.NO_OPTION) {
+                JOptionPane.showMessageDialog(this, "Tratamiento no activado");
+                jrbACTIVO.setSelected(false);
+                jLabel4.setVisible(false);
+                jLabel5.setVisible(false);
+            }
+            jtTratamientoN.setText(Integer.toString(tratamiento.getId_tratamiento()));
+            jtTratamientoTipo.setText(tratamiento.getTipo_tratamiento());
+            jTextArea1.setText(tratamiento.getDescripcion());
+            jtTratamientoMedicacion.setText(tratamiento.getMedicamento());
+            jtTratamientoPrecio.setText(String.valueOf(tratamiento.getPrecio()));
         }
-        jLabel4.setVisible(true);
-        jLabel5.setVisible(true);
+
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
@@ -345,13 +468,13 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTableTratamientos;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel jlAPELLIDO2;
     private javax.swing.JLabel jlAPELLIDO3;
     private javax.swing.JLabel jlCONTACTO_ALTERNATIVO;
     private javax.swing.JLabel jlDNI;
-    private javax.swing.JLabel jlLISTAR_Visita;
+    private javax.swing.JLabel jlLISTAR_Tratamientos;
     private javax.swing.JLabel jlN_DE_CLIENTE;
     private javax.swing.JRadioButton jrbACTIVO;
     private javax.swing.JTextField jtTratamientoMedicacion;

@@ -166,7 +166,7 @@ public class TratamientoData {
             ps.setInt(4, p_tratamiento.isActivo() ? 1 : 0);
             ps.setString(5, p_tratamiento.getTipo_tratamiento());
             ps.setInt(6, p_id_tratamiento);
-
+            System.out.println(ps.toString());
             int rs = ps.executeUpdate();
 
             if (rs > 0) {

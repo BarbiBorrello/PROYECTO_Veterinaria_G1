@@ -35,9 +35,11 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
 
         Tratamientos_Visita(); // inicializa con listado de tratamientos activos
         fechaVisita();         // inicializa con le fecha de hoy  
-        
+
         // inicio la funcion de validacion de campos para el formulario
         validacionDeCampos();
+
+        jTableVisitas.setAutoCreateRowSorter(true);
 
     }
 
@@ -166,7 +168,7 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
         jlLISTAR_Visita.setBackground(new java.awt.Color(51, 51, 255));
         jlLISTAR_Visita.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jlLISTAR_Visita.setForeground(new java.awt.Color(255, 255, 255));
-        jlLISTAR_Visita.setText(" LISTAR VISITAS");
+        jlLISTAR_Visita.setText(" LISTAR VISITAS DE MASCOTA");
         jlLISTAR_Visita.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jlLISTAR_Visita.setOpaque(true);
         jlLISTAR_Visita.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -174,7 +176,7 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
                 jlLISTAR_VisitaMouseClicked(evt);
             }
         });
-        jPanel1.add(jlLISTAR_Visita, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 470, 160, -1));
+        jPanel1.add(jlLISTAR_Visita, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 470, 290, -1));
 
         jlSALIR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/close.png"))); // NOI18N
         jlSALIR.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -286,7 +288,7 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Double.class, java.lang.String.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Double.class, java.lang.String.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false
@@ -463,31 +465,27 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtDNI_duenio_VKeyTyped
 
     private void jlLISTAR_VisitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlLISTAR_VisitaMouseClicked
-        // TODO add your handling code here:
-        
-          
-        // lista llena de los items del combobos Mascota//
-        List <Visita> listarVisitas = Menu_PRINCIPAL_VETERINARIA.vd.buscarVisitaxFecha((Mascota)jcMascotaV.getSelectedItem());
-            
-        
-    // TABLA // ----------------------------------------------------------------------------------------------      
-        DefaultTableModel model = (DefaultTableModel) jTableVisitas.getModel();
-        model.setRowCount(0); // BORRA TODAS LAS LINEAS Y VUELVE A 0//
 
-        for (Visita v1 : listarVisitas) {
-            
-            model.addRow(new Object[]{v1.getIdvisita(), v1.getTratamiento().getTipo_tratamiento(),v1.getFecha_visita(),v1.getPeso(),v1.getTratamiento().getDescripcion(),v1.getTratamiento().getPrecio()});
+        // check if jcbMascota is empty  or not selected any item
+        if (jcMascotaV.getItemCount() == 0) {
+            JOptionPane.showMessageDialog(null, "No se ha cargado ninguna mascota, debe buscar un cliente con mascotas");
+        } else if (jcMascotaV.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(null, "No ha seleccionado ninguna mascota");
+        } else {
+            // lista llena de los items del combobos Mascota//
+            List<Visita> listarVisitas = Menu_PRINCIPAL_VETERINARIA.vd.buscarVisitaxFecha((Mascota) jcMascotaV.getSelectedItem());
+
+            // TABLA // ----------------------------------------------------------------------------------------------      
+            DefaultTableModel model = (DefaultTableModel) jTableVisitas.getModel();
+            model.setRowCount(0); // BORRA TODAS LAS LINEAS Y VUELVE A 0//
+
+            for (Visita v1 : listarVisitas) {
+
+                model.addRow(new Object[]{v1.getIdvisita(), v1.getTratamiento().getTipo_tratamiento(), v1.getFecha_visita(), v1.getPeso(), v1.getTratamiento().getDescripcion(), v1.getTratamiento().getPrecio()});
+            }
         }
-		    
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jlLISTAR_VisitaMouseClicked
 
     private void limpiar() {
@@ -502,7 +500,7 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
 
 // metodo: trae todos los tratamientos activos //
     public void Tratamientos_Visita() {
-        
+
         List<Tratamiento> t = Menu_PRINCIPAL_VETERINARIA.td.obtenerTratamientos();
 
         for (Tratamiento t1 : t) {
