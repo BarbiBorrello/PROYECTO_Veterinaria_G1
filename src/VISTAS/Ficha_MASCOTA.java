@@ -396,9 +396,7 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "La mascota que intenta Agregar, tiene igual nombre, especie y dueño, revise los Datos");
             }
-
         }
-
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
