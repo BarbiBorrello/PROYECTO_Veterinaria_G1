@@ -263,7 +263,12 @@ public class VisitaData {
                     visita.setPeso(rs.getDouble("peso"));
                     visita.setActivo(rs.getBoolean("activo"));
                     visita.setMascota(md.buscarMascota(rs.getInt("id_mascota")));
-                    visita.setTratamiento(td.buscarTratamientoActivo(rs.getInt("id_tratamiento")));
+                    Tratamiento t = td.buscarTratamientoActivo(rs.getInt("id_tratamiento"));
+                    if(t == null){
+                        t = td.buscarTratamientoInactivo(rs.getInt("id_tratamiento"));
+                    }
+                    visita.setTratamiento(t);
+                    
                     
                     visitas.add(visita);
 

@@ -97,36 +97,39 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        setPreferredSize(new java.awt.Dimension(700, 700));
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(700, 700));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 580, 20));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 580, 20));
 
         jlALIAS.setBackground(new java.awt.Color(255, 255, 255));
         jlALIAS.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlALIAS.setForeground(new java.awt.Color(255, 255, 255));
         jlALIAS.setText("DUEÑO:");
-        jPanel1.add(jlALIAS, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, -1, -1));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 112, 580, 10));
+        jPanel1.add(jlALIAS, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, -1, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 580, 10));
 
         jlNOMBRE.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jlNOMBRE.setForeground(new java.awt.Color(255, 255, 255));
         jlNOMBRE.setText("Raza:");
-        jPanel1.add(jlNOMBRE, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 70, 20));
+        jPanel1.add(jlNOMBRE, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 70, 20));
 
         jlCONTACTO_ALTERNATIVO.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jlCONTACTO_ALTERNATIVO.setForeground(new java.awt.Color(255, 255, 255));
         jlCONTACTO_ALTERNATIVO.setText("F. Nac:");
-        jPanel1.add(jlCONTACTO_ALTERNATIVO, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 90, 20));
+        jPanel1.add(jlCONTACTO_ALTERNATIVO, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 90, 20));
 
         jlAPELLIDO2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jlAPELLIDO2.setForeground(new java.awt.Color(255, 255, 255));
         jlAPELLIDO2.setText("Edad :");
-        jPanel1.add(jlAPELLIDO2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 90, 20));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 590, 10));
+        jPanel1.add(jlAPELLIDO2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 90, 20));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 590, 10));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 0, 204));
         jLabel1.setText("Ultima visita :");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/close.png"))); // NOI18N
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -135,7 +138,7 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
                 jLabel2MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, 60, 50));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 60, 50));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/add.png"))); // NOI18N
         jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -144,7 +147,7 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
                 jLabel3MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 60, 50));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 60, 50));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/delete.png"))); // NOI18N
         jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -153,7 +156,7 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
                 jLabel4MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 60, 50));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 60, 50));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/edit.png"))); // NOI18N
         jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -162,7 +165,7 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
                 jLabel5MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 60, 50));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 60, 50));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/search.png"))); // NOI18N
         jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -171,13 +174,13 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
                 jLabel6MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 60, 50));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 60, 50));
 
         jlN_DE_CLIENTE1.setBackground(new java.awt.Color(255, 255, 255));
         jlN_DE_CLIENTE1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlN_DE_CLIENTE1.setForeground(new java.awt.Color(255, 255, 255));
         jlN_DE_CLIENTE1.setText("N°  de Paciente:");
-        jPanel1.add(jlN_DE_CLIENTE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+        jPanel1.add(jlN_DE_CLIENTE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/clear.png"))); // NOI18N
         jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -191,61 +194,61 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
                 jLabel7KeyTyped(evt);
             }
         });
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 60, 50));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, 60, 50));
 
         jlCONTACTO_ALTERNATIVO1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jlCONTACTO_ALTERNATIVO1.setForeground(new java.awt.Color(255, 255, 255));
         jlCONTACTO_ALTERNATIVO1.setText("Sexo:");
-        jPanel1.add(jlCONTACTO_ALTERNATIVO1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 50, 20));
+        jPanel1.add(jlCONTACTO_ALTERNATIVO1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 50, 20));
 
         jlALIAS1.setBackground(new java.awt.Color(255, 255, 255));
         jlALIAS1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlALIAS1.setForeground(new java.awt.Color(255, 255, 255));
         jlALIAS1.setText("ALIAS:");
-        jPanel1.add(jlALIAS1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, -1, -1));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 630, 20));
+        jPanel1.add(jlALIAS1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, -1, -1));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 630, 20));
 
         jlAPELLIDO3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jlAPELLIDO3.setForeground(new java.awt.Color(255, 255, 255));
         jlAPELLIDO3.setText("Especie:");
-        jPanel1.add(jlAPELLIDO3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 70, 20));
+        jPanel1.add(jlAPELLIDO3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 70, 20));
 
         jlAPELLIDO4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jlAPELLIDO4.setForeground(new java.awt.Color(255, 255, 255));
         jlAPELLIDO4.setText("Color pelaje :");
-        jPanel1.add(jlAPELLIDO4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 90, 20));
+        jPanel1.add(jlAPELLIDO4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 90, 20));
 
         jlAPELLIDO5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jlAPELLIDO5.setForeground(new java.awt.Color(255, 255, 255));
         jlAPELLIDO5.setText("Peso actual :");
-        jPanel1.add(jlAPELLIDO5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 90, 20));
+        jPanel1.add(jlAPELLIDO5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 90, 20));
 
         jlAPELLIDO6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jlAPELLIDO6.setForeground(new java.awt.Color(255, 255, 255));
         jlAPELLIDO6.setText("Peso Prom  :");
-        jPanel1.add(jlAPELLIDO6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 90, 20));
+        jPanel1.add(jlAPELLIDO6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 90, 20));
 
         jLabel8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, 220, 110));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 210, 220, 110));
 
         jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
         jRadioButton1.setText("Fallecido");
         jRadioButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jRadioButton1.setEnabled(false);
-        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 80, 20));
+        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 80, 20));
 
         jtNPaciente.setEnabled(false);
-        jPanel1.add(jtNPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 70, -1));
-        jPanel1.add(jtAlias, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 90, -1));
-        jPanel1.add(jtDNIDuenio, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, 80, -1));
-        jPanel1.add(jtEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 90, -1));
-        jPanel1.add(jtRaza, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 90, -1));
-        jPanel1.add(jtSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 90, -1));
-        jPanel1.add(jtPelaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 80, -1));
-        jPanel1.add(jtPesoActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 80, -1));
-        jPanel1.add(jtPesoPromedio, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, 80, -1));
-        jPanel1.add(jtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, 80, -1));
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, -1, -1));
+        jPanel1.add(jtNPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 70, -1));
+        jPanel1.add(jtAlias, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 90, -1));
+        jPanel1.add(jtDNIDuenio, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, 80, -1));
+        jPanel1.add(jtEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 90, -1));
+        jPanel1.add(jtRaza, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 90, -1));
+        jPanel1.add(jtSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 90, -1));
+        jPanel1.add(jtPelaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 80, -1));
+        jPanel1.add(jtPesoActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 80, -1));
+        jPanel1.add(jtPesoPromedio, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 80, -1));
+        jPanel1.add(jtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 80, -1));
+        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, -1, -1));
 
         jTableVisitas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -273,7 +276,7 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         jTableVisitas.setRowHeight(20);
         jScrollPane3.setViewportView(jTableVisitas);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 630, 50));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 630, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -285,7 +288,7 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
         );
 
         pack();

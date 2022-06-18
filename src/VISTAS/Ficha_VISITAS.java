@@ -38,7 +38,6 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
 
         // inicio la funcion de validacion de campos para el formulario
         validacionDeCampos();
-
         jTableVisitas.setAutoCreateRowSorter(true);
 
     }
@@ -115,55 +114,57 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setResizable(true);
+        setPreferredSize(new java.awt.Dimension(700, 700));
 
+        jPanel1.setPreferredSize(new java.awt.Dimension(700, 700));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 630, 10));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 610, 10));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 630, 10));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 610, 10));
 
         jlFecha_V.setBackground(new java.awt.Color(255, 255, 255));
         jlFecha_V.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jlFecha_V.setForeground(new java.awt.Color(255, 255, 255));
         jlFecha_V.setText("Fecha :");
-        jPanel1.add(jlFecha_V, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+        jPanel1.add(jlFecha_V, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
         jlN_DE_VISITA.setBackground(new java.awt.Color(255, 255, 255));
         jlN_DE_VISITA.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jlN_DE_VISITA.setForeground(new java.awt.Color(255, 255, 255));
         jlN_DE_VISITA.setText("Visita N° :");
-        jPanel1.add(jlN_DE_VISITA, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
+        jPanel1.add(jlN_DE_VISITA, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
 
         jlPrecio_V.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jlPrecio_V.setForeground(new java.awt.Color(255, 255, 255));
         jlPrecio_V.setText("Valor de la consulta : ");
-        jPanel1.add(jlPrecio_V, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 220, 20));
+        jPanel1.add(jlPrecio_V, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, 220, 20));
 
         jlprecio_V.setBackground(new java.awt.Color(255, 255, 255));
         jlprecio_V.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jlprecio_V.setEnabled(false);
         jlprecio_V.setOpaque(true);
-        jPanel1.add(jlprecio_V, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 80, 20));
+        jPanel1.add(jlprecio_V, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 80, 20));
 
         jlMascota_V.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlMascota_V.setForeground(new java.awt.Color(255, 255, 255));
         jlMascota_V.setText("Mascota :");
-        jPanel1.add(jlMascota_V, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 90, 20));
+        jPanel1.add(jlMascota_V, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 90, 20));
 
         jlDuenio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlDuenio.setForeground(new java.awt.Color(255, 255, 255));
         jlDuenio.setText("DNI Dueño:");
-        jPanel1.add(jlDuenio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 100, 20));
+        jPanel1.add(jlDuenio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 100, 20));
 
         jlSintomas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlSintomas.setForeground(new java.awt.Color(255, 255, 255));
         jlSintomas.setText("Sintomas:");
-        jPanel1.add(jlSintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 70, 20));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 590, 10));
+        jPanel1.add(jlSintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, 70, 20));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 590, 10));
 
         jrbACTIVO.setBackground(new java.awt.Color(255, 255, 255));
         jrbACTIVO.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jrbACTIVO.setText("Activa");
         jrbACTIVO.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(jrbACTIVO, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 70, 20));
+        jPanel1.add(jrbACTIVO, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 70, 20));
 
         jlLISTAR_Visita.setBackground(new java.awt.Color(51, 51, 255));
         jlLISTAR_Visita.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -176,7 +177,7 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
                 jlLISTAR_VisitaMouseClicked(evt);
             }
         });
-        jPanel1.add(jlLISTAR_Visita, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 470, 290, -1));
+        jPanel1.add(jlLISTAR_Visita, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 480, 290, -1));
 
         jlSALIR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/close.png"))); // NOI18N
         jlSALIR.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -185,7 +186,7 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
                 jlSALIRMouseClicked(evt);
             }
         });
-        jPanel1.add(jlSALIR, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 380, 60, 50));
+        jPanel1.add(jlSALIR, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 390, 60, 50));
 
         jbuscarClienteV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/search.png"))); // NOI18N
         jbuscarClienteV.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -194,7 +195,7 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
                 jbuscarClienteVMouseClicked(evt);
             }
         });
-        jPanel1.add(jbuscarClienteV, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 60, 50));
+        jPanel1.add(jbuscarClienteV, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 60, 50));
 
         jLIMPIAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/clear.png"))); // NOI18N
         jLIMPIAR.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -203,12 +204,12 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
                 jLIMPIARMouseClicked(evt);
             }
         });
-        jPanel1.add(jLIMPIAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 380, 60, 50));
+        jPanel1.add(jLIMPIAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, 60, 50));
 
         jlTratamiento_V.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlTratamiento_V.setForeground(new java.awt.Color(255, 255, 255));
         jlTratamiento_V.setText("Tratamiento :");
-        jPanel1.add(jlTratamiento_V, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 140, 20));
+        jPanel1.add(jlTratamiento_V, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 140, 20));
 
         jcMascotaV.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jcMascotaV.addActionListener(new java.awt.event.ActionListener() {
@@ -216,21 +217,21 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
                 jcMascotaVActionPerformed(evt);
             }
         });
-        jPanel1.add(jcMascotaV, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 190, -1));
+        jPanel1.add(jcMascotaV, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, 190, -1));
 
         jtDNI_duenio_V.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtDNI_duenio_VKeyTyped(evt);
             }
         });
-        jPanel1.add(jtDNI_duenio_V, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 140, -1));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 570, 10));
-        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 570, 10));
+        jPanel1.add(jtDNI_duenio_V, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 140, -1));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 570, 10));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 570, 10));
 
         jlPeso_V.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlPeso_V.setForeground(new java.awt.Color(255, 255, 255));
         jlPeso_V.setText("Peso:");
-        jPanel1.add(jlPeso_V, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 70, 20));
+        jPanel1.add(jlPeso_V, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 70, 20));
 
         jcbTratamientos_V.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jcbTratamientos_V.addActionListener(new java.awt.event.ActionListener() {
@@ -238,10 +239,10 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
                 jcbTratamientos_VActionPerformed(evt);
             }
         });
-        jPanel1.add(jcbTratamientos_V, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 220, -1));
+        jPanel1.add(jcbTratamientos_V, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, 220, -1));
 
         jdcFechaV.setEnabled(false);
-        jPanel1.add(jdcFechaV, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 140, -1));
+        jPanel1.add(jdcFechaV, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 140, -1));
 
         jtfPeso.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jtfPeso.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -251,7 +252,7 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
                 jtfPesoActionPerformed(evt);
             }
         });
-        jPanel1.add(jtfPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 70, 20));
+        jPanel1.add(jtfPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 70, 20));
 
         jtfSintomas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfSintomas.addActionListener(new java.awt.event.ActionListener() {
@@ -259,11 +260,11 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
                 jtfSintomasActionPerformed(evt);
             }
         });
-        jPanel1.add(jtfSintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 280, 40));
+        jPanel1.add(jtfSintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 280, 40));
 
         jtID_VISITA.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtID_VISITA.setEnabled(false);
-        jPanel1.add(jtID_VISITA, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 70, 20));
+        jPanel1.add(jtID_VISITA, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 70, 20));
 
         jlGUARDAR_VISITA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/GUARDAR_VISITA_ICONO.png"))); // NOI18N
         jlGUARDAR_VISITA.setText(" ");
@@ -273,8 +274,8 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
                 jlGUARDAR_VISITAMouseClicked(evt);
             }
         });
-        jPanel1.add(jlGUARDAR_VISITA, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 50, 50));
-        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 580, 10));
+        jPanel1.add(jlGUARDAR_VISITA, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 50, 50));
+        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 470, 580, 10));
 
         jTableVisitas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -304,15 +305,15 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(jTableVisitas);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 500, 440, 90));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, 620, 90));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -480,7 +481,6 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
             model.setRowCount(0); // BORRA TODAS LAS LINEAS Y VUELVE A 0//
 
             for (Visita v1 : listarVisitas) {
-
                 model.addRow(new Object[]{v1.getIdvisita(), v1.getTratamiento().getTipo_tratamiento(), v1.getFecha_visita(), v1.getPeso(), v1.getTratamiento().getDescripcion(), v1.getTratamiento().getPrecio()});
             }
         }
