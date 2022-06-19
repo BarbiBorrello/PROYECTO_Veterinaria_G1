@@ -58,7 +58,7 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jLBuscarMascota = new javax.swing.JLabel();
         jlN_DE_CLIENTE1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jlCONTACTO_ALTERNATIVO1 = new javax.swing.JLabel();
@@ -167,14 +167,14 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 60, 50));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/search.png"))); // NOI18N
-        jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLBuscarMascota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/search.png"))); // NOI18N
+        jLBuscarMascota.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLBuscarMascota.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel6MouseClicked(evt);
+                jLBuscarMascotaMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 60, 50));
+        jPanel1.add(jLBuscarMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 60, 50));
 
         jlN_DE_CLIENTE1.setBackground(new java.awt.Color(255, 255, 255));
         jlN_DE_CLIENTE1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -298,7 +298,7 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         limpiarFormulario();
     }//GEN-LAST:event_jLabel7KeyTyped
 
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+    private void jLBuscarMascotaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBuscarMascotaMouseClicked
         /* show the option dialog that ask  search method by alias or id_mascota */
 
         int result = JOptionPane.showOptionDialog(this, "¿Qué desea buscar?", "Buscar", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"Por alias", "Por número de identificación"}, "Por alias");
@@ -348,7 +348,7 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "No se ingresó el número de identificación");
             }
         }
-    }//GEN-LAST:event_jLabel6MouseClicked
+    }//GEN-LAST:event_jLBuscarMascotaMouseClicked
 
     private void cargarUltimaVisita(Mascota mascota) {
         List<Visita> listarVisitas = Menu_PRINCIPAL_VETERINARIA.vd.buscarVisitaxFecha(mascota);
@@ -510,12 +510,12 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JLabel jLBuscarMascota;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
