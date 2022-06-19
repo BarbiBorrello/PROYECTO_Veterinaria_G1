@@ -9,7 +9,10 @@ import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import veterinaria_MODELO.Cliente;
+import static VISTAS.Menu_PRINCIPAL_VETERINARIA.escritorio;
 
+import veterinaria_MODELO.Mascota;
 /**
  *
  * @author Barbara
@@ -17,13 +20,15 @@ import javax.swing.JOptionPane;
 public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form Ficha_CLIENTE2
+     * Creates new form Ficha_CLIENTE
      */
     public Ficha_CLIENTE() {
         initComponents();
 
         // inicio la funcion de validacion de campos para el formulario
         validacionDeCampos();
+        Cliente cliente;
+   
     }
 
     /**
@@ -222,8 +227,20 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
     private void jLBuscarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBuscarClienteMouseClicked
         // TODO add your handling code here:
         
-     int result = JOptionPane.showOptionDialog(this, "¿Qué desea buscar?", "Buscar", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"Por N° de Cliente"}, "Por alias");   
-        
+     int result = JOptionPane.showOptionDialog(this, "Buscar Cliente:", "Buscar", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"Por N° de Cliente", "Por DNI"}, "");   
+      
+     if (result == 0) {
+     
+     String clienteN = JOptionPane.showInputDialog(this, "Ingrese el numero de cliente");
+
+     }
+     
+ 
+
+         
+    
+         
+     
     }//GEN-LAST:event_jLBuscarClienteMouseClicked
 
     private void validacionDeCampos() {

@@ -305,6 +305,7 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         if (result == 0) {
             /* search by alias */
             String alias = JOptionPane.showInputDialog(this, "Ingrese el alias de la mascota");
+            
             if (alias != null) {
                 List<Mascota> mascotas = Menu_PRINCIPAL_VETERINARIA.md.buscarMascotaxALIAS(alias);
                 if (mascotas != null) {
