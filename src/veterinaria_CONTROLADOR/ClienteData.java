@@ -109,9 +109,7 @@ public class ClienteData {
 
         // String de consulta a base de datos
         String sql = "SELECT * FROM cliente WHERE activo = 1 AND dni =?;";
- 
-        
-        
+
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, (int) p_dni);
@@ -127,11 +125,11 @@ public class ClienteData {
                 cliente.setNombreD(rs.getString("nombre_duenio"));
                 cliente.setDireccion(rs.getString("direccion"));
                 cliente.setTelefono(rs.getString("telefono"));
-                cliente.setContactoA("contacto_alternativo");
+                cliente.setContactoA(rs.getString("contacto_alternativo"));
                 cliente.setActivo(rs.getBoolean("activo"));
 
                 // Mensaje de cliente encontrado
-                JOptionPane.showMessageDialog(null,"Cliente existente :"+" "+cliente.getApellido() + " " + cliente.getNombreD());
+                JOptionPane.showMessageDialog(null, "Cliente existente :" + " " + cliente.getApellido() + " " + cliente.getNombreD());
 
             } else {
                 // Mensaje de cliente no encontrado
@@ -277,8 +275,8 @@ public class ClienteData {
 
             String sql = "SELECT * FROM cliente WHERE activo = 1 AND apellido LIKE ?  AND  nombre_duenio LIKE ? ";
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            
-             // CONSULTA LIKE //
+
+            // CONSULTA LIKE //
             ps.setString(1, "%" + p_apellido + "%");
             ps.setString(2, "%" + p_nombre_duenio + "%");
 
@@ -293,7 +291,7 @@ public class ClienteData {
                 cliente.setNombreD(rs.getString("nombre_duenio"));
                 cliente.setDireccion(rs.getString("direccion"));
                 cliente.setTelefono(rs.getString("telefono"));
-                cliente.setContactoA("contacto_alternativo");
+                cliente.setContactoA(rs.getString("contacto_alternativo"));
                 cliente.setActivo(rs.getBoolean("activo"));
 
                 clientesApNom.add(cliente);
@@ -332,7 +330,7 @@ public class ClienteData {
                 cliente.setNombreD(rs.getString("nombre_duenio"));
                 cliente.setDireccion(rs.getString("direccion"));
                 cliente.setTelefono(rs.getString("telefono"));
-                cliente.setContactoA("contacto_alternativo");
+                cliente.setContactoA(rs.getString("contacto_alternativo"));
                 cliente.setActivo(rs.getBoolean("activo"));
 
                 clientesActivos.add(cliente);
@@ -341,12 +339,11 @@ public class ClienteData {
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al buscar clientes activos" + ex);
-            
+
         }
         return clientesActivos;
     }
-    
-    
+
 //   public List<Mascota> buscarMascotasdeCliente(Long p_dni){
 //       
 //       ArrayList<Mascota> mascotaSdeCliente = new ArrayList<Mascota>();
@@ -383,8 +380,4 @@ public class ClienteData {
 //       
 //        
 //     return mascotaSdeCliente;   
-    }
-
-
-    
-
+}

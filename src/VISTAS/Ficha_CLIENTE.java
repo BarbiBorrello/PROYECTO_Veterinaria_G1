@@ -14,6 +14,7 @@ import static VISTAS.Menu_PRINCIPAL_VETERINARIA.escritorio;
 import java.util.List;
 
 import veterinaria_MODELO.Mascota;
+
 /**
  *
  * @author Barbara
@@ -28,8 +29,7 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
 
         // inicio la funcion de validacion de campos para el formulario
         validacionDeCampos();
-  
-   
+
     }
 
     /**
@@ -246,54 +246,52 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
 
     private void jLBuscarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBuscarClienteMouseClicked
         // TODO add your handling code here:
-        
-     int result = JOptionPane.showOptionDialog(this, "Busqueda por DNI", "Buscar", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"Si","No"}, "");   
-       
-     if (result == 0) {
-     
-     String clienteN = JOptionPane.showInputDialog(this, "Ingrese el numero ");
-     
-    // el n° existe que lo busque
-    
-    if (clienteN != null) {
- 
-    Cliente encontrado = Menu_PRINCIPAL_VETERINARIA.cd.buscarClientexDNI(Long.parseLong(clienteN));
-    cargarFormularioConCliente(encontrado);
-   
-    } else {
-        
-     String noencontradoN = JOptionPane.showInputDialog(this, "Desea agregar un nuevo cliente?"); 
-     
-     // si = cd.agregarcliente//
-     // no = sale del sistema
-      
-        }
-  
- 
 
-    if (result == 1) {
-//     vaya a consultas del cliente  
-  }
- 
+        int result = JOptionPane.showOptionDialog(this, "Busqueda por DNI", "Buscar", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"Si", "No"}, "");
 
-         
-    
-         
-     
+        if (result == 0) {
+
+            String clienteN = JOptionPane.showInputDialog(this, "Ingrese el numero ");
+
+            // el n° existe que lo busque
+            if (!clienteN.isEmpty()) {
+
+                Cliente encontrado = Menu_PRINCIPAL_VETERINARIA.cd.buscarClientexDNI(Long.parseLong(clienteN));
+
+                if (encontrado != null) {
+                    cargarFormularioConCliente(encontrado);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Desea agregar un nuevo cliente?");
+                // si = agregar cliente
+                // no= salir
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this, "No se ingreso DNI");
+
+                // si = cd.agregarcliente//
+                // no = sale del sistema
+            }
+
+            if (result == 1) {
+            //     vaya a consultas del cliente  
+            }
+
+
     }//GEN-LAST:event_jLBuscarClienteMouseClicked
     }
 
-    
+
     private void jLSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLSalirMouseClicked
         // TODO add your handling code here:
-        
+
         dispose();
     }//GEN-LAST:event_jLSalirMouseClicked
 
     private void jlAgregarMascota_desde_ClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarMascota_desde_ClienteMouseClicked
         // TODO add your handling code here:
         Menu_PRINCIPAL_VETERINARIA.mostrarFichaMascota();
-       
+
     }//GEN-LAST:event_jlAgregarMascota_desde_ClienteMouseClicked
 
     private void validacionDeCampos() {
@@ -304,14 +302,14 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         Menu_PRINCIPAL_VETERINARIA.vcampos.SNumero(jtexto_Telefono);
 
     }
-    
+
     private void cargarFormularioConCliente(Cliente cliente) {
 
         limpiarFormulario();
 
         jtNCliente.setText(Integer.toString(cliente.getId_cliente()));
         jtexto_dni.setText(Long.toString(cliente.getDni()));
-        jrbACTIVO.setSelected(cliente.getActivo()); 
+        jrbACTIVO.setSelected(cliente.getActivo());
         jtexto_Apellido.setText(cliente.getApellido());
         jtexto_Nombre.setText(cliente.getNombreD());
         jtexto_Direccion.setText(cliente.getDireccion());
