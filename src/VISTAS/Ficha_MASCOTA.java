@@ -20,8 +20,8 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
 
     public Ficha_MASCOTA() {
         initComponents();
-        jLabel4.setVisible(false);
-        jLabel5.setVisible(false);
+        jLBorrarMascota.setVisible(false);
+        jLModificarMascota.setVisible(false);
     }
 
     /**
@@ -54,13 +54,13 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         jlAPELLIDO2 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jLSalir = new javax.swing.JLabel();
+        jLAgregarMascota = new javax.swing.JLabel();
+        jLBorrarMascota = new javax.swing.JLabel();
+        jLModificarMascota = new javax.swing.JLabel();
         jLBuscarMascota = new javax.swing.JLabel();
         jlN_DE_CLIENTE1 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jLLimpiar = new javax.swing.JLabel();
         jlCONTACTO_ALTERNATIVO1 = new javax.swing.JLabel();
         jlALIAS1 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
@@ -131,41 +131,41 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         jLabel1.setText("Ultima visita :");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/close.png"))); // NOI18N
-        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/close.png"))); // NOI18N
+        jLSalir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
+                jLSalirMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 60, 50));
+        jPanel1.add(jLSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 60, 50));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/add.png"))); // NOI18N
-        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLAgregarMascota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/add.png"))); // NOI18N
+        jLAgregarMascota.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLAgregarMascota.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                jLAgregarMascotaMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 60, 50));
+        jPanel1.add(jLAgregarMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 60, 50));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/delete.png"))); // NOI18N
-        jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLBorrarMascota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/delete.png"))); // NOI18N
+        jLBorrarMascota.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLBorrarMascota.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
+                jLBorrarMascotaMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 60, 50));
+        jPanel1.add(jLBorrarMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 60, 50));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/edit.png"))); // NOI18N
-        jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLModificarMascota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/edit.png"))); // NOI18N
+        jLModificarMascota.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLModificarMascota.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
+                jLModificarMascotaMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 60, 50));
+        jPanel1.add(jLModificarMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 60, 50));
 
         jLBuscarMascota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/search.png"))); // NOI18N
         jLBuscarMascota.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -182,19 +182,19 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         jlN_DE_CLIENTE1.setText("N°  de Paciente:");
         jPanel1.add(jlN_DE_CLIENTE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/clear.png"))); // NOI18N
-        jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/clear.png"))); // NOI18N
+        jLLimpiar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLLimpiar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel7MouseClicked(evt);
+                jLLimpiarMouseClicked(evt);
             }
         });
-        jLabel7.addKeyListener(new java.awt.event.KeyAdapter() {
+        jLLimpiar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jLabel7KeyTyped(evt);
+                jLLimpiarKeyTyped(evt);
             }
         });
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, 60, 50));
+        jPanel1.add(jLLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, 60, 50));
 
         jlCONTACTO_ALTERNATIVO1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jlCONTACTO_ALTERNATIVO1.setForeground(new java.awt.Color(255, 255, 255));
@@ -294,9 +294,9 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel7KeyTyped
+    private void jLLimpiarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLLimpiarKeyTyped
         limpiarFormulario();
-    }//GEN-LAST:event_jLabel7KeyTyped
+    }//GEN-LAST:event_jLLimpiarKeyTyped
 
     private void jLBuscarMascotaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBuscarMascotaMouseClicked
         /* show the option dialog that ask  search method by alias or id_mascota */
@@ -322,8 +322,8 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
                     if (mascota != null) {
                         cargarFormularioConMascota(mascota);
                         cargarUltimaVisita(mascota);
-                        jLabel4.setVisible(true);
-                        jLabel5.setVisible(true);
+                        jLBorrarMascota.setVisible(true);
+                        jLModificarMascota.setVisible(true);
                     }
 
                 } else {
@@ -340,8 +340,8 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
                 if (mascota != null) {
                     cargarFormularioConMascota(mascota);
                     cargarUltimaVisita(mascota);
-                    jLabel4.setVisible(true);
-                    jLabel5.setVisible(true);
+                    jLBorrarMascota.setVisible(true);
+                    jLModificarMascota.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(this, "No se encontró la mascota");
                 }
@@ -385,11 +385,11 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         jRadioButton1.setSelected(!mascota.isActivo());
     }
 
-    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+    private void jLLimpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLLimpiarMouseClicked
         limpiarFormulario();
-    }//GEN-LAST:event_jLabel7MouseClicked
+    }//GEN-LAST:event_jLLimpiarMouseClicked
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void jLAgregarMascotaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLAgregarMascotaMouseClicked
         if (validarFormulario()) {
             Mascota mascota = crearUnaMascotaDesdeElForm();
             Mascota checkeo = Menu_PRINCIPAL_VETERINARIA.md.buscarMascota(Integer.parseInt(jtNPaciente.getText()));
@@ -401,9 +401,9 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "La mascota que intenta Agregar, tiene igual nombre, especie y dueño, revise los Datos");
             }
         }
-    }//GEN-LAST:event_jLabel3MouseClicked
+    }//GEN-LAST:event_jLAgregarMascotaMouseClicked
 
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+    private void jLBorrarMascotaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBorrarMascotaMouseClicked
         if (validarFormulario()) {
             Mascota mascota = crearUnaMascotaDesdeElForm();
             mascota.setId_mascota(Integer.parseInt(jtNPaciente.getText()));
@@ -411,19 +411,19 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
             Menu_PRINCIPAL_VETERINARIA.md.borrarMascota(mascota.getId_mascota());
             cargarFormularioConMascota(mascota);
         }
-    }//GEN-LAST:event_jLabel4MouseClicked
+    }//GEN-LAST:event_jLBorrarMascotaMouseClicked
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+    private void jLModificarMascotaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLModificarMascotaMouseClicked
         if (validarFormulario()) {
             Mascota mascota = crearUnaMascotaDesdeElForm();
             Menu_PRINCIPAL_VETERINARIA.md.modificarMascota(Integer.parseInt(jtNPaciente.getText()), mascota);
             cargarFormularioConMascota(mascota);
         }
-    }//GEN-LAST:event_jLabel5MouseClicked
+    }//GEN-LAST:event_jLModificarMascotaMouseClicked
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    private void jLSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLSalirMouseClicked
         dispose();
-    }//GEN-LAST:event_jLabel2MouseClicked
+    }//GEN-LAST:event_jLSalirMouseClicked
 
     private boolean validarFormulario() {
 
@@ -511,13 +511,13 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JLabel jLAgregarMascota;
+    private javax.swing.JLabel jLBorrarMascota;
     private javax.swing.JLabel jLBuscarMascota;
+    private javax.swing.JLabel jLLimpiar;
+    private javax.swing.JLabel jLModificarMascota;
+    private javax.swing.JLabel jLSalir;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;

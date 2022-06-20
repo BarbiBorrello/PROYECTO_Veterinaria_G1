@@ -207,6 +207,11 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
 
         jLLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/clear.png"))); // NOI18N
         jLLimpiar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jLLimpiar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLLimpiarMouseClicked(evt);
+            }
+        });
         jPanel1.add(jLLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 60, 50));
         jPanel1.add(jtexto_Apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 210, -1));
         jPanel1.add(jtexto_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 210, -1));
@@ -294,6 +299,12 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jlAgregarMascota_desde_ClienteMouseClicked
 
+    private void jLLimpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLLimpiarMouseClicked
+        // TODO add your handling code here:
+        
+        limpiarFormulario();
+    }//GEN-LAST:event_jLLimpiarMouseClicked
+
     private void validacionDeCampos() {
 
         Menu_PRINCIPAL_VETERINARIA.vcampos.SNumero(jtexto_dni);
@@ -331,6 +342,23 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         // falta Tabla Mascota//
 
     }
+
+    private Cliente crearUnClienteDesdeElForm() {
+
+        Cliente cliente = new Cliente();
+
+ //     cliente.setId_cliente(Integer.parseInt(jtNCliente.getText())); LO TRAE DESDE LA BD //
+        cliente.setDni(Long.parseLong(jtexto_dni.getText()));
+        cliente.setActivo(true);
+        cliente.setApellido(jtexto_Apellido.getText());
+        cliente.setNombreD(jtexto_Nombre.getText());
+        cliente.setDireccion(jtexto_Direccion.getText());
+        cliente.setTelefono(jtexto_Telefono.getText());
+        cliente.setContactoA(jtexto_ContactoA.getText());
+       
+        return cliente;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLAgregarCliente;
     private javax.swing.JLabel jLBorrarCliente;
