@@ -81,9 +81,6 @@ public class Validaciones_CAMPOS {
             public void keyReleased(KeyEvent ke) {
              //   throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
-
-
-
         });
     }
 }

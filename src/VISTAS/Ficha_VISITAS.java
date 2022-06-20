@@ -10,6 +10,7 @@ import veterinaria_MODELO.Mascota;
 import veterinaria_MODELO.Tratamiento;
 import veterinaria_MODELO.Visita;
 import static VISTAS.Menu_PRINCIPAL_VETERINARIA.escritorio;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.text.SimpleDateFormat;
@@ -80,7 +81,16 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
         jrbACTIVO = new javax.swing.JRadioButton();
         jlLISTAR_Visita = new javax.swing.JLabel();
         jlSALIR = new javax.swing.JLabel();
-        jbuscarClienteV = new javax.swing.JLabel();
+        jbuscarClienteV = new javax.swing.JLabel(){
+            String str="/IMAGENES/search.png";
+            ImageIcon icon = new ImageIcon(getClass().getResource(str));
+            Image image = icon.getImage();
+
+            public void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(image, 0, 0,getWidth(),getHeight(), this);
+            }
+        };
         jLIMPIAR = new javax.swing.JLabel();
         jlTratamiento_V = new javax.swing.JLabel();
         jcMascotaV = new javax.swing.JComboBox<>();
@@ -176,6 +186,12 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlLISTAR_VisitaMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlLISTAR_VisitaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlLISTAR_VisitaMouseExited(evt);
+            }
         });
         jPanel1.add(jlLISTAR_Visita, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 480, 290, -1));
 
@@ -188,14 +204,19 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jlSALIR, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 390, 60, 50));
 
-        jbuscarClienteV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/search.png"))); // NOI18N
         jbuscarClienteV.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jbuscarClienteV.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jbuscarClienteVMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jbuscarClienteVMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbuscarClienteVMouseExited(evt);
+            }
         });
-        jPanel1.add(jbuscarClienteV, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 60, 50));
+        jPanel1.add(jbuscarClienteV, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 50, 50));
 
         jLIMPIAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/clear.png"))); // NOI18N
         jLIMPIAR.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -354,31 +375,46 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
                     escritorio.removeAll();
                     Menu_PRINCIPAL_VETERINARIA.mostrarFichaCliente();
 
-// lleva el usuario a la ficha del cliente para que lo agregue a la base de datos //
-// si elige "NO"  se limpia para nueva carga de visita //
+// lleva el usuario a la ficha del cliente para que lo agregue a la base de datos 
+// si elige "NO"  se limpia para nueva carga de visita 
                 } else {
                     jtDNI_duenio_V.setText("");
                 }
 
-            } // si el cliente existe , verificar que tenga mascota activa //
+            } // si el cliente existe , verificar que tenga mascota activa
             else {
                 // Lista a todas la mascotas de ese cliente //
                 List<Mascota> m = Menu_PRINCIPAL_VETERINARIA.md.buscarMascotas_x_Cliente(c);
+                // if m es null , cartel agregar mascota //
+                // show dialog option yes to open Ficha_Mascota or no to do nothing
+                if (m == null) {
+                    String[] options = {"Si", "No"};
 
-                jcMascotaV.removeAllItems(); //borra datos anteriores //
+                    int x = JOptionPane.showOptionDialog(null, "¿Desea agregar una nueva mascota?",
+                            "Selecciona una opcion",
+                            JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
-                for (Mascota m1 : m) {
+                    //si //
+                    if (x == 0) {
+                        escritorio.removeAll();
+                        Menu_PRINCIPAL_VETERINARIA.mostrarFichaMascota();
+                    } else {
 
-                    jcMascotaV.addItem(m1);
+                    }
+                } else {
+
+                    jcMascotaV.removeAllItems(); //borra datos anteriores //
+
+                    for (Mascota m1 : m) {
+
+                        jcMascotaV.addItem(m1);
+                    }
                 }
-
             }
         } else {
             JOptionPane.showMessageDialog(null, "Por favor coloque un DNI");
             jtDNI_duenio_V.requestFocus();
         }
-
-
     }//GEN-LAST:event_jbuscarClienteVMouseClicked
 
     private void jcbTratamientos_VActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbTratamientos_VActionPerformed
@@ -487,6 +523,22 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
 
 
     }//GEN-LAST:event_jlLISTAR_VisitaMouseClicked
+
+    private void jlLISTAR_VisitaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlLISTAR_VisitaMouseEntered
+        jlLISTAR_Visita.setBackground(new Color(100,100,255));
+    }//GEN-LAST:event_jlLISTAR_VisitaMouseEntered
+
+    private void jlLISTAR_VisitaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlLISTAR_VisitaMouseExited
+        jlLISTAR_Visita.setBackground(new Color(51,51,255));
+    }//GEN-LAST:event_jlLISTAR_VisitaMouseExited
+
+    private void jbuscarClienteVMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbuscarClienteVMouseEntered
+        
+    }//GEN-LAST:event_jbuscarClienteVMouseEntered
+
+    private void jbuscarClienteVMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbuscarClienteVMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbuscarClienteVMouseExited
 
     private void limpiar() {
 

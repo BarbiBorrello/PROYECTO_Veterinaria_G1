@@ -5,6 +5,7 @@
  */
 package VISTAS;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.List;
@@ -242,6 +243,12 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlLISTAR_TratamientosMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlLISTAR_TratamientosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlLISTAR_TratamientosMouseExited(evt);
+            }
         });
         jPanel1.add(jlLISTAR_Tratamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, 240, -1));
 
@@ -380,6 +387,14 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Tratamiento no guardado");
         }
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jlLISTAR_TratamientosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlLISTAR_TratamientosMouseEntered
+        jlLISTAR_Tratamientos.setBackground(new Color(100,100,255));
+    }//GEN-LAST:event_jlLISTAR_TratamientosMouseEntered
+
+    private void jlLISTAR_TratamientosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlLISTAR_TratamientosMouseExited
+       jlLISTAR_Tratamientos.setBackground(new Color(51,51,255));
+    }//GEN-LAST:event_jlLISTAR_TratamientosMouseExited
 
     private boolean validarFormularioParaModificar() {
         if (jtTratamientoN.getText().isEmpty()) {
