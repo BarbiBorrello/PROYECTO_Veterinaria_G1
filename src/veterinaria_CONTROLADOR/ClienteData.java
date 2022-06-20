@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import veterinaria_MODELO.Cliente;
+import veterinaria_MODELO.Mascota;
 
 public class ClienteData {
 
@@ -343,41 +344,41 @@ public class ClienteData {
         }
         return clientesActivos;
     }
+    public List<Mascota> buscarMascotas_x_Cliente( int p_cliente) {
 
-//   public List<Mascota> buscarMascotasdeCliente(Long p_dni){
-//       
-//       ArrayList<Mascota> mascotaSdeCliente = new ArrayList<Mascota>();
-//       
-//               try {            String sql = "SELECT * FROM cliente c, mascota m WHERE m.id_cliente=c.id_cliente AND c.dni=?;";
-//
-//            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-//            ps.setLong(1,p_dni);
-//
-//            ResultSet rs = ps.executeQuery();
-//            Cliente cliente;
-//
-//            while (rs.next()) {
-//                // Creacion y llenado de clientes para ser insertados en la lista
-//                cliente = new Cliente();
-//                cliente.setId_cliente(rs.getInt("id_cliente"));
-//                cliente.setDni(rs.getLong("dni"));
-//                cliente.setApellido(rs.getString("apellido"));
-//                cliente.setNombreD(rs.getString("nombre_duenio"));
-//                cliente.setDireccion(rs.getString("direccion"));
-//                cliente.setTelefono(rs.getString("telefono"));
-//                cliente.setContactoA("contacto_alternativo");
-//                cliente.setActivo(rs.getBoolean("activo"));
-//                Mascota Cliente = null;
-//
-//                mascotaSdeCliente.add(Cliente);
-//            }
-//            ps.close();
-//
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null, "Error al buscar clientes activos" + ex);
-//            
-//        }    
-//       
-//        
-//     return mascotaSdeCliente;   
+        ArrayList<Mascota> mascotas = new ArrayList<Mascota>();
+        Mascota mascota = null;
+
+        String sql = "SELECT * FROM mascota WHERE id_cliente= ? AND activo=1;";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, p_cliente);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.isBeforeFirst()) {
+
+                while (rs.next()) {
+
+                    mascota = new Mascota();
+                    mascota.setId_mascota(rs.getInt("id_mascota"));
+                    mascota.setAlias(rs.getString("alias"));
+                    mascota.setEspecie(rs.getString("especie"));
+
+                    mascotas.add(mascota);
+
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "No tiene mascotas a su cargo");
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error de conexion desde buscar mascota " + ex);
+        }
+
+        return mascotas;
+    }
+
 }

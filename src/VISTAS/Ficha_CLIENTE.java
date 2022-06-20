@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import veterinaria_MODELO.Cliente;
 import static VISTAS.Menu_PRINCIPAL_VETERINARIA.escritorio;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 import veterinaria_MODELO.Mascota;
 
@@ -104,7 +105,7 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         jlDNI.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jlDNI.setForeground(new java.awt.Color(255, 255, 255));
         jlDNI.setText("DNI :");
-        jPanel1.add(jlDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, -1, -1));
+        jPanel1.add(jlDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, -1, -1));
 
         jlN_DE_CLIENTE.setBackground(new java.awt.Color(255, 255, 255));
         jlN_DE_CLIENTE.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -143,7 +144,7 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         jrbACTIVO.setText("Activo");
         jrbACTIVO.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jrbACTIVO.setEnabled(false);
-        jPanel1.add(jrbACTIVO, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 70, 20));
+        jPanel1.add(jrbACTIVO, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, 70, 20));
 
         jLMascotasASuCargo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLMascotasASuCargo.setForeground(new java.awt.Color(51, 0, 204));
@@ -246,7 +247,7 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jlAgregarMascota_desde_Cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 360, 60, 60));
-        jPanel1.add(jtexto_dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 110, -1));
+        jPanel1.add(jtexto_dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, 110, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -276,6 +277,8 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
 
             if (encontrado != null) {
                 cargarFormularioConCliente(encontrado);
+                cargarMascotasCliente();
+                
             } else {
                 int result2 = JOptionPane.showOptionDialog(this, "¿Desea cargar un nuevo cliente?", "Cliente inexitente", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"SI", "NO"}, "Salir");
                 // si = agregar cliente
@@ -353,6 +356,11 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         
          if (validarFormularioCliente()) {
             Cliente cliente = crearUnClienteDesdeElForm();
+            
+            if(jtNCliente.getText().isEmpty()){
+               JOptionPane.showMessageDialog(this, "Primero busque al cliente"); 
+            }
+            cliente.setId_cliente(Integer.parseInt(jtNCliente.getText()));
             Menu_PRINCIPAL_VETERINARIA.cd.modificarCliente(Integer.parseInt(jtNCliente.getText()),cliente);
             cargarFormularioConCliente(cliente);
         }    
@@ -451,7 +459,26 @@ private void validacionDeCampos() {
 
     }
 
+    private void cargarMascotasCliente() {
 
+        List<Mascota> listarMascotas = Menu_PRINCIPAL_VETERINARIA.cd.buscarMascotas_x_Cliente(Integer.parseInt(jtNCliente.getText()));
+
+        DefaultTableModel model = (DefaultTableModel) jTMascotasde1Cliente.getModel();
+
+        model.setRowCount(0); // BORRA TODAS LAS LINEAS Y VUELVE A 0//
+
+        if (listarMascotas != null) {
+            Mascota mascota = listarMascotas.get(0);
+            model.addRow(new Object[]{
+                mascota.getId_mascota(),
+                mascota.getAlias(),
+                mascota.getEspecie()
+   
+            });
+
+        }
+
+    }
      
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLAgregarCliente;
