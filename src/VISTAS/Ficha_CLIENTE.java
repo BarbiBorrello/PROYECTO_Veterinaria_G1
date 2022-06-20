@@ -80,8 +80,8 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         jtexto_ContactoA = new javax.swing.JTextField();
         jtexto_Telefono = new javax.swing.JTextField();
         jtNCliente = new javax.swing.JTextField();
+        jlAgregarMascota_desde_Cliente = new javax.swing.JLabel();
         jtexto_dni = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -97,8 +97,8 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 580, 10));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 580, 10));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 72, 580, 10));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 580, 10));
 
         jlDNI.setBackground(new java.awt.Color(255, 255, 255));
         jlDNI.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -142,13 +142,14 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         jrbACTIVO.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jrbACTIVO.setText("Activo");
         jrbACTIVO.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jrbACTIVO.setEnabled(false);
         jPanel1.add(jrbACTIVO, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 70, 20));
 
         jLMascotasASuCargo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLMascotasASuCargo.setForeground(new java.awt.Color(51, 0, 204));
         jLMascotasASuCargo.setText("MASCOTAS A SU CARGO :");
         jLMascotasASuCargo.setEnabled(false);
-        jPanel1.add(jLMascotasASuCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, -1, -1));
+        jPanel1.add(jLMascotasASuCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, -1, -1));
 
         jTMascotasde1Cliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -171,42 +172,42 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(jTMascotasde1Cliente);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 490, 70));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 490, 70));
 
         jLSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/close.png"))); // NOI18N
-        jLSalir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLSalir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jLSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLSalirMouseClicked(evt);
             }
         });
-        jPanel1.add(jLSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 100, 60, 50));
+        jPanel1.add(jLSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, 60, 50));
 
         jLAgregarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/add.png"))); // NOI18N
-        jLAgregarCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(jLAgregarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 60, 50));
+        jLAgregarCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jPanel1.add(jLAgregarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 60, 50));
 
         jLBorrarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/delete.png"))); // NOI18N
-        jLBorrarCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(jLBorrarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 60, 50));
+        jLBorrarCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jPanel1.add(jLBorrarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 60, 50));
 
         jLModificarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/edit.png"))); // NOI18N
-        jLModificarCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(jLModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 60, 50));
+        jLModificarCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jPanel1.add(jLModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 60, 50));
 
         jLBuscarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/search.png"))); // NOI18N
-        jLBuscarCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLBuscarCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jLBuscarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLBuscarClienteMouseClicked(evt);
             }
         });
-        jPanel1.add(jLBuscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 60, 50));
+        jPanel1.add(jLBuscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 60, 50));
         jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 610, -1));
 
         jLLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/clear.png"))); // NOI18N
-        jLLimpiar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(jLLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 60, 50));
+        jLLimpiar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jPanel1.add(jLLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 60, 50));
         jPanel1.add(jtexto_Apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 210, -1));
         jPanel1.add(jtexto_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 210, -1));
         jPanel1.add(jtexto_Direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 210, -1));
@@ -216,10 +217,16 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         jtNCliente.setEditable(false);
         jtNCliente.setEnabled(false);
         jPanel1.add(jtNCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 70, -1));
-        jPanel1.add(jtexto_dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 110, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Barbara\\Desktop\\Agregar_Mascota_ICONO.png")); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 390, 110, 90));
+        jlAgregarMascota_desde_Cliente.setIcon(new javax.swing.ImageIcon("C:\\Users\\Barbara\\Desktop\\Agregar_Mascota_ICONO.png")); // NOI18N
+        jlAgregarMascota_desde_Cliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jlAgregarMascota_desde_Cliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlAgregarMascota_desde_ClienteMouseClicked(evt);
+            }
+        });
+        jPanel1.add(jlAgregarMascota_desde_Cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 360, 60, 60));
+        jPanel1.add(jtexto_dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 110, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -250,8 +257,8 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
     
     if (clienteN != null) {
  
-    Cliente encontrado = Menu_PRINCIPAL_VETERINARIA.cd.buscarClientexDNI(Integer.parseInt(jtexto_dni.getText()));
-   
+    Cliente encontrado = Menu_PRINCIPAL_VETERINARIA.cd.buscarClientexDNI(Long.parseLong(clienteN));
+    cargarFormularioConCliente(encontrado);
    
     } else {
         
@@ -283,6 +290,12 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jLSalirMouseClicked
 
+    private void jlAgregarMascota_desde_ClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarMascota_desde_ClienteMouseClicked
+        // TODO add your handling code here:
+        Menu_PRINCIPAL_VETERINARIA.mostrarFichaMascota();
+       
+    }//GEN-LAST:event_jlAgregarMascota_desde_ClienteMouseClicked
+
     private void validacionDeCampos() {
 
         Menu_PRINCIPAL_VETERINARIA.vcampos.SNumero(jtexto_dni);
@@ -298,7 +311,7 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
 
         jtNCliente.setText(Integer.toString(cliente.getId_cliente()));
         jtexto_dni.setText(Long.toString(cliente.getDni()));
-//    jrbACTIVO.setSelected(!cliente.getActivo()); no toma isActivo
+        jrbACTIVO.setSelected(cliente.getActivo()); 
         jtexto_Apellido.setText(cliente.getApellido());
         jtexto_Nombre.setText(cliente.getNombreD());
         jtexto_Direccion.setText(cliente.getDireccion());
@@ -328,7 +341,6 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLMascotasASuCargo;
     private javax.swing.JLabel jLModificarCliente;
     private javax.swing.JLabel jLSalir;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -339,6 +351,7 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTMascotasde1Cliente;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel jlAPELLIDO2;
+    private javax.swing.JLabel jlAgregarMascota_desde_Cliente;
     private javax.swing.JLabel jlCONTACTO_ALTERNATIVO;
     private javax.swing.JLabel jlDIRECCION1;
     private javax.swing.JLabel jlDNI;
