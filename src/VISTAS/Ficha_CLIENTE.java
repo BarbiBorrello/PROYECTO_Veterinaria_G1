@@ -66,22 +66,22 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         jrbACTIVO = new javax.swing.JRadioButton();
         jLMascotasASuCargo = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTMascotasde1Cliente = new javax.swing.JTable();
         jLSalir = new javax.swing.JLabel();
         jLAgregarCliente = new javax.swing.JLabel();
         jLBorrarCliente = new javax.swing.JLabel();
         jLModificarCliente = new javax.swing.JLabel();
         jLBuscarCliente = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
-        jLAgregarMascota = new javax.swing.JLabel();
         jLLimpiar = new javax.swing.JLabel();
         jtexto_Apellido = new javax.swing.JTextField();
         jtexto_Nombre = new javax.swing.JTextField();
         jtexto_Direccion = new javax.swing.JTextField();
         jtexto_ContactoA = new javax.swing.JTextField();
         jtexto_Telefono = new javax.swing.JTextField();
-        jltexto_dni = new javax.swing.JTextField();
-        jltexto_n_cliente = new javax.swing.JLabel();
+        jtNCliente = new javax.swing.JTextField();
+        jtexto_dni = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -147,22 +147,31 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         jLMascotasASuCargo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLMascotasASuCargo.setForeground(new java.awt.Color(51, 0, 204));
         jLMascotasASuCargo.setText("MASCOTAS A SU CARGO :");
-        jPanel1.add(jLMascotasASuCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, -1, -1));
+        jLMascotasASuCargo.setEnabled(false);
+        jPanel1.add(jLMascotasASuCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, -1, -1));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTMascotasde1Cliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "N° de Paciente", "Alias", "Especie"
             }
-        ));
-        jScrollPane2.setViewportView(jTable2);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, 350, 70));
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTMascotasde1Cliente);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 490, 70));
 
         jLSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/close.png"))); // NOI18N
         jLSalir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -195,9 +204,6 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         jPanel1.add(jLBuscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 60, 50));
         jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 610, -1));
 
-        jLAgregarMascota.setText("Agregar Mascota");
-        jPanel1.add(jLAgregarMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 370, -1, 30));
-
         jLLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/clear.png"))); // NOI18N
         jLLimpiar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(jLLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 60, 50));
@@ -206,19 +212,20 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         jPanel1.add(jtexto_Direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 210, -1));
         jPanel1.add(jtexto_ContactoA, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 290, -1));
         jPanel1.add(jtexto_Telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, 210, -1));
-        jPanel1.add(jltexto_dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 140, -1));
 
-        jltexto_n_cliente.setBackground(new java.awt.Color(255, 255, 255));
-        jltexto_n_cliente.setForeground(new java.awt.Color(255, 255, 255));
-        jltexto_n_cliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jltexto_n_cliente.setOpaque(true);
-        jPanel1.add(jltexto_n_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 70, 20));
+        jtNCliente.setEditable(false);
+        jtNCliente.setEnabled(false);
+        jPanel1.add(jtNCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 70, -1));
+        jPanel1.add(jtexto_dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 110, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Barbara\\Desktop\\Agregar_Mascota_ICONO.png")); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 390, 110, 90));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,17 +240,18 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
     private void jLBuscarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBuscarClienteMouseClicked
         // TODO add your handling code here:
         
-     int result = JOptionPane.showOptionDialog(this, "Buscar Cliente:", "Buscar", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"Por N° de Cliente", "Por DNI"}, "");   
+     int result = JOptionPane.showOptionDialog(this, "Busqueda por DNI", "Buscar", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"Si","No"}, "");   
        
      if (result == 0) {
      
-     String clienteN = JOptionPane.showInputDialog(this, "Ingrese el numero de cliente");
+     String clienteN = JOptionPane.showInputDialog(this, "Ingrese el numero ");
      
     // el n° existe que lo busque
     
     if (clienteN != null) {
  
-        Cliente encontrado = Menu_PRINCIPAL_VETERINARIA.cd.buscarCliente(Integer.parseInt(jltexto_n_cliente.getText()));
+    Cliente encontrado = Menu_PRINCIPAL_VETERINARIA.cd.buscarClientexDNI(Integer.parseInt(jtexto_dni.getText()));
+   
    
     } else {
         
@@ -257,8 +265,8 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
  
 
     if (result == 1) {
-     
-     String clienteDNI = JOptionPane.showInputDialog(this, "Ingrese el numero de DNI");}
+//     vaya a consultas del cliente  
+  }
  
 
          
@@ -277,35 +285,50 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
 
     private void validacionDeCampos() {
 
-        Menu_PRINCIPAL_VETERINARIA.vcampos.SNumero(jltexto_dni);
+        Menu_PRINCIPAL_VETERINARIA.vcampos.SNumero(jtexto_dni);
         Menu_PRINCIPAL_VETERINARIA.vcampos.SLetras(jtexto_Apellido);
         Menu_PRINCIPAL_VETERINARIA.vcampos.SLetras(jtexto_Nombre);
         Menu_PRINCIPAL_VETERINARIA.vcampos.SNumero(jtexto_Telefono);
 
     }
     
-    
-    private void cargarFormularioConCliente(Cliente cliente){
-        
-    
-  
-    
-    
-        
-        
-        
-        
-        
+    private void cargarFormularioConCliente(Cliente cliente) {
+
+        limpiarFormulario();
+
+        jtNCliente.setText(Integer.toString(cliente.getId_cliente()));
+        jtexto_dni.setText(Long.toString(cliente.getDni()));
+//    jrbACTIVO.setSelected(!cliente.getActivo()); no toma isActivo
+        jtexto_Apellido.setText(cliente.getApellido());
+        jtexto_Nombre.setText(cliente.getNombreD());
+        jtexto_Direccion.setText(cliente.getDireccion());
+        jtexto_Telefono.setText(cliente.getTelefono());
+        jtexto_ContactoA.setText(cliente.getContactoA());
+        // falta Tabla Mascota//         
+
+    }
+
+    private void limpiarFormulario() {
+        jtNCliente.setText("");
+        jtexto_dni.setText("");
+        jrbACTIVO.setSelected(false);
+        jtexto_Apellido.setText("");
+        jtexto_Nombre.setText("");
+        jtexto_Direccion.setText("");
+        jtexto_Telefono.setText("");
+        jtexto_ContactoA.setText("");
+        // falta Tabla Mascota//
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLAgregarCliente;
-    private javax.swing.JLabel jLAgregarMascota;
     private javax.swing.JLabel jLBorrarCliente;
     private javax.swing.JLabel jLBuscarCliente;
     private javax.swing.JLabel jLLimpiar;
     private javax.swing.JLabel jLMascotasASuCargo;
     private javax.swing.JLabel jLModificarCliente;
     private javax.swing.JLabel jLSalir;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -313,8 +336,8 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JTable jTMascotasde1Cliente;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JLabel jlAPELLIDO2;
     private javax.swing.JLabel jlCONTACTO_ALTERNATIVO;
     private javax.swing.JLabel jlDIRECCION1;
@@ -322,13 +345,13 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlNOMBRE;
     private javax.swing.JLabel jlN_DE_CLIENTE;
     private javax.swing.JLabel jlTELEFONO1;
-    private javax.swing.JTextField jltexto_dni;
-    private javax.swing.JLabel jltexto_n_cliente;
     private javax.swing.JRadioButton jrbACTIVO;
+    private javax.swing.JTextField jtNCliente;
     private javax.swing.JTextField jtexto_Apellido;
     private javax.swing.JTextField jtexto_ContactoA;
     private javax.swing.JTextField jtexto_Direccion;
     private javax.swing.JTextField jtexto_Nombre;
     private javax.swing.JTextField jtexto_Telefono;
+    private javax.swing.JTextField jtexto_dni;
     // End of variables declaration//GEN-END:variables
 }
