@@ -322,18 +322,19 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
 
     private void jLAgregarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLAgregarClienteMouseClicked
         // TODO add your handling code here:
-        Cliente cliente = crearUnClienteDesdeElForm();
+        if (validarFormularioCliente()) {
+            Cliente cliente = crearUnClienteDesdeElForm();
 
-        Cliente checkeo = Menu_PRINCIPAL_VETERINARIA.cd.buscarClientexDNI(Integer.parseInt(jtNCliente.getText()));
+            Cliente checkeo = Menu_PRINCIPAL_VETERINARIA.cd.buscarClientexDNI(Integer.parseInt(jtNCliente.getText()));
 
-        if (checkeo != null) {
-            JOptionPane.showMessageDialog(this, "DNI existente en el sistema");
-        } else {
-            Menu_PRINCIPAL_VETERINARIA.cd.agregarCliente(cliente);
-            JOptionPane.showMessageDialog(this, "Cliente creado exitosamente (vista)");
+            if (checkeo != null) {
+                JOptionPane.showMessageDialog(this, "DNI existente en el sistema");
+            } else {
+                Menu_PRINCIPAL_VETERINARIA.cd.agregarCliente(cliente);
+                JOptionPane.showMessageDialog(this, "Cliente creado exitosamente (vista)");
+            }
+
         }
-
-
     }//GEN-LAST:event_jLAgregarClienteMouseClicked
 
     private void jLBorrarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBorrarClienteMouseClicked
@@ -402,7 +403,7 @@ private void validacionDeCampos() {
 
         Cliente cliente = new Cliente();
 
- //     cliente.setId_cliente(Integer.parseInt(jtNCliente.getText())); LO TRAE DESDE LA BD //
+        //     cliente.setId_cliente(Integer.parseInt(jtNCliente.getText())); LO TRAE DESDE LA BD //
         cliente.setDni(Long.parseLong(jtexto_dni.getText()));
         cliente.setActivo(true);
         cliente.setApellido(jtexto_Apellido.getText());
@@ -410,65 +411,49 @@ private void validacionDeCampos() {
         cliente.setDireccion(jtexto_Direccion.getText());
         cliente.setTelefono(jtexto_Telefono.getText());
         cliente.setContactoA(jtexto_ContactoA.getText());
-       
+
         return cliente;
     }
-    
-    
-     private boolean validarFormularioCliente(){
-         
-         Cliente cliente = new Cliente();
-         
-         if (jtexto_dni.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(this, "El campo DNI no puede estar vacio");
-             jtexto_dni.requestFocus();
-             return false;
-             
-         } else if (jtNCliente.getText().isEmpty()) {
-             // show choose dialog to decide if user wants to create a new client or not
-             JOptionPane.showMessageDialog(this, "El campo N° de cliente no puede estar vacio");
-             jtNCliente.requestFocus();
-             return false;
 
-         } else if (Menu_PRINCIPAL_VETERINARIA.cd.buscarClientexDNI(Long.parseLong(jtexto_dni.getText())) == null) {
-             int option = JOptionPane.showConfirmDialog(this, "El cliente no existe, ¿Desea crearlo?", "Crear cliente", JOptionPane.YES_NO_OPTION);
-             if (option == JOptionPane.YES_OPTION) {
-                 Menu_PRINCIPAL_VETERINARIA.cd.agregarCliente(cliente);
-             } else {
-                 JOptionPane.showMessageDialog(this, "Cliente no creado");
-             }
-             return false;
+    private boolean validarFormularioCliente() {
 
-         } else if (jtexto_Apellido.getText().isEmpty() ){
-             JOptionPane.showMessageDialog(this, "El campo Apellido del cliente no puede estar vacio");
-             jtexto_Apellido.requestFocus();
-             return false;
-             
-         } else if (jtexto_Nombre.getText().isEmpty() ){
-             JOptionPane.showMessageDialog(this, "El campo Nombre del cliente no puede estar vacio");
-             jtexto_Nombre.requestFocus();
-             return false;
-         
-          } else if (jtexto_Direccion.getText().isEmpty() ){
-             JOptionPane.showMessageDialog(this, "El campo Direccion del cliente no puede estar vacio");
-             jtexto_Direccion.requestFocus();
-             return false;
-         
-         } else if (jtexto_Telefono.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(this, "El campo Telefono del cliente no puede estar vacio");
-             jtexto_Telefono.requestFocus();
-             return false; }
-     
-//         } else if (jtexto_ContactoA.getText().isEmpty()) {
-//             JOptionPane.showMessageDialog(this, "El campo Telefono del cliente no puede estar vacio");
-//             jtexto_ContactoA.requestFocus();
-//             return false;
-//         }
+        Cliente cliente = new Cliente();
+
+        if (jtexto_dni.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo DNI no puede estar vacio");
+            jtexto_dni.requestFocus();
+            return false;
+
+        } else if (jtexto_Apellido.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo Apellido del cliente no puede estar vacio");
+            jtexto_Apellido.requestFocus();
+            return false;
+
+        } else if (jtexto_Nombre.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo Nombre del cliente no puede estar vacio");
+            jtexto_Nombre.requestFocus();
+            return false;
+
+        } else if (jtexto_Direccion.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo Direccion del cliente no puede estar vacio");
+            jtexto_Direccion.requestFocus();
+            return false;
+
+        } else if (jtexto_Telefono.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo Telefono del cliente no puede estar vacio");
+            jtexto_Telefono.requestFocus();
+            return false;
+
+        } else if (jtexto_ContactoA.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo Telefono del cliente no puede estar vacio");
+            jtexto_ContactoA.requestFocus();
+            return false;
+        }
         return true;
 
     }
-     
-     
+
+
      
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLAgregarCliente;
