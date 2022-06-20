@@ -29,8 +29,8 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
      */
     public Ficha_TRATAMIENTOS() {
         initComponents();
-        jLabel4.setVisible(false);
-        jLabel5.setVisible(false);
+        jlBorrarTratamiento.setVisible(false);
+        jlModificarTratamiento.setVisible(false);
         llenarListaTratamientos();
         jTableTratamientos.setAutoCreateRowSorter(true);
     }
@@ -66,13 +66,13 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         jrbACTIVO = new javax.swing.JRadioButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableTratamientos = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jlSalir = new javax.swing.JLabel();
+        jlAgregarTratamiento = new javax.swing.JLabel();
+        jlBorrarTratamiento = new javax.swing.JLabel();
+        jlModificarTratamiento = new javax.swing.JLabel();
+        jlBuscarTratamiento = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
-        jLabel7 = new javax.swing.JLabel();
+        jlLimpiar = new javax.swing.JLabel();
         jlAPELLIDO3 = new javax.swing.JLabel();
         jtTratamientoN = new javax.swing.JTextField();
         jtTratamientoTipo = new javax.swing.JTextField();
@@ -150,66 +150,66 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 560, 110));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/close.png"))); // NOI18N
-        jLabel2.setToolTipText("Salir de tratamiento");
-        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jlSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/close.png"))); // NOI18N
+        jlSalir.setToolTipText("Salir de tratamiento");
+        jlSalir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jlSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
+                jlSalirMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 60, 50));
+        jPanel1.add(jlSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 60, 50));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/add.png"))); // NOI18N
-        jLabel3.setToolTipText("Agregar un tratamiento con los campos en el formulario");
-        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        jlAgregarTratamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/add.png"))); // NOI18N
+        jlAgregarTratamiento.setToolTipText("Agregar un tratamiento con los campos en el formulario");
+        jlAgregarTratamiento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jlAgregarTratamiento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                jlAgregarTratamientoMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 60, 50));
+        jPanel1.add(jlAgregarTratamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 60, 50));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/delete.png"))); // NOI18N
-        jLabel4.setToolTipText("Borrar el tratamiento que se encontro por busqueda  y se cargo al formulario");
-        jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        jlBorrarTratamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/delete.png"))); // NOI18N
+        jlBorrarTratamiento.setToolTipText("Borrar el tratamiento que se encontro por busqueda  y se cargo al formulario");
+        jlBorrarTratamiento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jlBorrarTratamiento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
+                jlBorrarTratamientoMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 60, 50));
+        jPanel1.add(jlBorrarTratamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 60, 50));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/edit.png"))); // NOI18N
-        jLabel5.setToolTipText("Permite actualizar el tratamiento que se busco previamente y se cargo al formulario");
-        jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+        jlModificarTratamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/edit.png"))); // NOI18N
+        jlModificarTratamiento.setToolTipText("Permite actualizar el tratamiento que se busco previamente y se cargo al formulario");
+        jlModificarTratamiento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jlModificarTratamiento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
+                jlModificarTratamientoMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 60, 50));
+        jPanel1.add(jlModificarTratamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 60, 50));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/search.png"))); // NOI18N
-        jLabel6.setToolTipText("Buscar un tratamiento, por ID o por una Lista");
-        jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+        jlBuscarTratamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/search.png"))); // NOI18N
+        jlBuscarTratamiento.setToolTipText("Buscar un tratamiento, por ID o por una Lista");
+        jlBuscarTratamiento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jlBuscarTratamiento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel6MouseClicked(evt);
+                jlBuscarTratamientoMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 60, 50));
+        jPanel1.add(jlBuscarTratamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 60, 50));
         jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 610, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/clear.png"))); // NOI18N
-        jLabel7.setToolTipText("Limpia todos los campos del formulario");
-        jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+        jlLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/clear.png"))); // NOI18N
+        jlLimpiar.setToolTipText("Limpia todos los campos del formulario");
+        jlLimpiar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jlLimpiar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel7MouseClicked(evt);
+                jlLimpiarMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 60, 50));
+        jPanel1.add(jlLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 60, 50));
 
         jlAPELLIDO3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jlAPELLIDO3.setForeground(new java.awt.Color(255, 255, 255));
@@ -270,13 +270,13 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    private void jlSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlSalirMouseClicked
         dispose();
-    }//GEN-LAST:event_jLabel2MouseClicked
+    }//GEN-LAST:event_jlSalirMouseClicked
 
-    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+    private void jlLimpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlLimpiarMouseClicked
         limpiarFormulario();
-    }//GEN-LAST:event_jLabel7MouseClicked
+    }//GEN-LAST:event_jlLimpiarMouseClicked
 
     private void limpiarFormulario() {
         jtTratamientoN.setText("");
@@ -285,11 +285,11 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         jtTratamientoMedicacion.setText("");
         jtTratamientoPrecio.setText("");
         jrbACTIVO.setEnabled(false);
-        jLabel4.setVisible(false);
-        jLabel5.setVisible(false);
+        jlBorrarTratamiento.setVisible(false);
+        jlModificarTratamiento.setVisible(false);
     }
 
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+    private void jlBuscarTratamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBuscarTratamientoMouseClicked
         // mostrar opcion de buscar por id o seleccionar de una lista
         int result = JOptionPane.showOptionDialog(this, "¿Desea buscar por ID de tratamiento o seleccionar de una lista?", "Seleccione el metodo de busqueda", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"ID", "Lista"}, "");
         if (result == JOptionPane.YES_OPTION) {
@@ -320,7 +320,7 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
                 rellenarFormulario(tratamiento);
             }
         }
-    }//GEN-LAST:event_jLabel6MouseClicked
+    }//GEN-LAST:event_jlBuscarTratamientoMouseClicked
 
     private void jlLISTAR_TratamientosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlLISTAR_TratamientosMouseClicked
         llenarListaTratamientos();
@@ -336,7 +336,7 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
             model.addRow(new Object[]{t1.getId_tratamiento(), t1.getTipo_tratamiento(), t1.getDescripcion(), t1.getMedicamento(), t1.getPrecio(), t1.isActivo()});
         }
     }
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+    private void jlBorrarTratamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBorrarTratamientoMouseClicked
         // check if jTratamientoN is not empty, then ask if user wants to delete tratamiento
         if (!jtTratamientoN.getText().isEmpty()) {
             int result = JOptionPane.showOptionDialog(this, "¿Desea eliminar el tratamiento?", "Eliminar tratamiento ID: " + jtTratamientoN.getText(), JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"Si", "No"}, "");
@@ -349,9 +349,9 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Tratamiento no eliminado");
             }
         }
-    }//GEN-LAST:event_jLabel4MouseClicked
+    }//GEN-LAST:event_jlBorrarTratamientoMouseClicked
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+    private void jlModificarTratamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarTratamientoMouseClicked
         // validar el formulario, entonces actualizar el tratamiento
         // preguntar si se desea actualizar el tratamiento con un joptionpane
         int result = JOptionPane.showOptionDialog(this, "¿Desea actualizar el tratamiento?", "Actualizar tratamiento ID: " + jtTratamientoN.getText(), JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"Si", "No"}, "");
@@ -369,9 +369,9 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         }
 
 
-    }//GEN-LAST:event_jLabel5MouseClicked
+    }//GEN-LAST:event_jlModificarTratamientoMouseClicked
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void jlAgregarTratamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarTratamientoMouseClicked
         // validar el formulario, entonces guardar el tratamiento
         // preguntar si se desea guardar el tratamiento con un joptionpane
         int result = JOptionPane.showOptionDialog(this, "¿Desea guardar el tratamiento?", "Guardar tratamiento", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"Si", "No"}, "");
@@ -386,7 +386,7 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         } else if (result == JOptionPane.NO_OPTION) {
             JOptionPane.showMessageDialog(this, "Tratamiento no guardado");
         }
-    }//GEN-LAST:event_jLabel3MouseClicked
+    }//GEN-LAST:event_jlAgregarTratamientoMouseClicked
 
     private void jlLISTAR_TratamientosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlLISTAR_TratamientosMouseEntered
         jlLISTAR_Tratamientos.setBackground(new Color(100,100,255));
@@ -438,8 +438,8 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
             jtTratamientoMedicacion.setText(tratamiento.getMedicamento());
             jtTratamientoPrecio.setText(String.valueOf(tratamiento.getPrecio()));
             jrbACTIVO.setSelected(true);
-            jLabel4.setVisible(true);
-            jLabel5.setVisible(true);
+            jlBorrarTratamiento.setVisible(true);
+            jlModificarTratamiento.setVisible(true);
         } else {
             // preguntar si desea activar el tratamiento
             int result = JOptionPane.showOptionDialog(this, "¿El tratamiento esta inactivo desea activar el tratamiento?", "Tratamiento inactivo ID: " + tratamiento.getId_tratamiento(), JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"Si", "No"}, "");
@@ -448,13 +448,13 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
                 jrbACTIVO.setSelected(true);
                 Menu_PRINCIPAL_VETERINARIA.td.activarTratamiento(tratamiento.getId_tratamiento());
                 JOptionPane.showMessageDialog(this, "Tratamiento activado");
-                jLabel4.setVisible(true);
-                jLabel5.setVisible(true);
+                jlBorrarTratamiento.setVisible(true);
+                jlModificarTratamiento.setVisible(true);
             } else if (result == JOptionPane.NO_OPTION) {
                 JOptionPane.showMessageDialog(this, "Tratamiento no activado");
                 jrbACTIVO.setSelected(false);
-                jLabel4.setVisible(false);
-                jLabel5.setVisible(false);
+                jlBorrarTratamiento.setVisible(false);
+                jlModificarTratamiento.setVisible(false);
             }
             jtTratamientoN.setText(Integer.toString(tratamiento.getId_tratamiento()));
             jtTratamientoTipo.setText(tratamiento.getTipo_tratamiento());
@@ -467,12 +467,6 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -487,10 +481,16 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel jlAPELLIDO2;
     private javax.swing.JLabel jlAPELLIDO3;
+    private javax.swing.JLabel jlAgregarTratamiento;
+    private javax.swing.JLabel jlBorrarTratamiento;
+    private javax.swing.JLabel jlBuscarTratamiento;
     private javax.swing.JLabel jlCONTACTO_ALTERNATIVO;
     private javax.swing.JLabel jlDNI;
     private javax.swing.JLabel jlLISTAR_Tratamientos;
+    private javax.swing.JLabel jlLimpiar;
+    private javax.swing.JLabel jlModificarTratamiento;
     private javax.swing.JLabel jlN_DE_CLIENTE;
+    private javax.swing.JLabel jlSalir;
     private javax.swing.JRadioButton jrbACTIVO;
     private javax.swing.JTextField jtTratamientoMedicacion;
     private javax.swing.JTextField jtTratamientoN;
