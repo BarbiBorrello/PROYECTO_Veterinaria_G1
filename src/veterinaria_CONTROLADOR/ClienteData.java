@@ -133,7 +133,7 @@ public class ClienteData {
 
             } else {
                 // Mensaje de cliente no encontrado
-                JOptionPane.showMessageDialog(null, " Cliente inexistente");
+       
 
             }
             ps.close();

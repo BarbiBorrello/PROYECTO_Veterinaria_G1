@@ -267,39 +267,36 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
     private void jLBuscarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBuscarClienteMouseClicked
         // TODO add your handling code here:
 
-        int result = JOptionPane.showOptionDialog(this, "Busqueda por DNI", "Buscar", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"Si", "No"}, "");
+        String clienteN = JOptionPane.showInputDialog(this, "Ingrese el numero de DNI ");
 
-        if (result == 0) {
+        // el n° existe que lo busque
+        if (!clienteN.isEmpty()) {
 
-            String clienteN = JOptionPane.showInputDialog(this, "Ingrese el numero ");
+            Cliente encontrado = Menu_PRINCIPAL_VETERINARIA.cd.buscarClientexDNI(Long.parseLong(clienteN));
 
-            // el n° existe que lo busque
-            if (!clienteN.isEmpty()) {
-
-                Cliente encontrado = Menu_PRINCIPAL_VETERINARIA.cd.buscarClientexDNI(Long.parseLong(clienteN));
-
-                if (encontrado != null) {
-                    cargarFormularioConCliente(encontrado);
-                } else {
-                    JOptionPane.showMessageDialog(this, "Desea agregar un nuevo cliente?");
-                    // si = agregar cliente
-                    // no= salir
-                }
-
+            if (encontrado != null) {
+                cargarFormularioConCliente(encontrado);
             } else {
-                JOptionPane.showMessageDialog(this, "No se ingreso DNI");
+                int result2 = JOptionPane.showOptionDialog(this, "¿Desea cargar un nuevo cliente?", "Cliente inexitente", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"SI", "NO"}, "Salir");
+                // si = agregar cliente
+                // no= salir
 
-                // si = cd.agregarcliente//
-                // no = sale del sistema
+                if (result2 == 0) {
+                    JOptionPane.showMessageDialog(this, "Cargar cliente nuevo ");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Salir ");
+
+                }
             }
 
-            if (result == 1) {
-                //     vaya a consultas del cliente  
-            }
+        } else {
+            JOptionPane.showMessageDialog(this, "No se ingreso DNI");
+
+        }
 
 
     }//GEN-LAST:event_jLBuscarClienteMouseClicked
-    }
+    
 
 
     private void jLSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLSalirMouseClicked
@@ -325,13 +322,14 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         if (validarFormularioCliente()) {
             Cliente cliente = crearUnClienteDesdeElForm();
 
-            Cliente checkeo = Menu_PRINCIPAL_VETERINARIA.cd.buscarClientexDNI(Integer.parseInt(jtNCliente.getText()));
+            Cliente checkeo = Menu_PRINCIPAL_VETERINARIA.cd.buscarClientexDNI(Long.parseLong(jtexto_dni.getText()));
 
             if (checkeo != null) {
                 JOptionPane.showMessageDialog(this, "DNI existente en el sistema");
             } else {
                 Menu_PRINCIPAL_VETERINARIA.cd.agregarCliente(cliente);
                 JOptionPane.showMessageDialog(this, "Cliente creado exitosamente (vista)");
+                jtNCliente.setText(Integer.toString(cliente.getId_cliente()));
             }
 
         }
