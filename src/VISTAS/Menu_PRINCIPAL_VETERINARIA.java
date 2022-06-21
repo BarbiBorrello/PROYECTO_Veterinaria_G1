@@ -83,7 +83,6 @@ public class Menu_PRINCIPAL_VETERINARIA extends javax.swing.JFrame {
         jM_VISITAS = new javax.swing.JMenu();
         jM_FICHA_VISITAS = new javax.swing.JMenuItem();
         jConsultas = new javax.swing.JMenu();
-        jMConsultasCLIENTES = new javax.swing.JMenuItem();
         jMConsultasMASCOTAS = new javax.swing.JMenuItem();
         jMConsultasTRATAMIENTOS = new javax.swing.JMenuItem();
         jMConsultasVISITAS = new javax.swing.JMenuItem();
@@ -162,14 +161,6 @@ public class Menu_PRINCIPAL_VETERINARIA extends javax.swing.JFrame {
         jMenuPrincipal.add(jM_VISITAS);
 
         jConsultas.setText("Consultas");
-
-        jMConsultasCLIENTES.setText("Consultas de Clientes");
-        jMConsultasCLIENTES.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMConsultasCLIENTESActionPerformed(evt);
-            }
-        });
-        jConsultas.add(jMConsultasCLIENTES);
 
         jMConsultasMASCOTAS.setText("Consulta de Mascotas");
         jMConsultasMASCOTAS.addActionListener(new java.awt.event.ActionListener() {
@@ -293,18 +284,6 @@ public class Menu_PRINCIPAL_VETERINARIA extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jM_FICHA_VISITASActionPerformed
 
-    private void jMConsultasCLIENTESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMConsultasCLIENTESActionPerformed
-        // TODO add your handling code here:
-        escritorio.removeAll();
-        Consultas_CLIENTES agregar;
-        agregar = new Consultas_CLIENTES();
-        agregar.setVisible(true);
-        escritorio.add(agregar);
-        escritorio.repaint();
-        escritorio.moveToFront(agregar);
-
-    }//GEN-LAST:event_jMConsultasCLIENTESActionPerformed
-
     private void jMConsultasTRATAMIENTOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMConsultasTRATAMIENTOSActionPerformed
         // TODO add your handling code here:
 
@@ -396,14 +375,6 @@ public class Menu_PRINCIPAL_VETERINARIA extends javax.swing.JFrame {
         escritorio.moveToFront(agregar);
     }
 
-    public static void mostrarConsultasClientes() {
-        Consultas_CLIENTES agregar;
-        agregar = new Consultas_CLIENTES();
-        agregar.setVisible(true);
-        escritorio.add(agregar);
-        escritorio.repaint();
-        escritorio.moveToFront(agregar);
-    }
 
     public static void mostrarConsultasMascotas() {
         Consultas_MASCOTAS agregar;
@@ -435,7 +406,6 @@ public class Menu_PRINCIPAL_VETERINARIA extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu jConsultas;
-    private javax.swing.JMenuItem jMConsultasCLIENTES;
     private javax.swing.JMenuItem jMConsultasMASCOTAS;
     private javax.swing.JMenuItem jMConsultasTRATAMIENTOS;
     private javax.swing.JMenuItem jMConsultasVISITAS;

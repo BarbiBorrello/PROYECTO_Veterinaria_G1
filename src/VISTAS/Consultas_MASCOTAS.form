@@ -129,14 +129,14 @@
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="8" rowCount="4">
-                    <Column editable="true" title="ID Mascota" type="java.lang.Object"/>
-                    <Column editable="true" title="Alias" type="java.lang.Object"/>
-                    <Column editable="true" title="Sexo" type="java.lang.Object"/>
-                    <Column editable="true" title="Especie" type="java.lang.Object"/>
-                    <Column editable="true" title="ID Cliente" type="java.lang.Object"/>
-                    <Column editable="true" title="Fecha Nacimiento" type="java.lang.Object"/>
-                    <Column editable="true" title="Peso Actual" type="java.lang.Object"/>
-                    <Column editable="true" title="Activo" type="java.lang.Object"/>
+                    <Column editable="false" title="ID Mascota" type="java.lang.Object"/>
+                    <Column editable="false" title="Alias" type="java.lang.Object"/>
+                    <Column editable="false" title="Sexo" type="java.lang.Object"/>
+                    <Column editable="false" title="Especie" type="java.lang.Object"/>
+                    <Column editable="false" title="ID Cliente" type="java.lang.Object"/>
+                    <Column editable="false" title="Fecha Nacimiento" type="java.lang.Object"/>
+                    <Column editable="false" title="Peso Actual" type="java.lang.Object"/>
+                    <Column editable="false" title="Activo" type="java.lang.Object"/>
                   </Table>
                 </Property>
               </Properties>
@@ -289,7 +289,6 @@
                 <LineBorder roundedCorners="true"/>
               </Border>
             </Property>
-            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

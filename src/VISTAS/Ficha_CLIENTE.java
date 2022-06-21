@@ -168,9 +168,16 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPane2.setViewportView(jTMascotasde1Cliente);
@@ -282,6 +289,7 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
             String dni = JOptionPane.showInputDialog("Ingrese el DNI del cliente que desea buscar");
 
             while (!dni.matches("[0-9]{8}")) {
+                JOptionPane.showMessageDialog(this, "El DNI debe ser numerico y de 8 digitos");
                 dni = JOptionPane.showInputDialog("Ingrese el DNI del cliente que desea buscar");
             }
             if (dni != null) {
@@ -358,7 +366,6 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
             cargarFormularioConCliente(cliente);
             desactivarModificarYBorrar(false);
         }
-
 
     }//GEN-LAST:event_jLBorrarClienteMouseClicked
 

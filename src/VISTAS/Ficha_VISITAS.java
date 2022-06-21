@@ -176,6 +176,7 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
         jrbACTIVO.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jrbACTIVO.setText("Activa");
         jrbACTIVO.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jrbACTIVO.setEnabled(false);
         jPanel1.add(jrbACTIVO, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 70, 20));
 
         jlLISTAR_Visita.setBackground(new java.awt.Color(51, 51, 255));

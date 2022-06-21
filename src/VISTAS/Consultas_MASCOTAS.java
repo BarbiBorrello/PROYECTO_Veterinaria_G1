@@ -100,7 +100,15 @@ public class Consultas_MASCOTAS extends javax.swing.JInternalFrame {
             new String [] {
                 "ID Mascota", "Alias", "Sexo", "Especie", "ID Cliente", "Fecha Nacimiento", "Peso Actual", "Activo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 590, 180));
@@ -158,7 +166,6 @@ public class Consultas_MASCOTAS extends javax.swing.JInternalFrame {
         jRadioButton1.setSelected(true);
         jRadioButton1.setText("Activo");
         jRadioButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jRadioButton1.setEnabled(false);
         jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 80, 20));
         jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 328, 620, 0));
         jPanel1.add(jtEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 110, -1));

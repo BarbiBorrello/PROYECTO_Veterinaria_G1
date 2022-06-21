@@ -553,6 +553,8 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         jRadioButton1.setSelected(false);
         jLBorrarMascota.setVisible(false);
         jLModificarMascota.setVisible(false);
+        DefaultTableModel model = (DefaultTableModel) jTableVisitas.getModel();
+        model.setRowCount(0); // BORRA TODAS LAS LINEAS Y VUELVE A 0//
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
