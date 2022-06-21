@@ -1,5 +1,6 @@
 package veterinaria_CONTROLADOR;
 
+import static VISTAS.Menu_PRINCIPAL_VETERINARIA.cd;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -393,8 +394,15 @@ public class ClienteData {
                     mascota = new Mascota();
                     mascota.setId_mascota(rs.getInt("id_mascota"));
                     mascota.setAlias(rs.getString("alias"));
+                    mascota.setSexo(rs.getString("sexo"));
                     mascota.setEspecie(rs.getString("especie"));
-
+                    mascota.setRaza(rs.getString("raza"));
+                    mascota.setColor_pelaje(rs.getString("color_pelaje"));
+                    mascota.setFecha_nac(rs.getDate("fecha_nac").toLocalDate());
+                    mascota.setPeso_actual(rs.getDouble("peso_actual"));
+                    mascota.setPeso_promedio(rs.getDouble("peso_promedio"));
+                    mascota.setActivo(rs.getBoolean("activo"));
+                    mascota.setCliente(cd.buscarCliente(rs.getInt("id_cliente")));
                     mascotas.add(mascota);
 
                 }

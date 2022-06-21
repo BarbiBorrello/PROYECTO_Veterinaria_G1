@@ -486,16 +486,14 @@ private void validacionDeCampos() {
         DefaultTableModel model = (DefaultTableModel) jTMascotasde1Cliente.getModel();
 
         model.setRowCount(0); // BORRA TODAS LAS LINEAS Y VUELVE A 0//
-
-        if (listarMascotas != null) {
-            Mascota mascota = listarMascotas.get(0);
-            model.addRow(new Object[]{
-                mascota.getId_mascota(),
-                mascota.getAlias(),
-                mascota.getEspecie()
-   
-            });
-
+        if(listarMascotas != null){
+                    for (Mascota mascota : listarMascotas) {
+            model.addRow(new Object[]{mascota.getId_mascota()
+                    , mascota.getAlias()
+                    , mascota.getEspecie()});
+        }
+        }else{
+            JOptionPane.showMessageDialog(this, "El cliente no tiene ninguna mascota a su cargo");
         }
 
     }
