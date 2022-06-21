@@ -240,7 +240,6 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         jtNCliente.setEnabled(false);
         jPanel1.add(jtNCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 70, -1));
 
-        jlAgregarMascota_desde_Cliente.setIcon(new javax.swing.ImageIcon("C:\\Users\\Barbara\\Desktop\\Agregar_Mascota_ICONO.png")); // NOI18N
         jlAgregarMascota_desde_Cliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jlAgregarMascota_desde_Cliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -252,6 +251,11 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         jRDesactivarCliente.setBackground(new java.awt.Color(255, 255, 255));
         jRDesactivarCliente.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jRDesactivarCliente.setText("Desactivar");
+        jRDesactivarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRDesactivarClienteMouseClicked(evt);
+            }
+        });
         jRDesactivarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRDesactivarClienteActionPerformed(evt);
@@ -387,6 +391,18 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         Menu_PRINCIPAL_VETERINARIA.cd.borrarCliente(Integer.parseInt(jtNCliente.getText()));
     }//GEN-LAST:event_jRDesactivarClienteActionPerformed
 
+    private void jRDesactivarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRDesactivarClienteMouseClicked
+        if(!jtNCliente.getText().isEmpty()){
+            //show option dialog para desactivar cliente o no
+            int result = JOptionPane.showOptionDialog(this, "¿Desea desactivar el cliente?", "Desactivar cliente", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"Si", "No"}, "");
+            if (result == 0) {
+                // desactivar cliente
+                Menu_PRINCIPAL_VETERINARIA.cd.desactivarCliente(Integer.parseInt(jtNCliente.getText()));
+                JOptionPane.showMessageDialog(this, "Cliente desactivado con exito");
+            }
+        }
+    }//GEN-LAST:event_jRDesactivarClienteMouseClicked
+
     private void validacionDeCampos() {
 
         Menu_PRINCIPAL_VETERINARIA.vcampos.SNumero(jtexto_dni);
@@ -421,7 +437,9 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         jtexto_Direccion.setText("");
         jtexto_Telefono.setText("");
         jtexto_ContactoA.setText("");
-        // falta Tabla Mascota//
+        
+        DefaultTableModel model = (DefaultTableModel) jTMascotasde1Cliente.getModel();
+        model.setRowCount(0);
 
     }
 
