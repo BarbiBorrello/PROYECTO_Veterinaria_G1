@@ -151,11 +151,11 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Valor de la consulta : "/>
+            <Property name="text" type="java.lang.String" value="Valor de la consulta :    $"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="80" y="340" width="220" height="20"/>
+              <AbsoluteConstraints x="80" y="340" width="230" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -556,16 +556,20 @@
             <Component class="javax.swing.JTable" name="jTableVisitas">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="6" rowCount="4">
+                  <Table columnCount="7" rowCount="4">
                     <Column editable="false" title="Visita N&#xb0;  " type="java.lang.Integer"/>
                     <Column editable="false" title="Tratamiento" type="java.lang.String"/>
                     <Column editable="false" title="Fecha " type="java.lang.Object"/>
                     <Column editable="false" title="Peso" type="java.lang.Double"/>
-                    <Column editable="false" title="Descripcion " type="java.lang.String"/>
+                    <Column editable="false" title="Sintomas " type="java.lang.String"/>
                     <Column editable="false" title="Precios" type="java.lang.Double"/>
+                    <Column editable="false" title="Activa" type="java.lang.Boolean"/>
                   </Table>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableVisitasMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

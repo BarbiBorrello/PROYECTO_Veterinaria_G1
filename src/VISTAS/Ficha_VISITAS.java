@@ -145,8 +145,8 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
 
         jlPrecio_V.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jlPrecio_V.setForeground(new java.awt.Color(255, 255, 255));
-        jlPrecio_V.setText("Valor de la consulta : ");
-        jPanel1.add(jlPrecio_V, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, 220, 20));
+        jlPrecio_V.setText("Valor de la consulta :    $");
+        jPanel1.add(jlPrecio_V, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, 230, 20));
 
         jlprecio_V.setBackground(new java.awt.Color(255, 255, 255));
         jlprecio_V.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -300,20 +300,20 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
 
         jTableVisitas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Visita N°  ", "Tratamiento", "Fecha ", "Peso", "Descripcion ", "Precios"
+                "Visita N°  ", "Tratamiento", "Fecha ", "Peso", "Sintomas ", "Precios", "Activa"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Double.class, java.lang.String.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Double.class, java.lang.String.class, java.lang.Double.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -322,6 +322,11 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTableVisitas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableVisitasMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(jTableVisitas);
@@ -420,7 +425,7 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
     private void jcbTratamientos_VActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbTratamientos_VActionPerformed
         // TODO add your handling code here:
         // devuelve el precio de cada tratamiento en label : precio //
-        jlprecio_V.setText("$" + Double.toString(((Tratamiento) jcbTratamientos_V.getSelectedItem()).getPrecio()));
+        jlprecio_V.setText(Double.toString(((Tratamiento) jcbTratamientos_V.getSelectedItem()).getPrecio()));
 
 
     }//GEN-LAST:event_jcbTratamientos_VActionPerformed
@@ -438,50 +443,68 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtfSintomasActionPerformed
 
     private void jlGUARDAR_VISITAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlGUARDAR_VISITAMouseClicked
-        // TODO add your handling code here:
+        if (validarFormulario()) {
+            Visita v = new Visita();
 
-        Visita v = new Visita();
+            // FECHA DE LA VISITA//
+            SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
 
-        // FECHA DE LA VISITA//       
-        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+            String fecha = formato.format(jdcFechaV.getDate()); // FORMATO: date de jcalendar a string//
 
-        String fecha = formato.format(jdcFechaV.getDate()); // FORMATO: date de jcalendar a string//
+            DateTimeFormatter formato2 = DateTimeFormatter.ofPattern("dd-MM-yyyy"); // FORMATO: de string a localDate//
 
-        DateTimeFormatter formato2 = DateTimeFormatter.ofPattern("dd-MM-yyyy"); // FORMATO: de string a localDate//
+            LocalDate FechaV = LocalDate.parse(fecha, formato2);
 
-        LocalDate FechaV = LocalDate.parse(fecha, formato2);
-
-        v.setFecha_visita(FechaV);
-//---------------------------------------------------------------------------------------------------------------------        
+            v.setFecha_visita(FechaV);
+//---------------------------------------------------------------------------------------------------------------------
 
 //PESO //
-        Double peso = Double.parseDouble(jtfPeso.getText());
-        v.setPeso(peso);
+            v.setPeso(Double.parseDouble(jtfPeso.getText()));
 
-//---------------------------------------------------------------------------------------------------------------------        
-// ESTADO //-------------------------------------------------------------------------------------------------------------        
-        v.setActivo(true);
+//---------------------------------------------------------------------------------------------------------------------
+// ESTADO //-------------------------------------------------------------------------------------------------------------
+            v.setActivo(true);
+            jrbACTIVO.setSelected(true);
 
-//-------------------------------------------------------------------------------------------------------------------------        
-// MASCOTA -----------------------------------------------------------------------------------------------------------------        
-        Mascota m = (Mascota) jcMascotaV.getSelectedItem();
+//-------------------------------------------------------------------------------------------------------------------------
+// MASCOTA -----------------------------------------------------------------------------------------------------------------
+            Mascota m = (Mascota) jcMascotaV.getSelectedItem();
 //  retorna la mascota que hizo la visita //
 
-        v.setMascota(m);
+            v.setMascota(m);
 // se agrega mascota a la visita //
 
 //TRATAMIENTO--------------------------------------------------------------------------------------------------------------
-        Tratamiento t = (Tratamiento) jcbTratamientos_V.getSelectedItem();
+            Tratamiento t = (Tratamiento) jcbTratamientos_V.getSelectedItem();
 
-        v.setTratamiento(t);
+            v.setTratamiento(t);
 //--------------------------------------------------------------------------------------------------------------------------
-
-        Menu_PRINCIPAL_VETERINARIA.vd.agregarVisita(v);
-        jrbACTIVO.setSelected(v.isActivo()); // esta activo?//
-        jtID_VISITA.setText(Integer.toString(v.getIdvisita())); // completa el id de visita //
-
-
+// SINTOMAS --------------------------------------------------------------------------------------------------------------
+            v.setSintomas(jtfSintomas.getText());
+            Menu_PRINCIPAL_VETERINARIA.vd.agregarVisita(v);
+            Menu_PRINCIPAL_VETERINARIA.md.actualizarPesoPromedio(m.getId_mascota());
+            jrbACTIVO.setSelected(v.isActivo()); // esta activo?//
+            jtID_VISITA.setText(Integer.toString(v.getIdvisita())); // completa el id de visita //
+        }
     }//GEN-LAST:event_jlGUARDAR_VISITAMouseClicked
+
+    private boolean validarFormulario() {
+        if (jtDNI_duenio_V.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor ingrese el DNI del cliente");
+            jtDNI_duenio_V.requestFocus();
+            return false;
+        }
+        if (jcMascotaV.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(null, "Por favor busque un cliente que tenga mascotas");
+            return false;
+        }
+        if (jtfPeso.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor ingrese el peso");
+            jtfPeso.requestFocus();
+            return false;
+        }
+        return true;
+    }
 
     private void jLIMPIARMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLIMPIARMouseClicked
         // TODO add your handling code here:
@@ -517,7 +540,7 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
             model.setRowCount(0); // BORRA TODAS LAS LINEAS Y VUELVE A 0//
 
             for (Visita v1 : listarVisitas) {
-                model.addRow(new Object[]{v1.getIdvisita(), v1.getTratamiento().getTipo_tratamiento(), v1.getFecha_visita(), v1.getPeso(), v1.getTratamiento().getDescripcion(), v1.getTratamiento().getPrecio()});
+                model.addRow(new Object[]{v1.getIdvisita(), v1.getTratamiento().getTipo_tratamiento(), v1.getFecha_visita(), v1.getPeso(), v1.getSintomas(), v1.getTratamiento().getPrecio(), v1.isActivo()});
             }
         }
 
@@ -525,20 +548,41 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jlLISTAR_VisitaMouseClicked
 
     private void jlLISTAR_VisitaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlLISTAR_VisitaMouseEntered
-        jlLISTAR_Visita.setBackground(new Color(100,100,255));
+        jlLISTAR_Visita.setBackground(new Color(100, 100, 255));
     }//GEN-LAST:event_jlLISTAR_VisitaMouseEntered
 
     private void jlLISTAR_VisitaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlLISTAR_VisitaMouseExited
-        jlLISTAR_Visita.setBackground(new Color(51,51,255));
+        jlLISTAR_Visita.setBackground(new Color(51, 51, 255));
     }//GEN-LAST:event_jlLISTAR_VisitaMouseExited
 
     private void jbuscarClienteVMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbuscarClienteVMouseEntered
-        
+
     }//GEN-LAST:event_jbuscarClienteVMouseEntered
 
     private void jbuscarClienteVMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbuscarClienteVMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_jbuscarClienteVMouseExited
+
+    private void jTableVisitasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableVisitasMouseClicked
+        if (evt.getClickCount() == 2) {
+            Visita v1;
+            int row = jTableVisitas.getSelectedRow();
+            if (Boolean.parseBoolean(jTableVisitas.getValueAt(row, 5).toString())) {
+                v1 = Menu_PRINCIPAL_VETERINARIA.vd.buscarVisita(Integer.parseInt(jTableVisitas.getValueAt(row, 0).toString()));
+                
+                    llenarFormVisita(v1);
+                
+            }else{
+                
+            }
+            
+
+        }
+    }//GEN-LAST:event_jTableVisitasMouseClicked
+
+    private void llenarFormVisita(Visita p_visita) {
+
+    }
 
     private void limpiar() {
 

@@ -62,7 +62,7 @@ public class VisitaData {
 
     public void agregarVisita(Visita p_visita) {
 
-        String sql = "INSERT INTO visita ( id_tratamiento ,fecha_visita ,id_mascota ,peso ,activo ) VALUES (? ,? ,? ,? ,? )";
+        String sql = "INSERT INTO visita ( id_tratamiento ,fecha_visita ,id_mascota ,peso ,activo, sintomas ) VALUES (? ,? ,? ,? ,? )";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -73,6 +73,7 @@ public class VisitaData {
             ps.setDouble(4, p_visita.getPeso());
             int activo = p_visita.isActivo() ? 1 : 0;
             ps.setInt(5, activo);
+            ps.setString(6, p_visita.getSintomas());
 
             ps.executeUpdate();
 
@@ -97,7 +98,7 @@ public class VisitaData {
     public void modificarVisita(int p_id_visita, Visita p_visita) {
 
         // String de consulta a base de datos id_visita	id_tratamiento	fecha_visita	id_mascota	peso	activo	
-        String sql = "UPDATE visita SET id_tratamiento=?, fecha_visita=?, id_mascota=?, peso=?, activo=? WHERE id_visita=?;";
+        String sql = "UPDATE visita SET id_tratamiento=?, fecha_visita=?, id_mascota=?, peso=?, activo=? , sintomas=? WHERE id_visita=?;";
 
         try {
 
@@ -108,7 +109,8 @@ public class VisitaData {
             ps.setInt(3, p_visita.getMascota().getId_mascota());
             ps.setDouble(4, p_visita.getPeso());
             ps.setInt(5, p_visita.isActivo() ? 1 : 0);
-            ps.setInt(6, p_id_visita);
+            ps.setString(6, p_visita.getSintomas());
+            ps.setInt(7, p_id_visita);
 
             int rs = ps.executeUpdate();
 
@@ -150,6 +152,7 @@ public class VisitaData {
                 visita.setFecha_visita(rs.getDate("fecha_visita").toLocalDate());
                 visita.setMascota(buscarMascotaActiva(rs.getInt("id_mascota")));
                 visita.setPeso(rs.getDouble("peso"));
+                visita.setSintomas(rs.getString("sintomas"));
                 visita.setActivo(rs.getBoolean("activo"));
 
                 // Mensaje de visita encontrado
@@ -261,6 +264,7 @@ public class VisitaData {
                     visita.setIdvisita(rs.getInt("id_visita"));
                     visita.setFecha_visita(rs.getDate("fecha_visita").toLocalDate());
                     visita.setPeso(rs.getDouble("peso"));
+                    visita.setSintomas(rs.getString("sintomas"));
                     visita.setActivo(rs.getBoolean("activo"));
                     visita.setMascota(md.buscarMascota(rs.getInt("id_mascota")));
                     Tratamiento t = td.buscarTratamientoActivo(rs.getInt("id_tratamiento"));

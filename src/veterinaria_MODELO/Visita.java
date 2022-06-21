@@ -18,26 +18,37 @@ public class Visita {
     private LocalDate fecha_visita;
     private double peso;
     private boolean activo;
+    private String sintomas;
 
     
     Mascota mascota;
     Tratamiento tratamiento;
 
-    public Visita(int idvisita, LocalDate fecha_visita, double peso, boolean activo, Mascota mascota, Tratamiento tratamiento) {
+    public Visita(int idvisita, LocalDate fecha_visita, double peso, boolean activo, Mascota mascota, Tratamiento tratamiento, String sintomas) {
         this.idvisita = -1;
         this.fecha_visita = fecha_visita;
         this.peso = peso;
         this.activo = activo;
         this.mascota = mascota;
         this.tratamiento = tratamiento;
+        this.sintomas=sintomas;
     }
 
-    public Visita(LocalDate fecha_visita, double peso, boolean activo, Mascota mascota, Tratamiento tratamiento) {
+    public Visita(LocalDate fecha_visita, double peso, boolean activo, Mascota mascota, Tratamiento tratamiento, String sintomas) {
         this.fecha_visita = fecha_visita;
         this.peso = peso;
         this.activo = activo;
         this.mascota = mascota;
         this.tratamiento = tratamiento;
+        this.sintomas=sintomas;
+    }
+
+    public String getSintomas() {
+        return sintomas;
+    }
+
+    public void setSintomas(String sintomas) {
+        this.sintomas = sintomas;
     }
 
     public Visita() {

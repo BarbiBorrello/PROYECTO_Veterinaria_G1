@@ -33,8 +33,15 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         jlModificarTratamiento.setVisible(false);
         llenarListaTratamientos();
         jTableTratamientos.setAutoCreateRowSorter(true);
+        validarCampos();
+        
+        
     }
-
+    
+    
+      private void validarCampos() {
+        Menu_PRINCIPAL_VETERINARIA.vcampos.SDouble(jtTratamientoPrecio);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,7 +72,12 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jrbACTIVO = new javax.swing.JRadioButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTableTratamientos = new javax.swing.JTable();
+        jTableTratamientos = new javax.swing.JTable(){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         jlSalir = new javax.swing.JLabel();
         jlAgregarTratamiento = new javax.swing.JLabel();
         jlBorrarTratamiento = new javax.swing.JLabel();
@@ -80,8 +92,8 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jtTratamientoMedicacion = new javax.swing.JTextField();
         jtTratamientoPrecio = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
         jlLISTAR_Tratamientos = new javax.swing.JLabel();
+        jbDesactivar = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -114,8 +126,8 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
 
         jlCONTACTO_ALTERNATIVO.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jlCONTACTO_ALTERNATIVO.setForeground(new java.awt.Color(255, 255, 255));
-        jlCONTACTO_ALTERNATIVO.setText("Precio :");
-        jPanel1.add(jlCONTACTO_ALTERNATIVO, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, 70, 20));
+        jlCONTACTO_ALTERNATIVO.setText("Precio : $");
+        jPanel1.add(jlCONTACTO_ALTERNATIVO, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 100, 20));
 
         jlAPELLIDO2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jlAPELLIDO2.setForeground(new java.awt.Color(255, 255, 255));
@@ -144,6 +156,13 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+        });
+        jTableTratamientos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTableTratamientos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTableTratamientos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableTratamientosMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(jTableTratamientos);
@@ -226,11 +245,7 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 380, 50));
         jPanel1.add(jtTratamientoMedicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 380, -1));
-        jPanel1.add(jtTratamientoPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, 90, -1));
-
-        jLabel8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel8.setText("$");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 10, 20));
+        jPanel1.add(jtTratamientoPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, 90, -1));
 
         jlLISTAR_Tratamientos.setBackground(new java.awt.Color(51, 51, 255));
         jlLISTAR_Tratamientos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -251,6 +266,14 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jlLISTAR_Tratamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, 240, -1));
+
+        jbDesactivar.setText("Desactivar");
+        jbDesactivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbDesactivarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbDesactivar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -287,6 +310,7 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
         jrbACTIVO.setEnabled(false);
         jlBorrarTratamiento.setVisible(false);
         jlModificarTratamiento.setVisible(false);
+        llenarListaTratamientos();
     }
 
     private void jlBuscarTratamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBuscarTratamientoMouseClicked
@@ -344,6 +368,7 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
                 // delete tratamiento
                 Menu_PRINCIPAL_VETERINARIA.td.borrarTratamiento(Integer.parseInt(jtTratamientoN.getText()));
                 JOptionPane.showMessageDialog(this, "Tratamiento eliminado");
+                llenarListaTratamientos();
 
             } else if (result == JOptionPane.NO_OPTION) {
                 JOptionPane.showMessageDialog(this, "Tratamiento no eliminado");
@@ -360,6 +385,7 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
                 Tratamiento tratamiento = crearUnTratamientoDesdeForm();
                 Menu_PRINCIPAL_VETERINARIA.td.modificarTratamiento(Integer.parseInt(jtTratamientoN.getText()), tratamiento);
                 JOptionPane.showMessageDialog(this, "Tratamiento actualizado");
+                llenarListaTratamientos();
                 limpiarFormulario();
             } else {
                 JOptionPane.showMessageDialog(this, "No se pudo actualizar el tratamiento");
@@ -380,6 +406,7 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
                 Tratamiento tratamiento = crearUnTratamientoDesdeForm();
                 Menu_PRINCIPAL_VETERINARIA.td.agregar_Tratamiento(tratamiento);
                 JOptionPane.showMessageDialog(this, "Tratamiento guardado");
+                llenarListaTratamientos();
             } else {
                 JOptionPane.showMessageDialog(this, "No se pudo guardar el tratamiento");
             }
@@ -389,12 +416,32 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jlAgregarTratamientoMouseClicked
 
     private void jlLISTAR_TratamientosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlLISTAR_TratamientosMouseEntered
-        jlLISTAR_Tratamientos.setBackground(new Color(100,100,255));
+        jlLISTAR_Tratamientos.setBackground(new Color(100, 100, 255));
     }//GEN-LAST:event_jlLISTAR_TratamientosMouseEntered
 
     private void jlLISTAR_TratamientosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlLISTAR_TratamientosMouseExited
-       jlLISTAR_Tratamientos.setBackground(new Color(51,51,255));
+        jlLISTAR_Tratamientos.setBackground(new Color(51, 51, 255));
     }//GEN-LAST:event_jlLISTAR_TratamientosMouseExited
+
+    private void jTableTratamientosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTratamientosMouseClicked
+        if (evt.getClickCount() == 2) {
+            Tratamiento t1;   
+                    int row = jTableTratamientos.getSelectedRow();
+            if(Boolean.parseBoolean(jTableTratamientos.getValueAt(row, 5).toString())){
+                t1= Menu_PRINCIPAL_VETERINARIA.td.buscarTratamientoActivo(Integer.parseInt(jTableTratamientos.getValueAt(row, 0).toString()));
+            }else{
+                t1=Menu_PRINCIPAL_VETERINARIA.td.buscarTratamientoInactivo(Integer.parseInt(jTableTratamientos.getValueAt(row, 0).toString()));
+            }
+            rellenarFormulario(t1);
+            llenarListaTratamientos();
+        }
+    }//GEN-LAST:event_jTableTratamientosMouseClicked
+
+    private void jbDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDesactivarActionPerformed
+                if (!jtTratamientoN.getText().isEmpty()) {
+            Menu_PRINCIPAL_VETERINARIA.td.desactivarTratamiento(Integer.parseInt(jtTratamientoN.getText()));
+        }
+    }//GEN-LAST:event_jbDesactivarActionPerformed
 
     private boolean validarFormularioParaModificar() {
         if (jtTratamientoN.getText().isEmpty()) {
@@ -467,7 +514,6 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -479,6 +525,7 @@ public class Ficha_TRATAMIENTOS extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTableTratamientos;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton jbDesactivar;
     private javax.swing.JLabel jlAPELLIDO2;
     private javax.swing.JLabel jlAPELLIDO3;
     private javax.swing.JLabel jlAgregarTratamiento;
