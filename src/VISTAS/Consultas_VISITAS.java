@@ -8,11 +8,14 @@ package VISTAS;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import veterinaria_MODELO.Tratamiento;
+import veterinaria_MODELO.Visita;
 
 /**
  *
@@ -27,23 +30,17 @@ public class Consultas_VISITAS extends javax.swing.JInternalFrame {
         initComponents();
         inicializarComboTratamientos();
         jTable2.setAutoCreateRowSorter(true);
-        fechaVisita();
+
     }
 
     private void inicializarComboTratamientos() {
         List<Tratamiento> t = Menu_PRINCIPAL_VETERINARIA.td.obtenerTratamientos();
-
+        jComboBox1.addItem(null);
         for (Tratamiento t1 : t) {
 
             jComboBox1.addItem(t1);
 
         }
-    }
-    
-    public void fechaVisita() {
-        LocalDate localDate = LocalDate.now();
-        Date date = java.sql.Date.valueOf(localDate);
-        jDateChooser1.setDate(date);
     }
 
     /**
@@ -69,9 +66,7 @@ public class Consultas_VISITAS extends javax.swing.JInternalFrame {
         };
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        jlDNI = new javax.swing.JLabel();
         jlNOMBRE = new javax.swing.JLabel();
-        jlAPELLIDO2 = new javax.swing.JLabel();
         jlDIRECCION1 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jrbACTIVO = new javax.swing.JRadioButton();
@@ -82,9 +77,7 @@ public class Consultas_VISITAS extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jtIDMascota = new javax.swing.JTextField();
-        jtDNI = new javax.swing.JTextField();
+        jtSintomas = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -104,33 +97,27 @@ public class Consultas_VISITAS extends javax.swing.JInternalFrame {
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 580, 10));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 580, 10));
 
-        jlDNI.setBackground(new java.awt.Color(255, 255, 255));
-        jlDNI.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jlDNI.setForeground(new java.awt.Color(255, 255, 255));
-        jlDNI.setText("Fecha :");
-        jPanel1.add(jlDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
-
         jlNOMBRE.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlNOMBRE.setForeground(new java.awt.Color(255, 255, 255));
         jlNOMBRE.setText("Tratamiento :");
-        jPanel1.add(jlNOMBRE, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 140, 20));
-
-        jlAPELLIDO2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jlAPELLIDO2.setForeground(new java.awt.Color(255, 255, 255));
-        jlAPELLIDO2.setText("Paciente N° :");
-        jPanel1.add(jlAPELLIDO2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 90, 20));
+        jPanel1.add(jlNOMBRE, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 110, 20));
 
         jlDIRECCION1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlDIRECCION1.setForeground(new java.awt.Color(255, 255, 255));
-        jlDIRECCION1.setText("DNI Dueño:");
-        jPanel1.add(jlDIRECCION1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 90, 20));
+        jlDIRECCION1.setText("Sintomas:");
+        jPanel1.add(jlDIRECCION1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 80, 20));
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 590, 10));
 
         jrbACTIVO.setBackground(new java.awt.Color(255, 255, 255));
         jrbACTIVO.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jrbACTIVO.setText("Activa");
         jrbACTIVO.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(jrbACTIVO, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 70, 20));
+        jrbACTIVO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbACTIVOActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jrbACTIVO, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 70, 20));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 0, 204));
@@ -145,14 +132,14 @@ public class Consultas_VISITAS extends javax.swing.JInternalFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "ID Mascota", "Tipo Tratamiento", "Fecha", "DNI Dueño", "Activo"
+                "ID", "Alias", "Tipo Tratamiento", "Fecha", "Sintomas", "Activo"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Long.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, false, true
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -195,12 +182,14 @@ public class Consultas_VISITAS extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 60, 50));
 
-        jDateChooser1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 120, -1));
-        jPanel1.add(jtIDMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 150, -1));
-        jPanel1.add(jtDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 220, 130, -1));
+        jtSintomas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtSintomasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jtSintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 220, 130, -1));
 
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 150, -1));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 150, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -219,25 +208,63 @@ public class Consultas_VISITAS extends javax.swing.JInternalFrame {
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel2MouseClicked
-    
-    
+
+
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
         model.setRowCount(0); // BORRA TODAS LAS LINEAS Y VUELVE A 0//
-        
-        jtIDMascota.setText("");
-        jtDNI.setText("");
-        fechaVisita();
+
+        jtSintomas.setText("");
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        
+        ArrayList<String> filtros = new ArrayList<String>();
+        ArrayList<String> valores = new ArrayList<String>();
+
+        if (jComboBox1.getSelectedItem() != null) {
+            filtros.add("id_tratamiento");
+            valores.add(Integer.toString(((Tratamiento) jComboBox1.getSelectedItem()).getId_tratamiento()));
+        }
+        if (jrbACTIVO.isSelected()) {
+            filtros.add("activo");
+            valores.add("1");
+        } else if (!jrbACTIVO.isSelected()) {
+            filtros.add("activo");
+            valores.add("0");
+        }
+
+        if (!jtSintomas.getText().equals("")) {
+            filtros.add("sintomas");
+            valores.add(jtSintomas.getText());
+        }
+
+        List<Visita> visitas = Menu_PRINCIPAL_VETERINARIA.vd.listarVisitasConFiltro(filtros, valores);
+        if (visitas.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No se encontraron visitas");
+        } else {
+            rellenarTabla(visitas);
+        }
+
     }//GEN-LAST:event_jLabel6MouseClicked
 
+    private void jtSintomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtSintomasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtSintomasActionPerformed
+
+    private void jrbACTIVOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbACTIVOActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jrbACTIVOActionPerformed
+    private void rellenarTabla(List<Visita> visitas) {
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        model.setRowCount(0); // BORRA TODAS LAS LINEAS Y VUELVE A 0//
+        for (Visita visita : visitas) {
+            model.addRow(new Object[]{visita.getIdvisita(),visita.getTratamiento().getTipo_tratamiento(), visita.getMascota().getAlias(), visita.getFecha_visita(), visita.getSintomas(), visita.isActivo()});
+
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<Tratamiento> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
@@ -251,12 +278,9 @@ public class Consultas_VISITAS extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JLabel jlAPELLIDO2;
     private javax.swing.JLabel jlDIRECCION1;
-    private javax.swing.JLabel jlDNI;
     private javax.swing.JLabel jlNOMBRE;
     private javax.swing.JRadioButton jrbACTIVO;
-    private javax.swing.JTextField jtDNI;
-    private javax.swing.JTextField jtIDMascota;
+    private javax.swing.JTextField jtSintomas;
     // End of variables declaration//GEN-END:variables
 }

@@ -158,6 +158,7 @@ public class Consultas_MASCOTAS extends javax.swing.JInternalFrame {
         jRadioButton1.setSelected(true);
         jRadioButton1.setText("Activo");
         jRadioButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jRadioButton1.setEnabled(false);
         jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 80, 20));
         jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 328, 620, 0));
         jPanel1.add(jtEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 110, -1));
