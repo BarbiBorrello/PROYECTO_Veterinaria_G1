@@ -421,7 +421,9 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         jtexto_Direccion.setText("");
         jtexto_Telefono.setText("");
         jtexto_ContactoA.setText("");
-        // falta Tabla Mascota//
+        DefaultTableModel model = (DefaultTableModel) jTMascotasde1Cliente.getModel();
+
+        model.setRowCount(0); // BORRA TODAS LAS LINEAS Y VUELVE A 0//
 
     }
 
