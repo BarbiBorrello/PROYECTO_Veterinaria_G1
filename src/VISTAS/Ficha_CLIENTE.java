@@ -289,7 +289,7 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
             if (encontrado != null) {
                 cargarFormularioConCliente(encontrado);
                 cargarMascotasCliente();
-                
+
             } else {
                 int result2 = JOptionPane.showOptionDialog(this, "¿Desea cargar un nuevo cliente?", "Cliente inexitente", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"SI", "NO"}, "Salir");
                 // si = agregar cliente
@@ -310,7 +310,6 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
 
 
     }//GEN-LAST:event_jLBuscarClienteMouseClicked
-    
 
 
     private void jLSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLSalirMouseClicked
@@ -364,30 +363,31 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
 
     private void jLModificarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLModificarClienteMouseClicked
         // TODO add your handling code here:
-        
-         if (validarFormularioCliente()) {
+
+        if (validarFormularioCliente()) {
             Cliente cliente = crearUnClienteDesdeElForm();
-            
-            if(jtNCliente.getText().isEmpty()){
-               JOptionPane.showMessageDialog(this, "Primero busque al cliente"); 
+
+            if (jtNCliente.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Primero busque al cliente");
             }
             cliente.setId_cliente(Integer.parseInt(jtNCliente.getText()));
-            Menu_PRINCIPAL_VETERINARIA.cd.modificarCliente(Integer.parseInt(jtNCliente.getText()),cliente);
+            Menu_PRINCIPAL_VETERINARIA.cd.modificarCliente(Integer.parseInt(jtNCliente.getText()), cliente);
             cargarFormularioConCliente(cliente);
-        }    
-        
+        }
+
     }//GEN-LAST:event_jLModificarClienteMouseClicked
 
     private void jRDesactivarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRDesactivarClienteActionPerformed
         // TODO add your handling code here:
-        
-        if(jtNCliente != null){
-        jRDesactivarCliente.setSelected(true);}
+
+        if (jtNCliente != null) {
+            jRDesactivarCliente.setSelected(true);
+        }
         JOptionPane.showMessageDialog(this, "Confirma desactivar cliente?");
         Menu_PRINCIPAL_VETERINARIA.cd.borrarCliente(Integer.parseInt(jtNCliente.getText()));
     }//GEN-LAST:event_jRDesactivarClienteActionPerformed
 
-private void validacionDeCampos() {
+    private void validacionDeCampos() {
 
         Menu_PRINCIPAL_VETERINARIA.vcampos.SNumero(jtexto_dni);
         Menu_PRINCIPAL_VETERINARIA.vcampos.SLetras(jtexto_Apellido);
@@ -486,18 +486,18 @@ private void validacionDeCampos() {
         DefaultTableModel model = (DefaultTableModel) jTMascotasde1Cliente.getModel();
 
         model.setRowCount(0); // BORRA TODAS LAS LINEAS Y VUELVE A 0//
-        if(listarMascotas != null){
-                    for (Mascota mascota : listarMascotas) {
-            model.addRow(new Object[]{mascota.getId_mascota()
-                    , mascota.getAlias()
-                    , mascota.getEspecie()});
-        }
-        }else{
+        if (listarMascotas != null) {
+            for (Mascota mascota : listarMascotas) {
+                model.addRow(new Object[]{mascota.getId_mascota(),
+                     mascota.getAlias(),
+                     mascota.getEspecie()});
+            }
+        } else {
             JOptionPane.showMessageDialog(this, "El cliente no tiene ninguna mascota a su cargo");
         }
 
     }
-     
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLAgregarCliente;
     private javax.swing.JLabel jLBorrarCliente;
