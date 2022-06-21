@@ -606,7 +606,17 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jcMascotaVMouseClicked
 
     private void jbDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDesactivarActionPerformed
-        // TODO add your handling code here:
+        if (jtID_VISITA.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No ha seleccionado ninguna visita");
+        } else {
+            int opcion = JOptionPane.showOptionDialog(null, "¿Desea desactivar la visita?", "Desactivar Visita", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+            if (opcion == 0) {
+                Menu_PRINCIPAL_VETERINARIA.vd.desactivarVisita(Integer.parseInt(jtID_VISITA.getText()));
+                
+                limpiar();
+            }
+        }
+
     }//GEN-LAST:event_jbDesactivarActionPerformed
 
     private void llenarFormVisita(Visita p_visita) {
@@ -621,12 +631,15 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
     }
 
     private void limpiar() {
-
+        jtID_VISITA.setText("");
         jtDNI_duenio_V.setText("");
         jcMascotaV.removeAllItems(); // comboBox//
         jrbACTIVO.setSelected(false);
         jtfPeso.setText("");
         jtfSintomas.setText("");
+        
+                DefaultTableModel modelo = (DefaultTableModel) jTableVisitas.getModel();
+        modelo.setRowCount(0);
 
     }
 
