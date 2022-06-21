@@ -5,17 +5,15 @@
  */
 package veterinaria_MODELO;
 
+import veterinaria_CONTROLADOR.TratamientoData;
+import veterinaria_CONTROLADOR.MascotaData;
 import java.sql.Connection;
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import veterinaria_CONTROLADOR.ClienteData;
 import veterinaria_CONTROLADOR.Conexion;
-import veterinaria_CONTROLADOR.MascotaData;
-import veterinaria_CONTROLADOR.TratamientoData;
 import veterinaria_CONTROLADOR.VisitaData;
+
 
 /**
  *

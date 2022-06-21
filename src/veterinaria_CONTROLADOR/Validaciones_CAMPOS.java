@@ -83,4 +83,26 @@ public class Validaciones_CAMPOS {
             }
         });
     }
+        public static void SSexo(JTextField a) {
+        a.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!(c=='H' || c=='M' || (c == KeyEvent.VK_BACK_SPACE) || c == KeyEvent.VK_DELETE)) {
+                    Toolkit.getDefaultToolkit().beep();
+                    e.consume();
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent ke) {
+             //   throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public void keyReleased(KeyEvent ke) {
+             //   throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+    }
 }

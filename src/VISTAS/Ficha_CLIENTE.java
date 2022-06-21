@@ -30,6 +30,7 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
 
         // inicio la funcion de validacion de campos para el formulario
         validacionDeCampos();
+        desactivarModificarYBorrar(false);
 
     }
 
@@ -82,8 +83,8 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         jtexto_Telefono = new javax.swing.JTextField();
         jtNCliente = new javax.swing.JTextField();
         jlAgregarMascota_desde_Cliente = new javax.swing.JLabel();
-        jRDesactivarCliente = new javax.swing.JRadioButton();
         jtexto_dni = new javax.swing.JTextField();
+        jbDesactivar = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -248,22 +249,15 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jlAgregarMascota_desde_Cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 360, 60, 60));
-
-        jRDesactivarCliente.setBackground(new java.awt.Color(255, 255, 255));
-        jRDesactivarCliente.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jRDesactivarCliente.setText("Desactivar");
-        jRDesactivarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jRDesactivarClienteMouseClicked(evt);
-            }
-        });
-        jRDesactivarCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRDesactivarClienteActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jRDesactivarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, -1, -1));
         jPanel1.add(jtexto_dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, 110, -1));
+
+        jbDesactivar.setText("Desactivar");
+        jbDesactivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbDesactivarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbDesactivar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -282,57 +276,57 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLBuscarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBuscarClienteMouseClicked
-        // TODO add your handling code here:
 
-        String clienteN = JOptionPane.showInputDialog(this, "Ingrese el numero de DNI ");
+        try {
 
-        // el n° existe que lo busque
-        if (!clienteN.isEmpty()) {
+            String dni = JOptionPane.showInputDialog("Ingrese el DNI del cliente que desea buscar");
 
-            Cliente encontrado = Menu_PRINCIPAL_VETERINARIA.cd.buscarClientexDNI(Long.parseLong(clienteN));
+            while (!dni.matches("[0-9]{8}")) {
+                dni = JOptionPane.showInputDialog("Ingrese el DNI del cliente que desea buscar");
+            }
+            if (dni != null) {
+                Cliente cliente = new Cliente();
+                Cliente encontrado = Menu_PRINCIPAL_VETERINARIA.cd.buscarClientexDNI(Long.parseLong(dni));
 
-            if (encontrado != null) {
-                cargarFormularioConCliente(encontrado);
-                cargarMascotasCliente();
+                if (encontrado != null) {
+                    cargarFormularioConCliente(encontrado);
+                    cargarMascotasCliente();
+                    desactivarModificarYBorrar(true);
+                } else {
+                    // el cliente no existe
+                    JOptionPane.showMessageDialog(this, "El cliente no existe");
+                    desactivarModificarYBorrar(false);
+                }
 
             } else {
-                int result2 = JOptionPane.showOptionDialog(this, "¿Desea cargar un nuevo cliente?", "Cliente inexitente", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"SI", "NO"}, "Salir");
-                // si = agregar cliente
-                // no= salir
-
-                if (result2 == 0) {
-                    JOptionPane.showMessageDialog(this, "Cargar cliente nuevo ");
-                } else {
-                    JOptionPane.showMessageDialog(this, "Salir ");
-
-                }
+                JOptionPane.showMessageDialog(this, "No se ingreso DNI");
+                desactivarModificarYBorrar(false);
             }
 
-        } else {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No se ingreso DNI");
-
+           desactivarModificarYBorrar(false);
         }
 
 
     }//GEN-LAST:event_jLBuscarClienteMouseClicked
 
-
+    private void desactivarModificarYBorrar(boolean p_boolean) {
+        jLBorrarCliente.setVisible(p_boolean);
+        jLModificarCliente.setVisible(p_boolean);
+    }
     private void jLSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLSalirMouseClicked
-        // TODO add your handling code here:
-
         dispose();
     }//GEN-LAST:event_jLSalirMouseClicked
 
     private void jlAgregarMascota_desde_ClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarMascota_desde_ClienteMouseClicked
-        // TODO add your handling code here:
         Menu_PRINCIPAL_VETERINARIA.mostrarFichaMascota();
 
     }//GEN-LAST:event_jlAgregarMascota_desde_ClienteMouseClicked
 
     private void jLLimpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLLimpiarMouseClicked
-        // TODO add your handling code here:
-
         limpiarFormulario();
+        desactivarModificarYBorrar(false);
     }//GEN-LAST:event_jLLimpiarMouseClicked
 
     private void jLAgregarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLAgregarClienteMouseClicked
@@ -346,8 +340,9 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "DNI existente en el sistema");
             } else {
                 Menu_PRINCIPAL_VETERINARIA.cd.agregarCliente(cliente);
-                JOptionPane.showMessageDialog(this, "Cliente creado exitosamente (vista)");
+                JOptionPane.showMessageDialog(this, "Cliente creado exitosamente");
                 jtNCliente.setText(Integer.toString(cliente.getId_cliente()));
+                desactivarModificarYBorrar(true);
             }
 
         }
@@ -361,6 +356,7 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
             cliente.setActivo(false);
             Menu_PRINCIPAL_VETERINARIA.cd.borrarCliente(cliente.getId_cliente());
             cargarFormularioConCliente(cliente);
+            desactivarModificarYBorrar(false);
         }
 
 
@@ -373,7 +369,7 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
             Cliente cliente = crearUnClienteDesdeElForm();
 
             if (jtNCliente.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Primero busque al cliente");
+                JOptionPane.showMessageDialog(this, "Debe realizar la busqueda de un cliente para poder modificarlo");
             }
             cliente.setId_cliente(Integer.parseInt(jtNCliente.getText()));
             Menu_PRINCIPAL_VETERINARIA.cd.modificarCliente(Integer.parseInt(jtNCliente.getText()), cliente);
@@ -382,27 +378,20 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jLModificarClienteMouseClicked
 
-    private void jRDesactivarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRDesactivarClienteActionPerformed
-        // TODO add your handling code here:
-
-        if (jtNCliente != null) {
-            jRDesactivarCliente.setSelected(true);
-        }
-        JOptionPane.showMessageDialog(this, "Confirma desactivar cliente?");
-        Menu_PRINCIPAL_VETERINARIA.cd.borrarCliente(Integer.parseInt(jtNCliente.getText()));
-    }//GEN-LAST:event_jRDesactivarClienteActionPerformed
-
-    private void jRDesactivarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRDesactivarClienteMouseClicked
-        if(!jtNCliente.getText().isEmpty()){
+    private void jbDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDesactivarActionPerformed
+        if (!jtNCliente.getText().isEmpty()) {
             //show option dialog para desactivar cliente o no
             int result = JOptionPane.showOptionDialog(this, "¿Desea desactivar el cliente?", "Desactivar cliente", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"Si", "No"}, "");
             if (result == 0) {
                 // desactivar cliente
                 Menu_PRINCIPAL_VETERINARIA.cd.desactivarCliente(Integer.parseInt(jtNCliente.getText()));
                 JOptionPane.showMessageDialog(this, "Cliente desactivado con exito");
+                desactivarModificarYBorrar(false);
             }
+        } else {
+           JOptionPane.showMessageDialog(this, "Debe realizar la busqueda de un cliente para poder desactivarlo");
         }
-    }//GEN-LAST:event_jRDesactivarClienteMouseClicked
+    }//GEN-LAST:event_jbDesactivarActionPerformed
 
     private void validacionDeCampos() {
 
@@ -438,11 +427,11 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         jtexto_Direccion.setText("");
         jtexto_Telefono.setText("");
         jtexto_ContactoA.setText("");
+        desactivarModificarYBorrar(false);
 
         DefaultTableModel model = (DefaultTableModel) jTMascotasde1Cliente.getModel();
 
         model.setRowCount(0); // BORRA TODAS LAS LINEAS Y VUELVE A 0//
-
 
     }
 
@@ -471,6 +460,10 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
             jtexto_dni.requestFocus();
             return false;
 
+        } else if (jtexto_dni.getText().length() != 8) {
+            JOptionPane.showMessageDialog(this, "El campo DNI tiene que ser de 8 numeros");
+            jtexto_dni.requestFocus();
+            return false;
         } else if (jtexto_Apellido.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "El campo Apellido del cliente no puede estar vacio");
             jtexto_Apellido.requestFocus();
@@ -492,7 +485,7 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
             return false;
 
         } else if (jtexto_ContactoA.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "El campo Telefono del cliente no puede estar vacio");
+            JOptionPane.showMessageDialog(this, "El campo del contacto alternativo del cliente no puede estar vacio");
             jtexto_ContactoA.requestFocus();
             return false;
         }
@@ -510,8 +503,8 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         if (listarMascotas != null) {
             for (Mascota mascota : listarMascotas) {
                 model.addRow(new Object[]{mascota.getId_mascota(),
-                     mascota.getAlias(),
-                     mascota.getEspecie()});
+                    mascota.getAlias(),
+                    mascota.getEspecie()});
                 // igual
             }
         } else {
@@ -529,7 +522,6 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLModificarCliente;
     private javax.swing.JLabel jLSalir;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRDesactivarCliente;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
@@ -538,6 +530,7 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTable jTMascotasde1Cliente;
     private javax.swing.JTable jTable1;
+    private javax.swing.JButton jbDesactivar;
     private javax.swing.JLabel jlAPELLIDO2;
     private javax.swing.JLabel jlAgregarMascota_desde_Cliente;
     private javax.swing.JLabel jlCONTACTO_ALTERNATIVO;

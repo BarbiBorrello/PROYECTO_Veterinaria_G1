@@ -5,10 +5,11 @@
  */
 package VISTAS;
 
+import com.formdev.flatlaf.FlatDarculaLaf;
+import com.formdev.flatlaf.FlatLightLaf;
 import veterinaria_CONTROLADOR.ClienteData;
 import veterinaria_CONTROLADOR.Conexion;
 import veterinaria_CONTROLADOR.MascotaData;
-import veterinaria_CONTROLADOR.TratamientoData;
 import veterinaria_CONTROLADOR.Validaciones_CAMPOS;
 import veterinaria_CONTROLADOR.VisitaData;
 import java.awt.Graphics;
@@ -16,6 +17,8 @@ import java.awt.Image;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.UIManager;
+import veterinaria_CONTROLADOR.TratamientoData;
 
 /**
  *
@@ -338,21 +341,10 @@ public class Menu_PRINCIPAL_VETERINARIA extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Menu_PRINCIPAL_VETERINARIA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Menu_PRINCIPAL_VETERINARIA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Menu_PRINCIPAL_VETERINARIA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Menu_PRINCIPAL_VETERINARIA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+   try {
+            UIManager.setLookAndFeel(new FlatLightLaf());
+        } catch (Exception ex) {
+            System.err.println("Failed to initialize LaF");
         }
         //</editor-fold>
         //</editor-fold>

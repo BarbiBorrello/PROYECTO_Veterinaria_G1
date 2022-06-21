@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import veterinaria_CONTROLADOR.Conexion;
+import veterinaria_MODELO.Tratamiento;
 import veterinaria_MODELO.Tratamiento;
 import veterinaria_MODELO.Visita;
 
@@ -94,11 +96,11 @@ public class TratamientoData {
                 tratamiento.setActivo(rs.getBoolean("activo"));
                 tratamiento.setTipo_tratamiento(rs.getString("tipo_tratamiento"));
 
-                JOptionPane.showMessageDialog(null, "Tratamiento encrontrado exitosamente :" + " " + tratamiento.getTipo_tratamiento());
+                //JOptionPane.showMessageDialog(null, "Tratamiento encrontrado exitosamente :" + " " + tratamiento.getTipo_tratamiento());
 
             } else {
 
-                JOptionPane.showMessageDialog(null, "Tratamiento activo inexistente");
+                //JOptionPane.showMessageDialog(null, "Tratamiento activo inexistente");
 
             }
             ps.close();
@@ -135,11 +137,11 @@ public class TratamientoData {
                 tratamiento.setActivo(rs.getBoolean("activo"));
                 tratamiento.setTipo_tratamiento(rs.getString("tipo_tratamiento"));
 
-                JOptionPane.showMessageDialog(null, "Tratamiento encrontrado exitosamente :" + " " + tratamiento.getTipo_tratamiento());
+                //JOptionPane.showMessageDialog(null, "Tratamiento encrontrado exitosamente :" + " " + tratamiento.getTipo_tratamiento());
 
             } else {
 
-                JOptionPane.showMessageDialog(null, "Tratamiento inactivo inexistente");
+                //JOptionPane.showMessageDialog(null, "Tratamiento inactivo inexistente");
 
             }
             ps.close();
@@ -261,5 +263,46 @@ public class TratamientoData {
             System.out.println("Error al obtener los tratamientos: " + ex.getMessage());
         }
         return tratamientos;
+    }
+
+    public List<Tratamiento> listarTratamientosConFiltro(ArrayList<String> p_parametros, ArrayList<String> p_valores) {
+        ArrayList<Tratamiento> tratamientos = new ArrayList<Tratamiento>();
+        Tratamiento tratamiento = null;
+
+        try {
+            String sql = "SELECT * FROM tratamiento WHERE ";
+            // for using like
+            for (int i = 0; i < p_parametros.size(); i++) {
+                if (i == 0) {
+                    sql += p_parametros.get(i) + " LIKE '%" + p_valores.get(i) + "%'";
+                } else {
+                    sql += " AND " + p_parametros.get(i) + " LIKE '%" + p_valores.get(i) + "%'";
+                }
+            }
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                tratamiento = new Tratamiento();
+
+                tratamiento.setId_tratamiento(rs.getInt("id_tratamiento"));
+                tratamiento.setDescripcion(rs.getString("descripcion"));
+                tratamiento.setMedicamento(rs.getString("medicamento"));
+                tratamiento.setPrecio(rs.getDouble("importe"));
+                tratamiento.setActivo(rs.getBoolean("activo"));
+                tratamiento.setTipo_tratamiento(rs.getString("tipo_tratamiento"));
+                tratamientos.add(tratamiento);
+
+            }
+
+            ps.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener los tratamientos: " + ex.getMessage());
+        }
+        return tratamientos;
+
     }
 }

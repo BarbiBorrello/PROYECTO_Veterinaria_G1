@@ -9,6 +9,8 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -20,6 +22,8 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
 
     public Ficha_MASCOTA() {
         initComponents();
+
+        validarCampos();
         jLBorrarMascota.setVisible(false);
         jLModificarMascota.setVisible(false);
     }
@@ -75,7 +79,6 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         jtDNIDuenio = new javax.swing.JTextField();
         jtEspecie = new javax.swing.JTextField();
         jtRaza = new javax.swing.JTextField();
-        jtSexo = new javax.swing.JTextField();
         jtPelaje = new javax.swing.JTextField();
         jtPesoActual = new javax.swing.JTextField();
         jtPesoPromedio = new javax.swing.JTextField();
@@ -83,6 +86,8 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableVisitas = new javax.swing.JTable();
+        jtSexo = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -106,7 +111,7 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         jlALIAS.setBackground(new java.awt.Color(255, 255, 255));
         jlALIAS.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlALIAS.setForeground(new java.awt.Color(255, 255, 255));
-        jlALIAS.setText("DUEÑO:");
+        jlALIAS.setText("DNI Dueño:");
         jPanel1.add(jlALIAS, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, -1, -1));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 580, 10));
 
@@ -240,13 +245,14 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         jtNPaciente.setEnabled(false);
         jPanel1.add(jtNPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 70, -1));
         jPanel1.add(jtAlias, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 90, -1));
-        jPanel1.add(jtDNIDuenio, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, 80, -1));
+        jPanel1.add(jtDNIDuenio, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, 80, -1));
         jPanel1.add(jtEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 90, -1));
         jPanel1.add(jtRaza, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 90, -1));
-        jPanel1.add(jtSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 90, -1));
         jPanel1.add(jtPelaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 80, -1));
         jPanel1.add(jtPesoActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 80, -1));
         jPanel1.add(jtPesoPromedio, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 80, -1));
+
+        jtEdad.setEnabled(false);
         jPanel1.add(jtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 80, -1));
         jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, -1, -1));
 
@@ -278,6 +284,17 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 630, 50));
 
+        jtSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hembra", "Macho" }));
+        jPanel1.add(jtSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 90, -1));
+
+        jButton1.setText("Desactivar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -294,6 +311,12 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void validarCampos() {
+        Menu_PRINCIPAL_VETERINARIA.vcampos.SNumero(jtDNIDuenio);
+        Menu_PRINCIPAL_VETERINARIA.vcampos.SDouble(jtPesoActual);
+        Menu_PRINCIPAL_VETERINARIA.vcampos.SDouble(jtPesoPromedio);
+
+    }
     private void jLLimpiarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLLimpiarKeyTyped
         limpiarFormulario();
     }//GEN-LAST:event_jLLimpiarKeyTyped
@@ -305,7 +328,7 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         if (result == 0) {
             /* search by alias */
             String alias = JOptionPane.showInputDialog(this, "Ingrese el alias de la mascota");
-            
+
             if (alias != null) {
                 List<Mascota> mascotas = Menu_PRINCIPAL_VETERINARIA.md.buscarMascotaxALIAS(alias);
                 if (mascotas != null) {
@@ -333,8 +356,14 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "No se ingresó el alias");
             }
         } else if (result == 1) {
-            /* search by id_mascota */
+
             String id_mascota = JOptionPane.showInputDialog(this, "Ingrese el número de identificación de la mascota");
+            Pattern pattern = Pattern.compile("[0-9]+");
+            Matcher matcher = pattern.matcher(id_mascota);
+            while (!matcher.matches()) {
+                id_mascota = JOptionPane.showInputDialog(this, "El número de identificación debe ser un número");
+                matcher = pattern.matcher(id_mascota);
+            }
             if (id_mascota != null) {
                 Mascota mascota = Menu_PRINCIPAL_VETERINARIA.md.buscarMascota(Integer.parseInt(id_mascota));
                 if (mascota != null) {
@@ -356,15 +385,16 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         DefaultTableModel model = (DefaultTableModel) jTableVisitas.getModel();
         model.setRowCount(0); // BORRA TODAS LAS LINEAS Y VUELVE A 0//
         if (listarVisitas != null) {
-            Visita visita = listarVisitas.get(0);
-            model.addRow(new Object[]{
-                visita.getIdvisita(),
-                visita.getTratamiento(),
-                visita.getFecha_visita(),
-                visita.getPeso(),
-                visita.getTratamiento().getTipo_tratamiento(),
-                visita.getTratamiento().getPrecio()
-            });
+            for (Visita visita : listarVisitas) {
+                model.addRow(new Object[]{
+                    visita.getIdvisita(),
+                    visita.getTratamiento(),
+                    visita.getFecha_visita(),
+                    visita.getPeso(),
+                    visita.getTratamiento().getTipo_tratamiento(),
+                    visita.getTratamiento().getPrecio()
+                });
+            }
         }
 
     }
@@ -376,7 +406,11 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         jtDNIDuenio.setText(Long.toString(mascota.getCliente().getDni()));
         jtEspecie.setText(mascota.getEspecie());
         jtRaza.setText(mascota.getRaza());
-        jtSexo.setText(mascota.getSexo());
+        if (mascota.getSexo() == "Hembra") {
+            jtSexo.setSelectedIndex(0);
+        } else {
+            jtSexo.setSelectedIndex(1);
+        }
         jtPelaje.setText(mascota.getColor_pelaje());
         jtPesoActual.setText(String.valueOf(mascota.getPeso_actual()));
         jtPesoPromedio.setText(String.valueOf(mascota.getPeso_promedio()));
@@ -392,38 +426,53 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
     private void jLAgregarMascotaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLAgregarMascotaMouseClicked
         if (validarFormulario()) {
             Mascota mascota = crearUnaMascotaDesdeElForm();
-            Mascota checkeo = Menu_PRINCIPAL_VETERINARIA.md.buscarMascota(Integer.parseInt(jtNPaciente.getText()));
-            
-            if (((mascota.getCliente().getDni() == checkeo.getCliente().getDni()) && (mascota.getAlias() == checkeo.getAlias()) && (mascota.getEspecie() == checkeo.getEspecie()))) {
-                Menu_PRINCIPAL_VETERINARIA.md.agregar_Mascota(mascota);
-                jtNPaciente.setText(Integer.toString(mascota.getId_mascota()));
-            } else {
-                JOptionPane.showMessageDialog(this, "La mascota que intenta Agregar, tiene igual nombre, especie y dueño, revise los Datos");
-            }
+            Menu_PRINCIPAL_VETERINARIA.md.agregar_Mascota(mascota);
+            jtNPaciente.setText(Integer.toString(mascota.getId_mascota()));
         }
     }//GEN-LAST:event_jLAgregarMascotaMouseClicked
 
     private void jLBorrarMascotaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBorrarMascotaMouseClicked
-        if (validarFormulario()) {
-            Mascota mascota = crearUnaMascotaDesdeElForm();
-            mascota.setId_mascota(Integer.parseInt(jtNPaciente.getText()));
-            mascota.setActivo(false);
-            Menu_PRINCIPAL_VETERINARIA.md.borrarMascota(mascota.getId_mascota());
-            cargarFormularioConMascota(mascota);
+        if (jtNPaciente.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Aun no has buscado la mascota que deseas borrar");
+        } else {
+            int result = JOptionPane.showConfirmDialog(this, "¿Está seguro que desea borrar la mascota?", "Borrar mascota", JOptionPane.YES_NO_OPTION);
+            if (result == 0) {
+                Menu_PRINCIPAL_VETERINARIA.md.borrarMascota(Integer.parseInt(jtNPaciente.getText()));
+                limpiarFormulario();
+            }
         }
     }//GEN-LAST:event_jLBorrarMascotaMouseClicked
 
     private void jLModificarMascotaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLModificarMascotaMouseClicked
-        if (validarFormulario()) {
-            Mascota mascota = crearUnaMascotaDesdeElForm();
-            Menu_PRINCIPAL_VETERINARIA.md.modificarMascota(Integer.parseInt(jtNPaciente.getText()), mascota);
-            cargarFormularioConMascota(mascota);
+        if (!jtNPaciente.getText().isEmpty()) {
+            int result = JOptionPane.showConfirmDialog(this, "¿Está seguro que desea modificar la mascota?", "modificar mascota", JOptionPane.YES_NO_OPTION);
+            if (result == 0) {
+                if (validarFormulario()) {
+                    Mascota mascota = crearUnaMascotaDesdeElForm();
+                    mascota.setId_mascota(Integer.parseInt(jtNPaciente.getText()));
+                    Menu_PRINCIPAL_VETERINARIA.md.modificarMascota(Integer.parseInt(jtNPaciente.getText()), mascota);
+                    cargarFormularioConMascota(mascota);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Aun no has buscado la mascota que deseas modificar");
         }
     }//GEN-LAST:event_jLModificarMascotaMouseClicked
 
     private void jLSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLSalirMouseClicked
         dispose();
     }//GEN-LAST:event_jLSalirMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (!jtNPaciente.getText().isEmpty()) {
+            int result = JOptionPane.showConfirmDialog(this, "¿Está seguro que desea borrar la mascota?", "Desactivar mascota", JOptionPane.YES_NO_OPTION);
+            if (result == 0) {
+                Menu_PRINCIPAL_VETERINARIA.md.desactivarMascota(Integer.parseInt(jtNPaciente.getText()));
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Aun no has buscado la mascota que deseas desactivar");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private boolean validarFormulario() {
 
@@ -454,10 +503,6 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "El campo Raza no puede estar vacio");
             jtRaza.requestFocus();
             return false;
-        } else if (jtSexo.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "El campo Sexo no puede estar vacio");
-            jtSexo.requestFocus();
-            return false;
         } else if (jtPelaje.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "El campo Color de Pelaje no puede estar vacio");
             jtPelaje.requestFocus();
@@ -482,7 +527,7 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         Mascota mascota = new Mascota();
         //String alias, String sexo, String especie, String raza, String color_pelaje, LocalDate fecha_nac, double peso_actual, double peso_promedio, boolean activo, Cliente cliente
         mascota.setAlias(jtAlias.getText());
-        mascota.setSexo(jtSexo.getText());
+        mascota.setSexo(jtSexo.getSelectedItem().toString());
         mascota.setEspecie(jtEspecie.getText());
         mascota.setRaza(jtRaza.getText());
         mascota.setColor_pelaje(jtPelaje.getText());
@@ -500,16 +545,18 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
         jtDNIDuenio.setText("");
         jtEspecie.setText("");
         jtRaza.setText("");
-        jtSexo.setText("");
         jtPelaje.setText("");
         jtPesoActual.setText("");
         jtPesoPromedio.setText("");
         jtEdad.setText("");
         jDateChooser1.setDate(null);
         jRadioButton1.setSelected(false);
+        jLBorrarMascota.setVisible(false);
+        jLModificarMascota.setVisible(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLAgregarMascota;
     private javax.swing.JLabel jLBorrarMascota;
@@ -549,6 +596,6 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtPesoActual;
     private javax.swing.JTextField jtPesoPromedio;
     private javax.swing.JTextField jtRaza;
-    private javax.swing.JTextField jtSexo;
+    private javax.swing.JComboBox<String> jtSexo;
     // End of variables declaration//GEN-END:variables
 }

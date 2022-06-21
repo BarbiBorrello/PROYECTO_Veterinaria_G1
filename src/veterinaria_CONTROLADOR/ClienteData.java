@@ -45,7 +45,7 @@ public class ClienteData {
             if (rs.next()) {
 
                 p_cliente.setId_cliente(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, " Numero de cliente = " + p_cliente.getId_cliente() + " " + p_cliente.getApellido() + "," + p_cliente.getNombreD() + ":" + " cargado exitosamente");
+                //JOptionPane.showMessageDialog(null, " Numero de cliente = " + p_cliente.getId_cliente() + " " + p_cliente.getApellido() + "," + p_cliente.getNombreD() + ":" + " cargado exitosamente");
             } else {
                 JOptionPane.showMessageDialog(null, "No genero el id del cliente");
             }
@@ -85,7 +85,7 @@ public class ClienteData {
                 cliente.setActivo(rs.getBoolean("activo"));
 
                 // Mensaje de cliente encontrado
-                JOptionPane.showMessageDialog(null, " Cliente :" + cliente.getApellido() + "," + cliente.getNombreD());
+                //JOptionPane.showMessageDialog(null, " Cliente :" + cliente.getApellido() + "," + cliente.getNombreD());
 
             } else {
                 // Mensaje de cliente no encontrado
@@ -131,7 +131,7 @@ public class ClienteData {
                 cliente.setActivo(rs.getBoolean("activo"));
 
                 // Mensaje de cliente encontrado
-                JOptionPane.showMessageDialog(null, "Cliente existente :" + " " + cliente.getApellido() + " " + cliente.getNombreD());
+                //JOptionPane.showMessageDialog(null, "Cliente existente :" + " " + cliente.getApellido() + " " + cliente.getNombreD());
 
             } else {
                 // Mensaje de cliente no encontrado

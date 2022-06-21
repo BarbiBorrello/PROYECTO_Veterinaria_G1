@@ -7,7 +7,12 @@ package VISTAS;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import veterinaria_MODELO.Tratamiento;
 
 /**
  *
@@ -20,6 +25,7 @@ public class Consultas_TRATAMIENTOS extends javax.swing.JInternalFrame {
      */
     public Consultas_TRATAMIENTOS() {
         initComponents();
+        rellenarComboBox();
     }
 
     /**
@@ -37,13 +43,9 @@ public class Consultas_TRATAMIENTOS extends javax.swing.JInternalFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jlDNI = new javax.swing.JLabel();
-        jltexto_dni = new javax.swing.JLabel();
         jlN_DE_CLIENTE = new javax.swing.JLabel();
-        jltexto_n_cliente = new javax.swing.JLabel();
         jlCONTACTO_ALTERNATIVO = new javax.swing.JLabel();
-        jltexto_Contacto_Alternativo = new javax.swing.JLabel();
         jlAPELLIDO2 = new javax.swing.JLabel();
-        jltexto_Apellido2 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jrbACTIVO = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
@@ -56,18 +58,11 @@ public class Consultas_TRATAMIENTOS extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
-        jlAPELLIDO3 = new javax.swing.JLabel();
-        jltexto_Contacto_Alternativo1 = new javax.swing.JLabel();
-        jFondo_CLIENTE = new javax.swing.JLabel(){
-            String str="/IMAGENES/fondo_TRATAMIENTO.png";
-            ImageIcon icon = new ImageIcon(getClass().getResource(str));
-            Image image = icon.getImage();
-
-            public void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                g.drawImage(image, 0, 0,getWidth(),getHeight(), this);
-            }
-        };
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jtIDTratamiento = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jtMedicacion = new javax.swing.JTextArea();
+        jtPrecio = new javax.swing.JTextField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -92,42 +87,21 @@ public class Consultas_TRATAMIENTOS extends javax.swing.JInternalFrame {
         jlDNI.setText("Tipo:");
         jPanel1.add(jlDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, -1, -1));
 
-        jltexto_dni.setBackground(new java.awt.Color(255, 255, 255));
-        jltexto_dni.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jltexto_dni.setOpaque(true);
-        jPanel1.add(jltexto_dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 100, 20));
-
         jlN_DE_CLIENTE.setBackground(new java.awt.Color(255, 255, 255));
         jlN_DE_CLIENTE.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jlN_DE_CLIENTE.setForeground(new java.awt.Color(255, 255, 255));
         jlN_DE_CLIENTE.setText(" Tratamiento N°:");
         jPanel1.add(jlN_DE_CLIENTE, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
 
-        jltexto_n_cliente.setBackground(new java.awt.Color(255, 255, 255));
-        jltexto_n_cliente.setForeground(new java.awt.Color(255, 255, 255));
-        jltexto_n_cliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jltexto_n_cliente.setOpaque(true);
-        jPanel1.add(jltexto_n_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 70, 20));
-
         jlCONTACTO_ALTERNATIVO.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jlCONTACTO_ALTERNATIVO.setForeground(new java.awt.Color(255, 255, 255));
-        jlCONTACTO_ALTERNATIVO.setText("Precio :");
+        jlCONTACTO_ALTERNATIVO.setText("Precio $:");
         jPanel1.add(jlCONTACTO_ALTERNATIVO, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, 100, 20));
-
-        jltexto_Contacto_Alternativo.setBackground(new java.awt.Color(255, 255, 255));
-        jltexto_Contacto_Alternativo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jltexto_Contacto_Alternativo.setOpaque(true);
-        jPanel1.add(jltexto_Contacto_Alternativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 370, 30));
 
         jlAPELLIDO2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jlAPELLIDO2.setForeground(new java.awt.Color(255, 255, 255));
         jlAPELLIDO2.setText("Medicacion:");
         jPanel1.add(jlAPELLIDO2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 130, 20));
-
-        jltexto_Apellido2.setBackground(new java.awt.Color(255, 255, 255));
-        jltexto_Apellido2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jltexto_Apellido2.setOpaque(true);
-        jPanel1.add(jltexto_Apellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 460, 40));
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 590, 20));
 
         jrbACTIVO.setBackground(new java.awt.Color(255, 255, 255));
@@ -143,18 +117,18 @@ public class Consultas_TRATAMIENTOS extends javax.swing.JInternalFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID Tratamiento", "Tipo Tratamiento", "Medicamento", "Precio", "Activo"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 540, 70));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 540, 150));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/close.png"))); // NOI18N
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -174,6 +148,11 @@ public class Consultas_TRATAMIENTOS extends javax.swing.JInternalFrame {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/search.png"))); // NOI18N
         jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 60, 50));
         jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 610, -1));
 
@@ -181,18 +160,15 @@ public class Consultas_TRATAMIENTOS extends javax.swing.JInternalFrame {
         jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 60, 50));
 
-        jlAPELLIDO3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jlAPELLIDO3.setForeground(new java.awt.Color(255, 255, 255));
-        jlAPELLIDO3.setText("Descripcion :");
-        jPanel1.add(jlAPELLIDO3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 130, 20));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 130, -1));
+        jPanel1.add(jtIDTratamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 100, -1));
 
-        jltexto_Contacto_Alternativo1.setBackground(new java.awt.Color(255, 255, 255));
-        jltexto_Contacto_Alternativo1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jltexto_Contacto_Alternativo1.setOpaque(true);
-        jPanel1.add(jltexto_Contacto_Alternativo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 70, 20));
+        jtMedicacion.setColumns(20);
+        jtMedicacion.setRows(5);
+        jScrollPane3.setViewportView(jtMedicacion);
 
-        jFondo_CLIENTE.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        jPanel1.add(jFondo_CLIENTE, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 630, 460));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 330, -1));
+        jPanel1.add(jtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, 110, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -204,15 +180,64 @@ public class Consultas_TRATAMIENTOS extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        //listarTratamientosConFiltro(ArrayList<String> p_parametros, ArrayList<String> p_valores);
+        ArrayList<String> parametros = new ArrayList<>();
+        ArrayList<String> valores = new ArrayList<>();
+        
+        if (jtIDTratamiento.getText().length() > 0) {
+            parametros.add("id_tratamiento");
+            valores.add(jtIDTratamiento.getText());
+        }
+        
+        if (jComboBox1.getSelectedIndex() > 0) {
+            parametros.add("tipo_tratamiento");
+            valores.add(((Tratamiento) jComboBox1.getSelectedItem()).getTipo_tratamiento());
+        }
+        if (jtMedicacion.getText().length() > 0) {
+            parametros.add("medicacion");
+            valores.add(jtMedicacion.getText());
+        }
+        if (jtPrecio.getText().length() > 0) {
+            parametros.add("importe");
+            valores.add(jtPrecio.getText());
+        }
+        String i = (jrbACTIVO.isSelected() ? "1" : "0");
+        parametros.add("activo");
+        valores.add(i);
+        List<Tratamiento> tratamientos = Menu_PRINCIPAL_VETERINARIA.td.listarTratamientosConFiltro(parametros, valores);
 
+        if (tratamientos.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No se encontraron resultados");
+        } else {
+            rellenarTablaTratamiento(tratamientos);
+        }
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void rellenarComboBox() {
+        List<Tratamiento> tratamientos = Menu_PRINCIPAL_VETERINARIA.td.obtenerTratamientos();
+        jComboBox1.addItem(null);
+        for (Tratamiento tratamiento : tratamientos) {
+            jComboBox1.addItem(tratamiento);
+        }
+    }
+    
+        public void rellenarTablaTratamiento(List<Tratamiento> p_tratamiento) {
+        DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
+        modelo.setRowCount(0);
+        for (Tratamiento tratamiento : p_tratamiento) {
+            modelo.addRow(new Object[]{tratamiento.getId_tratamiento(), tratamiento.getTipo_tratamiento(), tratamiento.getMedicamento(), tratamiento.getPrecio(), tratamiento.isActivo()});
+        }
+    }
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jFondo_CLIENTE;
+    private javax.swing.JComboBox<Tratamiento> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -223,6 +248,7 @@ public class Consultas_TRATAMIENTOS extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -230,15 +256,12 @@ public class Consultas_TRATAMIENTOS extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JLabel jlAPELLIDO2;
-    private javax.swing.JLabel jlAPELLIDO3;
     private javax.swing.JLabel jlCONTACTO_ALTERNATIVO;
     private javax.swing.JLabel jlDNI;
     private javax.swing.JLabel jlN_DE_CLIENTE;
-    private javax.swing.JLabel jltexto_Apellido2;
-    private javax.swing.JLabel jltexto_Contacto_Alternativo;
-    private javax.swing.JLabel jltexto_Contacto_Alternativo1;
-    private javax.swing.JLabel jltexto_dni;
-    private javax.swing.JLabel jltexto_n_cliente;
     private javax.swing.JRadioButton jrbACTIVO;
+    private javax.swing.JTextField jtIDTratamiento;
+    private javax.swing.JTextArea jtMedicacion;
+    private javax.swing.JTextField jtPrecio;
     // End of variables declaration//GEN-END:variables
 }
