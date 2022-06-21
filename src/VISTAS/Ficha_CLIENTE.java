@@ -240,6 +240,7 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         jtNCliente.setEnabled(false);
         jPanel1.add(jtNCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 70, -1));
 
+        jlAgregarMascota_desde_Cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/Agregar_Mascota_ICONO.png"))); // NOI18N
         jlAgregarMascota_desde_Cliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jlAgregarMascota_desde_Cliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -437,15 +438,11 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         jtexto_Direccion.setText("");
         jtexto_Telefono.setText("");
         jtexto_ContactoA.setText("");
-<<<<<<< HEAD
+
         DefaultTableModel model = (DefaultTableModel) jTMascotasde1Cliente.getModel();
 
         model.setRowCount(0); // BORRA TODAS LAS LINEAS Y VUELVE A 0//
-=======
-        
-        DefaultTableModel model = (DefaultTableModel) jTMascotasde1Cliente.getModel();
-        model.setRowCount(0);
->>>>>>> 140499b1e6acb5eb6ab8bb891a28c7298c2d3846
+
 
     }
 
