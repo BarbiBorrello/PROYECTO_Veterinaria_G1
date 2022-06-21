@@ -452,6 +452,7 @@ public class Ficha_MASCOTA extends javax.swing.JInternalFrame {
                     mascota.setId_mascota(Integer.parseInt(jtNPaciente.getText()));
                     Menu_PRINCIPAL_VETERINARIA.md.modificarMascota(Integer.parseInt(jtNPaciente.getText()), mascota);
                     cargarFormularioConMascota(mascota);
+                    limpiarFormulario();
                 }
             }
         } else {
