@@ -82,6 +82,7 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         jtexto_Telefono = new javax.swing.JTextField();
         jtNCliente = new javax.swing.JTextField();
         jlAgregarMascota_desde_Cliente = new javax.swing.JLabel();
+        jRDesactivarCliente = new javax.swing.JRadioButton();
         jtexto_dni = new javax.swing.JTextField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -144,7 +145,7 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         jrbACTIVO.setText("Activo");
         jrbACTIVO.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jrbACTIVO.setEnabled(false);
-        jPanel1.add(jrbACTIVO, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, 70, 20));
+        jPanel1.add(jrbACTIVO, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, 70, 20));
 
         jLMascotasASuCargo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLMascotasASuCargo.setForeground(new java.awt.Color(51, 0, 204));
@@ -247,6 +248,16 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jlAgregarMascota_desde_Cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 360, 60, 60));
+
+        jRDesactivarCliente.setBackground(new java.awt.Color(255, 255, 255));
+        jRDesactivarCliente.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRDesactivarCliente.setText("Desactivar");
+        jRDesactivarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRDesactivarClienteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jRDesactivarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, -1, -1));
         jPanel1.add(jtexto_dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, 110, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -366,6 +377,15 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
         }    
         
     }//GEN-LAST:event_jLModificarClienteMouseClicked
+
+    private void jRDesactivarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRDesactivarClienteActionPerformed
+        // TODO add your handling code here:
+        
+        if(jtNCliente != null){
+        jRDesactivarCliente.setSelected(true);}
+        JOptionPane.showMessageDialog(this, "Confirma desactivar cliente?");
+        Menu_PRINCIPAL_VETERINARIA.cd.borrarCliente(Integer.parseInt(jtNCliente.getText()));
+    }//GEN-LAST:event_jRDesactivarClienteActionPerformed
 
 private void validacionDeCampos() {
 
@@ -489,6 +509,7 @@ private void validacionDeCampos() {
     private javax.swing.JLabel jLModificarCliente;
     private javax.swing.JLabel jLSalir;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButton jRDesactivarCliente;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;

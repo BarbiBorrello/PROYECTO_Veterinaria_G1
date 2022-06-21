@@ -218,7 +218,7 @@ public class ClienteData {
             int rs = ps.executeUpdate();
 
             if (rs > 0) {
-                JOptionPane.showMessageDialog(null, "Estado del cliente: ACTIVO ");
+                JOptionPane.showMessageDialog(null, "Cliente activado ");
             } else {
                 JOptionPane.showMessageDialog(null, " No se puede activar cliente: N° DE CLIENTE INEXISTENTE ");
             }
@@ -230,6 +230,35 @@ public class ClienteData {
         }
     }
 // se utiliza para la vista CONSULTAS//
+    
+    	public void desactivarCliente(int p_id_cliente){
+	
+	// String de consulta a base de datos
+        String sql = "UPDATE cliente SET activo =0 WHERE id_cliente=?";
+
+        try {
+
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, p_id_cliente);
+
+            int rs = ps.executeUpdate();
+
+            if (rs > 0) {
+                JOptionPane.showMessageDialog(null, "Cliente desactivado exitosamente ");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo borrar, cliente inexistente ");
+            }
+
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error de conexion desde desactivar al  cliente " + ex);
+
+        }
+	
+	
+	
+	
+	}
 
     public List<Cliente> obtenerClientes() {
 
