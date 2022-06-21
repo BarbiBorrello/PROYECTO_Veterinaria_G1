@@ -62,7 +62,7 @@ public class VisitaData {
 
     public void agregarVisita(Visita p_visita) {
 
-        String sql = "INSERT INTO visita ( id_tratamiento ,fecha_visita ,id_mascota ,peso ,activo, sintomas ) VALUES (? ,? ,? ,? ,? )";
+        String sql = "INSERT INTO visita ( id_tratamiento ,fecha_visita ,id_mascota ,peso ,activo, sintomas ) VALUES (? ,? ,? ,? ,? ,? )";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -156,7 +156,7 @@ public class VisitaData {
                 visita.setActivo(rs.getBoolean("activo"));
 
                 // Mensaje de visita encontrado
-                JOptionPane.showMessageDialog(null, " Se encontro ID:" + visita.toString());
+                //JOptionPane.showMessageDialog(null, " Se encontro ID:" + visita.toString());
 
             } else {
                 // Mensaje de visita no encontrado

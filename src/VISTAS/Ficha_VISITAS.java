@@ -15,6 +15,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
@@ -107,6 +108,7 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
         jSeparator6 = new javax.swing.JSeparator();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableVisitas = new javax.swing.JTable();
+        jbDesactivar = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -233,6 +235,11 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
         jPanel1.add(jlTratamiento_V, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 140, 20));
 
         jcMascotaV.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jcMascotaV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jcMascotaVMouseClicked(evt);
+            }
+        });
         jcMascotaV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcMascotaVActionPerformed(evt);
@@ -333,6 +340,14 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, 620, 90));
 
+        jbDesactivar.setText("Desactivar");
+        jbDesactivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbDesactivarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbDesactivar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -414,6 +429,7 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
 
                         jcMascotaV.addItem(m1);
                     }
+                    listarVisitasMascota();
                 }
             }
         } else {
@@ -482,9 +498,12 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
 // SINTOMAS --------------------------------------------------------------------------------------------------------------
             v.setSintomas(jtfSintomas.getText());
             Menu_PRINCIPAL_VETERINARIA.vd.agregarVisita(v);
-            Menu_PRINCIPAL_VETERINARIA.md.actualizarPesoPromedio(m.getId_mascota());
-            jrbACTIVO.setSelected(v.isActivo()); // esta activo?//
-            jtID_VISITA.setText(Integer.toString(v.getIdvisita())); // completa el id de visita //
+            if (v.getIdvisita() != -1) {
+                Menu_PRINCIPAL_VETERINARIA.md.actualizarPesoPromedio(m.getId_mascota());
+                jrbACTIVO.setSelected(v.isActivo()); // esta activo?//
+                jtID_VISITA.setText(Integer.toString(v.getIdvisita())); // completa el id de visita //
+            }
+
         }
     }//GEN-LAST:event_jlGUARDAR_VISITAMouseClicked
 
@@ -525,8 +544,10 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtDNI_duenio_VKeyTyped
 
     private void jlLISTAR_VisitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlLISTAR_VisitaMouseClicked
+        listarVisitasMascota();
+    }//GEN-LAST:event_jlLISTAR_VisitaMouseClicked
+    private void listarVisitasMascota() {
 
-        // check if jcbMascota is empty  or not selected any item
         if (jcMascotaV.getItemCount() == 0) {
             JOptionPane.showMessageDialog(null, "No se ha cargado ninguna mascota, debe buscar un cliente con mascotas");
         } else if (jcMascotaV.getSelectedItem() == null) {
@@ -543,10 +564,7 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
                 model.addRow(new Object[]{v1.getIdvisita(), v1.getTratamiento().getTipo_tratamiento(), v1.getFecha_visita(), v1.getPeso(), v1.getSintomas(), v1.getTratamiento().getPrecio(), v1.isActivo()});
             }
         }
-
-
-    }//GEN-LAST:event_jlLISTAR_VisitaMouseClicked
-
+    }
     private void jlLISTAR_VisitaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlLISTAR_VisitaMouseEntered
         jlLISTAR_Visita.setBackground(new Color(100, 100, 255));
     }//GEN-LAST:event_jlLISTAR_VisitaMouseEntered
@@ -567,21 +585,39 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
         if (evt.getClickCount() == 2) {
             Visita v1;
             int row = jTableVisitas.getSelectedRow();
-            if (Boolean.parseBoolean(jTableVisitas.getValueAt(row, 5).toString())) {
+            if (Boolean.parseBoolean(jTableVisitas.getValueAt(row, 6).toString())) {
                 v1 = Menu_PRINCIPAL_VETERINARIA.vd.buscarVisita(Integer.parseInt(jTableVisitas.getValueAt(row, 0).toString()));
-                
-                    llenarFormVisita(v1);
-                
-            }else{
-                
+                llenarFormVisita(v1);
+            } else {
+                int opcion = JOptionPane.showOptionDialog(null, "No puede cargar visita, se encuentra desactivada ¿Desea activar la visita?", "Activar Visita", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+                if (opcion == 0) {
+
+                    Menu_PRINCIPAL_VETERINARIA.vd.activarVisita(Integer.parseInt(jTableVisitas.getValueAt(row, 0).toString()));
+                    JOptionPane.showMessageDialog(null, "Visita activada");
+                    llenarFormVisita(Menu_PRINCIPAL_VETERINARIA.vd.buscarVisita(Integer.parseInt(jTableVisitas.getValueAt(row, 0).toString())));
+                }
             }
-            
 
         }
     }//GEN-LAST:event_jTableVisitasMouseClicked
 
-    private void llenarFormVisita(Visita p_visita) {
+    private void jcMascotaVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcMascotaVMouseClicked
+        listarVisitasMascota();
+    }//GEN-LAST:event_jcMascotaVMouseClicked
 
+    private void jbDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDesactivarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbDesactivarActionPerformed
+
+    private void llenarFormVisita(Visita p_visita) {
+        jtID_VISITA.setText(String.valueOf(p_visita.getIdvisita()));
+        jcbTratamientos_V.setSelectedItem(p_visita.getTratamiento());
+        //jdcFechaV.setDate(p_visita.getFecha_visita());
+        jdcFechaV.setDate(Date.from(p_visita.getFecha_visita().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        jtfPeso.setText(String.valueOf(p_visita.getPeso()));
+        jtfSintomas.setText(p_visita.getSintomas());
+        jlprecio_V.setText(String.valueOf(p_visita.getTratamiento().getPrecio()));
+        jrbACTIVO.setSelected(p_visita.isActivo());
     }
 
     private void limpiar() {
@@ -612,7 +648,6 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
         LocalDate localDate = LocalDate.now();
         Date date = java.sql.Date.valueOf(localDate);
         jdcFechaV.setDate(date);
-
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -629,6 +664,7 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTableVisitas;
+    private javax.swing.JButton jbDesactivar;
     private javax.swing.JLabel jbuscarClienteV;
     private javax.swing.JComboBox<Mascota> jcMascotaV;
     private javax.swing.JComboBox<Tratamiento> jcbTratamientos_V;
