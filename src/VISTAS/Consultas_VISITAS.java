@@ -110,6 +110,7 @@ public class Consultas_VISITAS extends javax.swing.JInternalFrame {
 
         jrbACTIVO.setBackground(new java.awt.Color(255, 255, 255));
         jrbACTIVO.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jrbACTIVO.setSelected(true);
         jrbACTIVO.setText("Activa");
         jrbACTIVO.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jrbACTIVO.addActionListener(new java.awt.event.ActionListener() {
@@ -258,7 +259,7 @@ public class Consultas_VISITAS extends javax.swing.JInternalFrame {
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
         model.setRowCount(0); // BORRA TODAS LAS LINEAS Y VUELVE A 0//
         for (Visita visita : visitas) {
-            model.addRow(new Object[]{visita.getIdvisita(),visita.getTratamiento().getTipo_tratamiento(), visita.getMascota().getAlias(), visita.getFecha_visita(), visita.getSintomas(), visita.isActivo()});
+            model.addRow(new Object[]{visita.getIdvisita(),visita.getMascota().getAlias(),visita.getTratamiento().getTipo_tratamiento(),  visita.getFecha_visita(), visita.getSintomas(), visita.isActivo()});
 
         }
     }

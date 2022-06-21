@@ -75,14 +75,6 @@
             <Property name="text" type="java.lang.String" value="Consultas"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMConsultasCLIENTES">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Consultas de Clientes"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMConsultasCLIENTESActionPerformed"/>
-              </Events>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMConsultasMASCOTAS">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Consulta de Mascotas"/>

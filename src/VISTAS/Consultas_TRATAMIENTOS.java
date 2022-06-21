@@ -39,7 +39,16 @@ public class Consultas_TRATAMIENTOS extends javax.swing.JInternalFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel(){
+            String str="/IMAGENES/Consultas_TRATAMIENTOS.png";
+            ImageIcon icon = new ImageIcon(getClass().getResource(str));
+            Image image = icon.getImage();
+
+            public void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(image, 0, 0,getWidth(),getHeight(), this);
+            }
+        };
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jlDNI = new javax.swing.JLabel();
@@ -103,6 +112,7 @@ public class Consultas_TRATAMIENTOS extends javax.swing.JInternalFrame {
 
         jrbACTIVO.setBackground(new java.awt.Color(255, 255, 255));
         jrbACTIVO.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jrbACTIVO.setSelected(true);
         jrbACTIVO.setText("Activo");
         jrbACTIVO.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(jrbACTIVO, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, 70, 20));
@@ -122,7 +132,15 @@ public class Consultas_TRATAMIENTOS extends javax.swing.JInternalFrame {
             new String [] {
                 "ID Tratamiento", "Tipo Tratamiento", "Medicamento", "Precio", "Activo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 540, 150));
@@ -186,7 +204,7 @@ public class Consultas_TRATAMIENTOS extends javax.swing.JInternalFrame {
             valores.add(((Tratamiento) jComboBox1.getSelectedItem()).getTipo_tratamiento());
         }
         if (jtMedicacion.getText().length() > 0) {
-            parametros.add("medicacion");
+            parametros.add("medicamento");
             valores.add(jtMedicacion.getText());
         }
         if (jtPrecio.getText().length() > 0) {
