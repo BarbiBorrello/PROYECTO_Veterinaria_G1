@@ -491,6 +491,7 @@ public class Ficha_CLIENTE extends javax.swing.JInternalFrame {
                 model.addRow(new Object[]{mascota.getId_mascota(),
                      mascota.getAlias(),
                      mascota.getEspecie()});
+                // igual
             }
         } else {
             JOptionPane.showMessageDialog(this, "El cliente no tiene ninguna mascota a su cargo");
