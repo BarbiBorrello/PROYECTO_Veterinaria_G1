@@ -5,7 +5,7 @@
  */
 package VISTAS;
 
-import com.formdev.flatlaf.FlatDarculaLaf;
+
 import com.formdev.flatlaf.FlatLightLaf;
 import veterinaria_CONTROLADOR.ClienteData;
 import veterinaria_CONTROLADOR.Conexion;

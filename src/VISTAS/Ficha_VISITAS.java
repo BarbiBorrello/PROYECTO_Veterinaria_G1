@@ -168,8 +168,8 @@ public class Ficha_VISITAS extends javax.swing.JInternalFrame {
 
         jlSintomas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlSintomas.setForeground(new java.awt.Color(255, 255, 255));
-        jlSintomas.setText("Sintomas:");
-        jPanel1.add(jlSintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, 70, 20));
+        jlSintomas.setText(" Diagnostico:");
+        jPanel1.add(jlSintomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 100, 20));
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 590, 10));
 
         jrbACTIVO.setBackground(new java.awt.Color(255, 255, 255));
